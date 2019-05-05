@@ -144,5 +144,4 @@
             "nuget_feed": "https://www.myget.org/F/op/api/v2"
         }
     ],
-  "package_version": "1.72.0" 
 }
