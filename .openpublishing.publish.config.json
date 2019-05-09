@@ -105,6 +105,7 @@
         }
     ],
     "notification_subscribers": [],
+    "enable_custom_metadata_validation": false,
     "sync_notification_subscribers": [],
     "branches_to_filter": [],
     "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/PowerShell-Docs",
@@ -126,6 +127,7 @@
         }
     ],
     "branch_target_mapping": {},
+    "enable_custom_metadata_validation": false,
     "need_generate_pdf_url_template": false,
     "targets": {},
     "need_generate_pdf": false,
