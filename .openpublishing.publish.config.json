@@ -18,6 +18,20 @@
       "template_folder": "_themes"
     },
     {
+      "docset_name": "e2eprod-developer-docs",
+      "build_source_folder": "developer",
+      "build_output_subfolder": "e2eprod-developer-docs",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
       "docset_name": "PowerShell_PowerShell-docs_dsc",
       "build_source_folder": "dsc",
       "build_output_subfolder": "dsc",
