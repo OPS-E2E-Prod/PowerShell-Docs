@@ -45,8 +45,10 @@ in this article.
 - [Remove-Item](../../Microsoft.PowerShell.Management/Remove-Item.md)
 - [Clear-Item](../../Microsoft.PowerShell.Management/Clear-Item.md)
 
-PowerShell includes a set of cmdlets that are designed to view and to change aliases. When you use **Alias** cmdlets, you do not need to specify the `Alias:` drive in the name. This article does not cover working with
-**Alias** cmdlets.
+PowerShell includes a set of cmdlets that are designed to view and to change
+aliases. When you use **Alias** cmdlets, you do not need to specify the
+`Alias:` drive in the name. This article does not cover working with **Alias**
+cmdlets.
 
 - [Export-Alias](../../Microsoft.PowerShell.Utility/Export-Alias.md)
 - [Get-Alias](../../Microsoft.PowerShell.Utility/Get-Alias.md)
@@ -93,7 +95,7 @@ This command gets the list of all the aliases when the current location is the
 of the current location.
 
 ```powershell
-PS Alias:\> Get-Item -Path *
+Get-Item -Path *
 ```
 
 In the `Alias:` drive, a dot `.`, which represents the current location, and a
@@ -142,11 +144,8 @@ option on the alias. The `-Options` parameter is available in
 the `New-Item` cmdlet only when you are in the `Alias:` drive. The dot (`.`)
 indicates the current directory, which is the alias drive.
 
-```powershell
-PS Alias:\> New-Item -Path . `
-                     -Name serv `
-                     -Value Get-Service `
-                     -Options "AllScope"
+```
+PS Alias:\> New-Item -Path . -Name serv -Value Get-Service -Options "AllScope"
 ```
 
 ### Create an alias with an absolute path
@@ -273,7 +272,8 @@ Determines the value of the **Options** property of an alias.
 
 - `None`: No options. This value is the default.
 - `Constant`:The alias cannot be deleted and its properties cannot be changed.
-  `Constant` is available only when you create an alias. You cannot change the option of an existing alias to `Constant`.
+  `Constant` is available only when you create an alias. You cannot change the
+  option of an existing alias to `Constant`.
 - `Private`:The alias is visible only in the current scope, not in the child
    scopes.
 - `ReadOnly`:The properties of the alias cannot be changed except by using the
