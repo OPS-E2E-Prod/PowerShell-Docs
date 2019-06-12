@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: PowerShellGet
 ms.date: 3/7/2019
-online version: http://go.microsoft.com/fwlink/?LinkId=821663
+online version: https://go.microsoft.com/fwlink/?linkid=821663
 schema: 2.0.0
 title: Install-Module
 ---
@@ -360,13 +360,11 @@ the computer:
 
 `$home\Documents\PowerShell\Modules`
 
-When no **Scope** is defined, the default is set based on the current session:
+When no **Scope** is defined, the default is set based on the PowerShellGet version.
 
-- For an elevated PowerShell session, **Scope** defaults to **AllUsers**.
-- For non-elevated PowerShell sessions in [PowerShellGet versions 2.0.0](https://www.powershellgallery.com/packages/PowerShellGet)
-  and above, the **Scope** is **CurrentUser**.
-- For non-elevated PowerShell sessions in PowerShellGet versions 1.6.7 and earlier, **Scope** is
-  undefined, and `Install-Module` fails.
+- In PowerShellGet versions 2.0.0 and above, the default is **CurrentUser**, which does not require
+  elevation for install.
+- In PowerShellGet 1.x versions, the default is **AllUsers**, which requires elevation for install.
 
 ```yaml
 Type: String

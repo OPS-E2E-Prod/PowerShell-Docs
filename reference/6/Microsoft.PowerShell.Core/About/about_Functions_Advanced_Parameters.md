@@ -291,18 +291,38 @@ The `ValueFromRemainingArguments` argument indicates that the parameter
 accepts all of the parameters values in the command that are not assigned to
 other parameters of the function.
 
-The following example declares a `ComputerName` parameter that is **Mandatory**
-and accepts all the remaining parameter values that were submitted to the
-function.
+The following example declares a `$Value` parameter that is **Mandatory**
+and a `$Remaining` parameter which accepts all the remaining parameter values
+that are submitted to the function.
 
 ```powershell
-Param(
-    [Parameter(Mandatory=$true,
-    ValueFromRemainingArguments=$true)]
-    [String[]]
-    $ComputerName
-)
+function Test-Remainder
+{
+     param(
+         [string]
+         [Parameter(Mandatory = $true, Position=0)]
+         $Value,
+         [string[]]
+         [Parameter(Position=1, ValueFromRemainingArguments)]
+         $Remaining)
+     "Found $($Remaining.Count) elements"
+     for ($i = 0; $i -lt $Remaining.Count; $i++)
+     {
+        "${i}: $($Remaining[$i])"
+     }
+}
+Test-Remainder first one,two
 ```
+
+```Output
+Found 2 elements
+0: one
+1: two
+```
+
+> [!NOTE]
+> Prior to PowerShell 6.2, the **ValueFromRemainingArguments** collection
+> was joined as single entity under index 0.
 
 ### HelpMessage Argument
 
@@ -443,7 +463,7 @@ The `ValidatePattern` attribute specifies a regular expression that is compared
 to the parameter or variable value. PowerShell generates an error if the value
 does not match the regular expression pattern.
 
-In the following example, the parameter value must be a four-digit number, and
+In the following example, the parameter value must contain a four-digit number, and
 each digit must be a number zero to nine.
 
 ```powershell
@@ -455,11 +475,11 @@ Param(
 )
 ```
 
-In the following example, the value of the variable `$number` must be a
+In the following example, the value of the variable `$number` must be exactly a
 four-digit number, and each digit must be a number zero to nine.
 
 ```powershell
-[Int32][ValidatePattern("[0-9][0-9][0-9][0-9]")]$number = 1111
+[Int32][ValidatePattern("^[0-9][0-9][0-9][0-9]$")]$number = 1111
 ```
 
 ### ValidateRange Validation Attribute

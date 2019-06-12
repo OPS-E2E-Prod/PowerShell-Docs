@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 04/09/2019
-online version: http://go.microsoft.com/fwlink/?LinkId=821863
+online version: https://go.microsoft.com/fwlink/?linkid=821863
 schema: 2.0.0
 title: Sort-Object
 ---
@@ -540,7 +540,7 @@ Accept wildcard characters: False
 
 The sorted objects are delivered in the order they were received when the sort criteria are equal.
 
-This parameter was adding in PowerShell v6.2.0.
+This parameter was added in PowerShell v6.2.0.
 
 ```yaml
 Type: SwitchParameter
