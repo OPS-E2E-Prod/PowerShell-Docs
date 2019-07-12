@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Core
 ms.date: 5/15/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821493
+online version: https://go.microsoft.com/fwlink/?linkid=2096176
 schema: 2.0.0
 title: Invoke-Command
 ---
@@ -735,18 +735,15 @@ Accept wildcard characters: False
 Indicates that this cmdlet runs the command as a background job on a remote computer.
 Use this parameter to run commands that take an extensive time to finish.
 
-When you use the *AsJob* parameter, the command returns an object that represents the job, and then
-displays the command prompt. You can continue to work in the session while the job finishes.
-To manage the job, use the **Job** cmdlets.
-To get the job results, use the Receive-Job cmdlet.
+When you use the **AsJob** parameter, the command returns an object that represents the job, and then displays the command prompt.
+You can continue to work in the session while the job finishes.
+To manage the job, use the `*-Job` cmdlets.
+To get the job results, use the `Receive-Job` cmdlet.
 
-The *AsJob* parameter resembles using the **Invoke-Command** cmdlet to run a Start-Job command
-remotely.
-However, with *AsJob*, the job is created on the local computer, even though the job runs on a
-remote computer, and the results of the remote job are automatically returned to the local computer.
+The **AsJob** parameter resembles using the `Invoke-Command` cmdlet to run a `Start-Job` cmdlet remotely.
+However, with **AsJob**, the job is created on the local computer, even though the job runs on a remote computer, and the results of the remote job are automatically returned to the local computer.
 
-For more information about PowerShell background jobs, see [about_Jobs](About/about_Jobs.md) and
-[about_Remote_Jobs](About/about_Remote_Jobs.md).
+For more information about PowerShell background jobs, see [about_Jobs](About/about_Jobs.md) and [about_Remote_Jobs](About/about_Remote_Jobs.md).
 
 ```yaml
 Type: SwitchParameter
