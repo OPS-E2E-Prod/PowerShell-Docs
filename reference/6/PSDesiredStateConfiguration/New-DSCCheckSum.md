@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: PSDesiredStateConfiguration
 ms.date: 06/09/2017
-online version: http://go.microsoft.com/fwlink/?LinkId=821459
+online version: https://go.microsoft.com/fwlink/?linkid=2096555
 schema: 2.0.0
 title: New-DscChecksum
 ---
@@ -21,7 +21,7 @@ New-DscChecksum [-Path] <String[]> [[-OutPath] <String>] [-Force] [-WhatIf] [-Co
 
 ## DESCRIPTION
 
-The **New-DSCCheckSum** cmdlet generates checksum files for Windows PowerShell Desired State Configuration (DSC) documents and compressed DSC resources.
+The **New-DSCCheckSum** cmdlet generates checksum files for PowerShell Desired State Configuration (DSC) documents and compressed DSC resources.
 This cmdlet generates a checksum file for each configuration and resource to be used in pull mode.
 The DSC service uses the checksums to make sure that the correct configuration and resources exist on the target node.
 Place the checksums together with the associated DSC documents and compressed DSC resources in the DSC service store.
@@ -141,4 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Windows PowerShell Desired State Configuration Overview](/powershell/dsc)
+[PowerShell Desired State Configuration Overview](/powershell/dsc)

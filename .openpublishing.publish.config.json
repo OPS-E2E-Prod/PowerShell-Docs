@@ -1,5 +1,6 @@
 {
     "build_entry_point": "docs",
+    "enable_incremental_build": true,
     "docsets_to_publish": [{
             "docset_name": "e2eprod-developer-docs",
             "build_source_folder": "developer",
@@ -107,13 +108,16 @@
     "notification_subscribers": [],
     "enable_custom_metadata_validation": false,
     "sync_notification_subscribers": [],
-    "branches_to_filter": ["from-prod-staging","from-prod-live","repo_sync_novalidation_prtest_branch","repo_sync_novalidation_live_branch","repo_sync_novalidation_master_branch"],
+    "branches_to_filter": ["prtest","prtest-nometavalidation","from-prod-staging","from-prod-live","repo_sync_novalidation_prtest_branch","repo_sync_novalidation_live_branch","repo_sync_novalidation_master_branch"],
     "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/PowerShell-Docs",
     "git_repository_branch_open_to_public_contributors": "staging",
     "skip_source_output_uploading": false,
-    "enable_incremental_build": false,
     "need_preview_pull_request": true,
+    "need_generate_pdf_url_template": false,
     "contribution_branch_mappings": {},
+    "branches_to_filter": [],
+    "branch_target_mapping": {},
+    "targets": {},
     "dependent_repositories": [{
             "path_to_root": "_themes",
             "url": "https://github.com/Microsoft/templates.docs.msft",
@@ -127,11 +131,6 @@
             "branch_mapping": {}
         }
     ],
-    "branch_target_mapping": {},
-    "need_generate_pdf_url_template": false,
-    "targets": {},
-    "need_generate_pdf": false,
-    "need_generate_intellisense": false,
     "dependent_packages": [{
             "path_to_root": "_dependentPackages/azurecli.plugins",
             "id": "opbuild.templates.azurecli",

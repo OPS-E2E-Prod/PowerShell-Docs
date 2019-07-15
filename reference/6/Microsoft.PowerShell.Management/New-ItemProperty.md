@@ -3,7 +3,7 @@ ms.date: 5/14/2019
 schema:  2.0.0
 locale:  en-us
 keywords:  powershell,cmdlet
-online version:  http://go.microsoft.com/fwlink/?LinkId=821606
+online version: https://go.microsoft.com/fwlink/?linkid=2096401
 external help file:  Microsoft.PowerShell.Commands.Management.dll-Help.xml
 title:  New-ItemProperty
 ---
@@ -83,7 +83,7 @@ registry entry ("NoOfLocations"), and its value (3), to the "MyCompany" key.
 Get-Item -Path "HKLM:\Software\MyCompany" | New-ItemProperty -Name NoOfLocations -Value 3
 ```
 
-This command works because the parameter-binding feature of Windows PowerShell associates the path
+This command works because the parameter-binding feature of PowerShell associates the path
 of the `RegistryKey` object that `Get-Item` returns with the **LiteralPath** parameter of
 `New-ItemProperty`.
 For more information, see [about_Pipelines](../Microsoft.PowerShell.Core/About/about_pipelines.md).

@@ -3,7 +3,7 @@ ms.date: 5/14/2019
 schema:  2.0.0
 locale:  en-us
 keywords:  powershell,cmdlet
-online version:  http://go.microsoft.com/fwlink/?LinkId=821580
+online version: https://go.microsoft.com/fwlink/?linkid=2096194
 external help file:  Microsoft.PowerShell.Commands.Management.dll-Help.xml
 title:  Get-ChildItem
 ---
@@ -250,9 +250,9 @@ optional. For example, `-Path C:\Test\Logs` or `-Path C:\Test\Logs\*`.
 
 ### Example 6: Get the registry keys from a registry hive
 
-This command gets all of the registry keys from the **HKEY_LOCAL_MACHINE\HARDWARE** registry hive.
+This command gets all of the registry keys from the `HKEY_LOCAL_MACHINE\HARDWARE` registry key.
 
-`Get-ChildItem` uses the **Path** parameter to specify the registry hive **HKLM:\HARDWARE**. The
+`Get-ChildItem` uses the **Path** parameter to specify the registry key `HKLM:\HARDWARE`. The
 hive's path and top level of registry keys are displayed in the PowerShell console.
 
 For more information, see [about_Registry_Provider](../Microsoft.PowerShell.Core/About/about_Registry_Provider.md).
@@ -272,6 +272,23 @@ DEVICEMAP
 RESOURCEMAP
 UEFI
 ```
+
+```powershell
+Get-ChildItem -Path HLKM:\HARDWARE -Exclude D*
+```
+
+```Output
+   Hive: HKEY_LOCAL_MACHINE\HARDWARE
+
+Name                           Property
+----                           --------
+ACPI
+RESOURCEMAP
+```
+
+The first command shows the contents of the `HKLM:\HARDWARE` registry key. The **Exclude** parameter
+tells `Get-ChildItem` not to return any subkeys that start with `D*`. Currently, the **Exclude**
+parameter only works on subkeys, not item properties.
 
 ### Example 7: Get all certificates with code-signing authority
 
@@ -484,10 +501,10 @@ Accept wildcard characters: False
 ### -Filter
 
 Specifies a filter to qualify the **Path** parameter. The [FileSystem](../Microsoft.PowerShell.Core/About/about_FileSystem_Provider.md)
-provider is the only installed PowerShell provider that supports the use of filters. You can find
-the syntax for the **FileSystem** filter language in [about_Wildcards](../Microsoft.PowerShell.Core/About/about_Wildcards.md).
-Filters are more efficient than other parameters, because the provider applies them when the cmdlet
-gets the objects rather than having PowerShell filter the objects after they are retrieved.
+provider is the only installed PowerShell provider that supports the use of filters. Filters are
+more efficient than other parameters, because the provider applies them when the cmdlet gets the
+objects rather than having PowerShell filter the objects after they are retrieved. The filter string
+is passed to the .NET API to enumerate files. That API only supports `*` and `?` wildcards.
 
 ```yaml
 Type: String
@@ -495,7 +512,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: PSDesiredStateConfiguration
 ms.date: 06/09/2017
-online version: http://go.microsoft.com/fwlink/?LinkId=821458
+online version: https://go.microsoft.com/fwlink/?linkid=2096855
 schema: 2.0.0
 title: Get-DscResource
 ---
@@ -21,7 +21,7 @@ Get-DscResource [[-Name] <String[]>] [[-Module] <Object>] [-Syntax] [<CommonPara
 
 ## DESCRIPTION
 
-The **Get-DscResource** cmdlet retrieves the Windows PowerShell Desired State Configuration (DSC) resources present on the computer.
+The **Get-DscResource** cmdlet retrieves the PowerShell Desired State Configuration (DSC) resources present on the computer.
 This cmdlet discovers only the resources installed in the PSModulePath.
 It shows the details about built-in and custom providers, which are created by the user.
 This cmdlet also shows details about composite resources, which are other configurations that are packaged as module or created at run time in the session.
@@ -149,6 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Windows PowerShell Desired State Configuration Overview](/powershell/dsc)
+[PowerShell Desired State Configuration Overview](/powershell/dsc)
 
 [Invoke-DscResource](https://msdn.microsoft.com/en-us/powershell/reference/5.1/PSDesiredStateConfiguration/Invoke-DscResource)

@@ -1,9 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Module Name: Microsoft.PowerShell.Utility
-online version:
+online version: https://go.microsoft.com/fwlink/?linkid=2096442
 schema: 2.0.0
-ms.date:  02/01/2019
+ms.date: 02/01/2019
+title: Join-String
 ---
 
 # Join-String
@@ -43,7 +44,7 @@ Join-String [[-Property] <PSPropertyExpression>] [[-Separator] <String>] [-Outpu
 
 ## DESCRIPTION
 
-The `Join-String` cmdlet joins (compines) text from pipeline objects into a single string.
+The `Join-String` cmdlet joins (combines) text from pipeline objects into a single string.
 
 If no parameters are specified, the pipeline objects are converted to a string and joined with the
 default separatator $OFS.

@@ -3,7 +3,7 @@ ms.date:  3/22/2019
 schema:  2.0.0
 locale:  en-us
 keywords:  powershell,cmdlet
-online version:  http://go.microsoft.com/fwlink/?LinkId=821472
+online version: https://go.microsoft.com/fwlink/?linkid=2096275
 external help file:  System.Management.Automation.dll-Help.xml
 title:  Disable-PSRemoting
 ---
@@ -26,15 +26,14 @@ on the local computer.
 
 `Disable-PSRemoting` blocks remote access to all PowerShell session configurations on the local
 computer. This prevents remote users from creating temporary or persistent PowerShell sessions to
-the local computer. `Disable-PSRemoting` does not prevent remote users from creating Windows
-PowerShell sessions to the local computer. To disable both PowerShell and Windows PowerShell session
-configurations run `Disable-PSRemoting` in Windows PowerShell on the local computer.
+the local computer. `Disable-PSRemoting` does not prevent remote users from creating PowerShell sessions to the local computer. To disable both PowerShell and PowerShell session
+configurations run `Disable-PSRemoting` in PowerShell on the local computer.
 `Disable-PSRemoting` does not prevent users of the local computer from creating sessions
 (**PSSessions**) on the local computer or remote computers.
 
 To re-enable remote access to all PowerShell session configurations, use the `Enable-PSRemoting`
-cmdlet. To re-enable remote access to all session configurations, including Windows PowerShell
-configurations, run `Enable-PSRemoting` in Windows PowerShell on the local computer. To enable
+cmdlet. To re-enable remote access to all session configurations, including PowerShell
+configurations, run `Enable-PSRemoting` in PowerShell on the local computer. To enable
 remote access to selected session configurations, use the **AccessMode** parameter of the
 `Set-PSSessionConfiguration` cmdlet. You can also use the `Enable-PSSessionConfiguration` and
 `Disable-PSSessionConfiguration` cmdlets to enable and disable session configurations for all users.

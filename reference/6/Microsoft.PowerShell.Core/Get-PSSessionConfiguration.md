@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Core
 ms.date: 03/26/2019
-online version: http://go.microsoft.com/fwlink/?LinkId=821490
+online version: https://go.microsoft.com/fwlink/?linkid=2096271
 schema: 2.0.0
 title: Get-PSSessionConfiguration
 ---
@@ -225,7 +225,7 @@ remote computer.
 This example is useful for setting the value of the `$PSSessionConfigurationName` preference
 variable, which takes a resource URI.
 
-```
+```powershell
 (Get-PSSessionConfiguration -Name CustomShell).resourceURI
 ```
 

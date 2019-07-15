@@ -1,10 +1,11 @@
 ---
+ms.date: 03/06/2019
 external help file: System.Management.Automation.dll-Help.xml
 Module Name: Microsoft.PowerShell.Core
-online version:
+online version: https://go.microsoft.com/fwlink/?linkid=2096158
 schema: 2.0.0
+title: Enable-ExperimentalFeature
 ---
-
 # Enable-ExperimentalFeature
 
 ## SYNOPSIS
@@ -33,7 +34,7 @@ file is updated for the user to enable that feature once PowerShell is restarted
 Upon success nothing is output to the pipeline and only a warning message is displayed.
 
 ```powershell
-PS C:\> Enable-ExperimentalFeature PSImplicitRemotingBatching
+Enable-ExperimentalFeature PSImplicitRemotingBatching
 ```
 
 ```Output
