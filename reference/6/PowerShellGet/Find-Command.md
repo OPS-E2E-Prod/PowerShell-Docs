@@ -3,8 +3,8 @@ external help file: PSModule-help.xml
 keywords: powershell,cmdlet
 locale: en-us
 Module Name: PowerShellGet
-ms.date: 6/3/2019
-online version: http://go.microsoft.com/fwlink/?LinkId=822318
+ms.date: 06/03/2019
+online version: https://go.microsoft.com/fwlink/?linkid=2096847
 schema: 2.0.0
 title: Find-Command
 ---
@@ -20,9 +20,9 @@ Finds PowerShell commands in modules.
 
 ```
 Find-Command [[-Name] <String[]>] [-ModuleName <String>] [-MinimumVersion <String>]
-[-MaximumVersion <String>] [-RequiredVersion <String>] [-AllVersions] [-AllowPrerelease]
-[-Tag <String[]>] [-Filter <String>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
-[-Repository <String[]>] [<CommonParameters>]
+ [-MaximumVersion <String>] [-RequiredVersion <String>] [-AllVersions] [-AllowPrerelease]
+ [-Tag <String[]>] [-Filter <String>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-Repository <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

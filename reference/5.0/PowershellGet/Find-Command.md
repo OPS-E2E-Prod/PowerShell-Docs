@@ -1,9 +1,9 @@
 ---
-ms.date: 6/3/2019
+ms.date: 06/03/2019
 schema:  2.0.0
 locale:  en-us
 keywords:  powershell,cmdlet
-online version:  http://go.microsoft.com/fwlink/?LinkId=822318
+online version: https://go.microsoft.com/fwlink/?linkid=822318
 external help file:  PSModule-help.xml
 title:  Find-Command
 ---
@@ -19,9 +19,9 @@ Finds PowerShell commands in modules.
 
 ```
 Find-Command [[-Name] <String[]>] [-ModuleName <String>] [-MinimumVersion <Version>]
-[-MaximumVersion <Version>] [-RequiredVersion <Version>] [-AllVersions] [-Tag <String[]>]
-[-Filter <String>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-Repository <String[]>]
-[<CommonParameters>]
+ [-MaximumVersion <Version>] [-RequiredVersion <Version>] [-AllVersions] [-Tag <String[]>]
+ [-Filter <String>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-Repository <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
