@@ -3,7 +3,7 @@ external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 2/8/2019
+ms.date: 08/26/2019
 online version: https://go.microsoft.com/fwlink/?linkid=2097119
 schema: 2.0.0
 title: Select-String
@@ -19,25 +19,49 @@ Finds text in strings and files.
 ### File (Default)
 
 ```
-Select-String [-Pattern] <string[]> [-Path] <string[]> [-SimpleMatch] [-CaseSensitive] [-Quiet]
-[-List] [-Include <string[]>] [-Exclude <string[]>] [-NotMatch] [-AllMatches] [-Encoding <Encoding>]
-[-Context <int[]>] [<CommonParameters>]
+Select-String [-Pattern] <String[]> [-Path] <String[]> [-SimpleMatch] [-CaseSensitive] [-Quiet]
+ [-List] [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches]
+ [-Encoding <Encoding>] [-Context <Int32[]>]  [<CommonParameters>]
+```
+
+### ObjectRaw
+
+```
+Select-String -InputObject <PSObject> [-Pattern] <String[]> -Raw [-SimpleMatch] [-CaseSensitive]
+ [-List] [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches]
+ [-Encoding <Encoding>] [-Context <Int32[]>]  [<CommonParameters>]
 ```
 
 ### Object
 
 ```
-Select-String [-Pattern] <string[]> -InputObject <psobject> [-SimpleMatch] [-CaseSensitive] [-Quiet]
-[-List] [-Include <string[]>] [-Exclude <string[]>] [-NotMatch] [-AllMatches] [-Encoding <Encoding>]
-[-Context <int[]>] [<CommonParameters>]
+Select-String -InputObject <PSObject> [-Pattern] <String[]> [-SimpleMatch] [-CaseSensitive] [-Quiet]
+ [-List] [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches]
+ [-Encoding <Encoding>] [-Context <Int32[]>]  [<CommonParameters>]
+```
+
+### FileRaw
+
+```
+Select-String [-Pattern] <String[]> [-Path] <String[]> -Raw [-SimpleMatch] [-CaseSensitive] [-List]
+ [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches] [-Encoding <Encoding>]
+ [-Context <Int32[]>]  [<CommonParameters>]
+```
+
+### LiteralFileRaw
+
+```
+Select-String [-Pattern] <String[]> -LiteralPath <String[]> -Raw [-SimpleMatch] [-CaseSensitive]
+ [-List] [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches]
+ [-Encoding <Encoding>] [-Context <Int32[]>]  [<CommonParameters>]
 ```
 
 ### LiteralFile
 
 ```
-Select-String [-Pattern] <string[]> -LiteralPath <string[]> [-SimpleMatch] [-CaseSensitive] [-Quiet]
-[-List] [-Include <string[]>] [-Exclude <string[]>] [-NotMatch] [-AllMatches] [-Encoding <Encoding>]
-[-Context <int[]>] [<CommonParameters>]
+Select-String [-Pattern] <String[]> -LiteralPath <String[]> [-SimpleMatch] [-CaseSensitive] [-Quiet]
+ [-List] [-Include <String[]>] [-Exclude <String[]>] [-NotMatch] [-AllMatches]
+ [-Encoding <Encoding>] [-Context <Int32[]>]  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,16 +78,18 @@ match is found.
 `Select-String` uses regular expression matching, but it can also perform a match that searches the
 input for the text that you specify.
 
-`Select-String` can display all of the text matches or stop after the first match in each input
-file. `Select-String` can be used to display all text that does not match the specified pattern. You
-can also specify that `Select-String` should expect a particular character encoding, such as when
-you are searching files of Unicode text.
+`Select-String` can display all the text matches or stop after the first match in each input file.
+`Select-String` can be used to display all text that doesn't match the specified pattern.
+
+You can also specify that `Select-String` should expect a particular character encoding, such as
+when you're searching files of Unicode text. `Select-String` uses the byte-order-mark (BOM) to
+detect the encoding format of the file. If the file has no BOM, it assumes the encoding is UTF8.
 
 ## EXAMPLES
 
 ### Example 1: Find a case-sensitive match
 
-This command performs a case-sensitive match of the text that was sent down the pipeline to the
+This example does a case-sensitive match of the text that was sent down the pipeline to the
 `Select-String` cmdlet.
 
 ```powershell
@@ -73,7 +99,7 @@ This command performs a case-sensitive match of the text that was sent down the 
 The text strings **Hello** and **HELLO** are sent down the pipeline to the `Select-String` cmdlet.
 `Select-String` uses the **Pattern** parameter to specify **HELLO**. The **CaseSensitive** parameter
 specifies that the case must match only the upper-case pattern. **SimpleMatch** is an optional
-parameter and specifies that the string in the pattern is not interpreted as a regular expression.
+parameter and specifies that the string in the pattern isn't interpreted as a regular expression.
 `Select-String` displays **HELLO** in the PowerShell console.
 
 ### Example 2: Find matches in text files
@@ -113,8 +139,8 @@ Select-String -Path "$PSHOME\en-US\*.txt" -Pattern '\?'
 ```
 
 ```Output
-C:\Program Files\PowerShell\6\en-US\default.help.txt:27:    beginning at http://go.microsoft.com/fwlink/?LinkID=108518.
-C:\Program Files\PowerShell\6\en-US\default.help.txt:50:    or go to: http://go.microsoft.com/fwlink/?LinkID=210614
+C:\Program Files\PowerShell\6\en-US\default.help.txt:27:    beginning at https://go.microsoft.com/fwlink/?LinkID=108518.
+C:\Program Files\PowerShell\6\en-US\default.help.txt:50:    or go to: https://go.microsoft.com/fwlink/?LinkID=210614
 ```
 
 The `Select-String` cmdlet uses two parameters, **Path** and **Pattern**. The **Path** parameter
@@ -128,7 +154,7 @@ number precede each line of content that contains a match for the **Pattern** pa
 ### Example 4: Use Select-String in a function
 
 This example creates a function to search for a pattern in the PowerShell help files. For this
-example, the function only exists in the PowerShell session. When the PowerShell session is closed
+example, the function only exists in the PowerShell session. When the PowerShell session is closed,
 the function is deleted. For more information, see [about_Functions](../Microsoft.PowerShell.Core/About/about_Functions.md).
 
 ```
@@ -150,7 +176,7 @@ C:\Program Files\PowerShell\6\en-US\default.help.txt:97:    about_Updatable_Help
 The function is created on the PowerShell command line. The `Function` command uses the name
 **Search-Help**. Press **Enter** to begin adding statements to the function. From the `>>` prompt,
 add each statement and press **Enter** as shown in the example. After the closing bracket is added,
-you are returned to a PowerShell prompt.
+you're returned to a PowerShell prompt.
 
 The function contains two commands. The `$PSHelp` variable stores the path to the PowerShell help
 files. `$PSHOME` is the PowerShell installation directory with the subdirectory **en-US** that
@@ -203,7 +229,7 @@ the output in the PowerShell console.
 
 ### Example 7: Find strings that do not match a pattern
 
-This example shows how to exclude lines of data that do not match a pattern.
+This example shows how to exclude lines of data that don't match a pattern.
 
 ```powershell
 Get-Command | Out-File -FilePath .\Command.txt
@@ -214,7 +240,7 @@ The `Get-Command` cmdlet sends objects down the pipeline to the `Out-File` to cr
 **Command.txt** file in the current directory. `Select-String` uses the **Path** parameter to
 specify the **Command.txt** file. The **Pattern** parameter specifies **Get** and **Set** as the
 search pattern. The **NotMatch** parameter excludes **Get** and **Set** from the results.
-`Select-String` displays the output in the PowerShell console that does not include **Get** or
+`Select-String` displays the output in the PowerShell console that doesn't include **Get** or
 **Set**.
 
 ### Example 8: Find lines before and after a match
@@ -285,7 +311,7 @@ are stored in the `$A` variable. The `$A` variable is sent down the pipeline to 
 cmdlet. `Select-String` uses the **Pattern** parameter to search each file for the string
 **PowerShell**.
 
-From the PowerShell command line, the `$A` variable contents are displayed. There is a line that
+From the PowerShell command line, the `$A` variable contents are displayed. There's a line that
 contains two occurrences of the string **PowerShell**.
 
 The `$A.Matches` property lists the first occurrence of the pattern **PowerShell** on each line.
@@ -318,14 +344,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -CaseSensitive
 
-Indicates that the cmdlet matches are case-sensitive. By default, matches are not case-sensitive.
+Indicates that the cmdlet matches are case-sensitive. By default, matches aren't case-sensitive.
 
 ```yaml
 Type: SwitchParameter
@@ -334,7 +360,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -351,7 +377,7 @@ after the match. For example, `-Context 2,3`.
 In the default display, lines with a match are indicated by a right angle bracket (`>`) (ASCII 62)
 in the first column of the display. Unmarked lines are the context.
 
-The **Context** parameter does not change the number of objects generated by `Select-String`.
+The **Context** parameter doesn't change the number of objects generated by `Select-String`.
 `Select-String` generates one [MatchInfo](/dotnet/api/microsoft.powershell.commands.matchinfo)
 object for each match. The context is stored as an array of strings in the **Context** property of
 the object.
@@ -359,7 +385,7 @@ the object.
 When the output of a `Select-String` command is sent down the pipeline to another `Select-String`
 command, the receiving command searches only the text in the matched line. The matched line is the
 value of the **Line** property of the **MatchInfo** object, not the text in the context lines. As a
-result, the **Context** parameter is not valid on the receiving `Select-String` command.
+result, the **Context** parameter isn't valid on the receiving `Select-String` command.
 
 When the context includes a match, the **MatchInfo** object for each match includes all the context
 lines, but the overlapping lines appear only once in the display.
@@ -449,7 +475,7 @@ Accept wildcard characters: True
 Specifies the text to be searched. Enter a variable that contains the text, or type a command or
 expression that gets the text.
 
-Using the **InputObject** parameter is not the same as sending strings down the pipeline to
+Using the **InputObject** parameter isn't the same as sending strings down the pipeline to
 `Select-String`.
 
 When you pipe more than one string to the `Select-String` cmdlet, it searches for the specified text
@@ -461,7 +487,7 @@ finds the search text in any string.
 
 ```yaml
 Type: PSObject
-Parameter Sets: Object
+Parameter Sets: ObjectRaw, Object
 Aliases:
 
 Required: True
@@ -473,8 +499,10 @@ Accept wildcard characters: False
 
 ### -List
 
-Indicates that the cmdlet returns only the first match in each input file. By default,
-`Select-String` returns a **MatchInfo** object for each match it finds.
+Only the first instance of matching text is returned from each input file. This is the most
+efficient way to retrieve a list files that have contents matching the regular expression.
+
+By default, `Select-String` returns a **MatchInfo** object for each match it finds.
 
 ```yaml
 Type: SwitchParameter
@@ -483,7 +511,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -491,14 +519,14 @@ Accept wildcard characters: False
 ### -LiteralPath
 
 Specifies the path to the files to be searched. The value of the **LiteralPath** parameter is used
-exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape
+exactly as it's typed. No characters are interpreted as wildcards. If the path includes escape
 characters, enclose it in single quotation marks. Single quotation marks tell PowerShell not to
 interpret any characters as escape sequences. For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
 
 ```yaml
 Type: String[]
-Parameter Sets: LiteralFile
-Aliases: PSPath
+Parameter Sets: LiteralFileRaw, LiteralFile
+Aliases: PSPath, LP
 
 Required: True
 Position: Named
@@ -509,7 +537,7 @@ Accept wildcard characters: False
 
 ### -NotMatch
 
-The **NotMatch** parameter finds text that does not match the specified pattern.
+The **NotMatch** parameter finds text that doesn't match the specified pattern.
 
 ```yaml
 Type: SwitchParameter
@@ -518,7 +546,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -533,12 +561,12 @@ directory, the command fails.
 
 ```yaml
 Type: String[]
-Parameter Sets: File
+Parameter Sets: File, FileRaw
 Aliases:
 
 Required: True
 Position: 1
-Default value: None
+Default value: Local directory
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
@@ -569,12 +597,30 @@ object. The value is True if the pattern is found; otherwise the value is False.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: File, Object, LiteralFile
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Raw
+
+Causes the cmdlet to output only the matching strings, rather than **MatchInfo** objects. This is
+the results in behavior that is the most similar to the Unix **grep** or Windows **findstr.exe**
+commands.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ObjectRaw, FileRaw, LiteralFileRaw
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -582,7 +628,7 @@ Accept wildcard characters: False
 ### -SimpleMatch
 
 Indicates that the cmdlet uses a simple match rather than a regular expression match. In a simple
-match, `Select-String` searches the input for the text in the **Pattern** parameter. It does not
+match, `Select-String` searches the input for the text in the **Pattern** parameter. It doesn't
 interpret the value of the **Pattern** parameter as a regular expression statement.
 
 ```yaml
@@ -592,7 +638,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -611,16 +657,22 @@ You can pipe any object that has a **ToString** method to `Select-String`.
 
 ## OUTPUTS
 
-### Microsoft.PowerShell.Commands.MatchInfo or System.Boolean
+### Microsoft.PowerShell.Commands.MatchInfo, System.Boolean, System.String
 
 By default, the output is a set of **MatchInfo** objects with one for each match found. If you use
-the **Quiet** parameter, the output is a Boolean value indicating whether the pattern was found.
+the **Quiet** parameter, the output is a **Boolean** value indicating whether the pattern was found.
+If you use the **Raw** parameter, the output is a set of **String** objects that match the pattern.
 
 ## NOTES
 
 `Select-String` is similar to **grep** in UNIX or **findstr.exe** in Windows.
 
 The **sls** alias for the `Select-String` cmdlet was introduced in PowerShell 3.0.
+
+> [!NOTE]
+> According to [Approved Verbs for PowerShell Commands](/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands),
+> the official alias prefix for `Select-*` cmdlets is `sc`, not `sl`. Therefore, the proper alias
+> for `Select-String` should be `scs`, not `sls`. This is an exception to this rule.
 
 To use `Select-String`, type the text that you want to find as the value of the **Pattern**
 parameter. To specify the text to be searched, use the following criteria:
@@ -636,11 +688,11 @@ You can use the **SimpleMatch** parameter to override the regular expression mat
 **SimpleMatch** parameter finds instances of the value of the **Pattern** parameter in the input.
 
 The default output of `Select-String` is a **MatchInfo** object, which includes detailed information
-about the matches. The information in the object is useful when you are searching for text in files,
-because **MatchInfo** objects have properties such as **Filename** and **Line**. When the input is
-not from the file, the value of these parameters is **InputStream**.
+about the matches. The information in the object is useful when you're searching for text in files,
+because **MatchInfo** objects have properties such as **Filename** and **Line**. When the input
+isn't from the file, the value of these parameters is **InputStream**.
 
-If you do not need the information in the **MatchInfo** object, use the **Quiet** parameter. The
+If you don't need the information in the **MatchInfo** object, use the **Quiet** parameter. The
 **Quiet** parameter returns a Boolean value (True or False) to indicate whether it found a match,
 instead of a **MatchInfo** object.
 
