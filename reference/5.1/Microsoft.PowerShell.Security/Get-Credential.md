@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Security
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=821713
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Credential
 ---
@@ -191,15 +191,21 @@ the remote security message that **Get-Credential** includes in the authenticati
 
 ### -Credential
 
-Specifies a user name for the credential, such as "User01" or "Domain01\User01".
-The parameter name ("Credential") is optional.
+Specifies a user name for the credential, such as **User01** or **Domain01\User01**. The parameter
+name, `-Credential`, is optional.
 
-When you submit the command, you will be prompted for a password.
+When you submit the command and specify a user name, you're prompted for a password. If you omit
+this parameter, you're prompted for a user name and a password.
 
-Starting in Windows PowerShell 3.0, if you enter a user name without a domain, Get-Credential no
+Starting in Windows PowerShell 3.0, if you enter a user name without a domain, `Get-Credential` no
 longer inserts a backslash before the name.
 
-If you omit this parameter, you will be prompted for a user name and a password.
+Credentials are stored in a [PSCredential](/dotnet/api/system.management.automation.pscredential)
+object and the password is stored as a [SecureString](/dotnet/api/system.security.securestring).
+
+> [!NOTE]
+> For more information about **SecureString** data protection, see
+> [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
 Type: PSCredential

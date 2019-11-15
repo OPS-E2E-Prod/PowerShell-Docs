@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096958
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/out-string?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Out-String
 ---
@@ -119,7 +119,11 @@ Accept wildcard characters: False
 ```
 
 ### -NoNewline
-Removes all newlines from formatter generated output. Note that newlines present as part of string objects are preserved
+
+Removes all newlines from formatter generated output. Note that newlines present as part of string
+objects are preserved.
+
+This parameter was introduced in PowerShell 6.0.
 
 ```yaml
 Type: SwitchParameter

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 03/28/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2097017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-culture?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Culture
 ---
@@ -155,6 +155,8 @@ LCID             Name             DisplayName
 
 Retrieves all cultures supported by the current operating system.
 
+This parameter was introduced in PowerShell 6.2.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ListAvailable
@@ -171,6 +173,8 @@ Accept wildcard characters: False
 
 Retrieve a specific culture based on the name.
 
+This parameter was introduced in PowerShell 6.2.
+
 ```yaml
 Type: String[]
 Parameter Sets: Name
@@ -186,6 +190,8 @@ Accept wildcard characters: False
 ### -NoUserOverrides
 
 Ignore user changes for current culture.
+
+This parameter was introduced in PowerShell 6.2.
 
 ```yaml
 Type: SwitchParameter
@@ -224,4 +230,3 @@ You can also use the `$PsCulture` and `$PsUICulture` variables. The `$PsCulture`
 [Set-Culture](/powershell/module/international/set-culture?view=win10-ps)
 
 [Get-UICulture](Get-UICulture.md)
-

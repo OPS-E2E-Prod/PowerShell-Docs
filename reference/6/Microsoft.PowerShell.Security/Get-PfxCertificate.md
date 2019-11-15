@@ -1,11 +1,11 @@
 ---
-ms.date:  06/09/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-online version: https://go.microsoft.com/fwlink/?linkid=2096516
-external help file:  Microsoft.PowerShell.Security.dll-Help.xml
-title:  Get-PfxCertificate
+external help file: Microsoft.PowerShell.Security.dll-Help.xml
+keywords: powershell,cmdlet
+locale: en-us
+ms.date: 06/09/2017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-pfxcertificate?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: Get-PfxCertificate
 ---
 # Get-PfxCertificate
 
@@ -119,7 +119,13 @@ Accept wildcard characters: False
 
 ### -Password
 
-Specifies a password required to access a .pfx certificate file.
+Specifies a password required to access a `.pfx` certificate file.
+
+This parameter was introduced in PowerShell 6.1.
+
+> [!NOTE]
+> For more information about **SecureString** data protection, see
+> [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
 Type: SecureString
@@ -158,5 +164,3 @@ You can pipe a string that contains a file path to `Get-PfxCertificate`.
 [Get-AuthenticodeSignature](Get-AuthenticodeSignature.md)
 
 [Set-AuthenticodeSignature](Set-AuthenticodeSignature.md)
-
-

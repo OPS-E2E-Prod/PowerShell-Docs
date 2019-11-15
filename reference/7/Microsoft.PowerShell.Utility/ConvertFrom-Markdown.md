@@ -1,11 +1,11 @@
 ---
-ms.date:  11/02/2018
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet,markdown
-online version:  https://go.microsoft.com/fwlink/?linkid=2006503
-external help file:  Microsoft.PowerShell.Commands.Utility.dll-Help.xml
-title:  ConvertFrom-Markdown
+external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
+keywords: powershell,cmdlet,markdown
+locale: en-us
+ms.date: 11/02/2018
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-markdown?view=powershell-7&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: ConvertFrom-Markdown
 ---
 
 # ConvertFrom-Markdown
@@ -44,6 +44,8 @@ properties:
 - The **Html** property has the HTML conversion of the specified input
 - The **VT100EncodedString** property has the converted string with ANSI (VT100) escape sequences if
   the **AsVT100EncodedString** parameter was specified
+
+This cmdlet was introduced in PowerShell 6.1.
 
 ## EXAMPLES
 

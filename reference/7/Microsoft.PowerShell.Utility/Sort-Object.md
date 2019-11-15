@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 04/09/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2097038
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/sort-object?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Sort-Object
 ---
@@ -383,6 +383,8 @@ stable sort.
 Specifies the number of objects to get from the end of a sorted object array. This results in a
 stable sort.
 
+This parameter was introduced in PowerShell 6.0.
+
 ```yaml
 Type: Int32
 Parameter Sets: Bottom
@@ -503,6 +505,8 @@ Accept wildcard characters: True
 
 Specifies the number of objects to get from the start of a sorted object array. This results in a
 stable sort.
+
+This parameter was introduced in PowerShell 6.0.
 
 ```yaml
 Type: Int32

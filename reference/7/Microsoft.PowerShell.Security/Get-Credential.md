@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Security
 ms.date: 02/25/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2096824
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Credential
 ---
@@ -190,15 +190,21 @@ the remote security message that **Get-Credential** includes in the authenticati
 
 ### -Credential
 
-Specifies a user name for the credential, such as "User01" or "Domain01\User01".
-The parameter name ("Credential") is optional.
+Specifies a user name for the credential, such as **User01** or **Domain01\User01**. The parameter
+name, `-Credential`, is optional.
 
-When you submit the command, you will be prompted for a password.
+When you submit the command and specify a user name, you're prompted for a password. If you omit
+this parameter, you're prompted for a user name and a password.
 
-Starting in Windows PowerShell 3.0, if you enter a user name without a domain, Get-Credential no
+Starting in Windows PowerShell 3.0, if you enter a user name without a domain, `Get-Credential` no
 longer inserts a backslash before the name.
 
-If you omit this parameter, you will be prompted for a user name and a password.
+Credentials are stored in a [PSCredential](/dotnet/api/system.management.automation.pscredential)
+object and the password is stored as a [SecureString](/dotnet/api/system.security.securestring).
+
+> [!NOTE]
+> For more information about **SecureString** data protection, see
+> [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
 Type: PSCredential
@@ -236,6 +242,8 @@ Accept wildcard characters: False
 ### -Title
 
 Sets the text of the title bar for the authentication dialog.
+
+This parameter was introduced in PowerShell 6.0.
 
 ```yaml
 Type: String
@@ -308,8 +316,8 @@ For example, it has no effect in the Windows PowerShell Integrated Scripting Env
 information about the effect of the **ConsolePrompting** registry entry, see the help topics for
 the host program.
 
-The **Credential** parameter is not supported by all providers that are installed with PowerShell. Beginning in Windows PowerShell 3.0, it is supported on selected cmdlet, such as the
-Get-WmiObject and New-PSDrive cmdlets.
+The **Credential** parameter is not supported by all providers that are installed with PowerShell.
+Beginning in Windows PowerShell 3.0, it is supported on selected cmdlet, such as the `Get-WmiObject`
+and `New-PSDrive` cmdlets.
 
 ## RELATED LINKS
-

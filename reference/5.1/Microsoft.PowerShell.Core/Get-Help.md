@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Core
 ms.date: 08/23/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821483
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-help?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Help
 ---
@@ -26,36 +26,36 @@ Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component 
 ### DetailedView
 
 ```
-Get-Help [[-Name] <String>] -Detailed [-Path <String>] [-Category <String[]>]
- [-Component <String[]>] [-Functionality <String[]>] [-Role <String[]>] [<CommonParameters>]
+Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component <String[]>]
+ [-Functionality <String[]>] [-Role <String[]>] -Detailed [<CommonParameters>]
 ```
 
 ### Examples
 
 ```
-Get-Help [[-Name] <String>] -Examples [-Path <String>] [-Category <String[]>]
- [-Component <String[]>] [-Functionality <String[]>] [-Role <String[]>] [<CommonParameters>]
+Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component <String[]>]
+ [-Functionality <String[]>] [-Role <String[]>] -Examples [<CommonParameters>]
 ```
 
 ### Parameters
 
 ```
-Get-Help [[-Name] <String>] -Parameter <String> [-Path <String>] [-Category <String[]>]
- [-Component <String[]>] [-Functionality <String[]>] [-Role <String[]>] [<CommonParameters>]
+Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component <String[]>]
+ [-Functionality <String[]>] [-Role <String[]>] -Parameter <String> [<CommonParameters>]
 ```
 
 ### Online
 
 ```
-Get-Help [[-Name] <String>] -Online [-Path <String>] [-Category <String[]>] [-Component <String[]>]
- [-Functionality <String[]>] [-Role <String[]>] [<CommonParameters>]
+Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component <String[]>]
+ [-Functionality <String[]>] [-Role <String[]>] -Online [<CommonParameters>]
 ```
 
 ### ShowWindow
 
 ```
-Get-Help [[-Name] <String>] -ShowWindow [-Path <String>] [-Category <String[]>]
- [-Component <String[]>] [-Functionality <String[]>] [-Role <String[]>] [<CommonParameters>]
+Get-Help [[-Name] <String>] [-Path <String>] [-Category <String[]>] [-Component <String[]>]
+ [-Functionality <String[]>] [-Role <String[]>] -ShowWindow [<CommonParameters>]
 ```
 
 ## DESCRIPTION

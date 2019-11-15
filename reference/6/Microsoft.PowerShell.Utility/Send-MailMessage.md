@@ -1,11 +1,11 @@
 ---
-ms.date:  2/11/2019
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-online version: https://go.microsoft.com/fwlink/?linkid=2096888
-external help file:  Microsoft.PowerShell.Commands.Utility.dll-Help.xml
-title:  Send-MailMessage
+external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
+keywords: powershell,cmdlet
+locale: en-us
+ms.date: 2/11/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/send-mailmessage?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: Send-MailMessage
 ---
 
 # Send-MailMessage
@@ -173,23 +173,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplyTo
-
-Specifies additional email addresses (other than the From address) to use to reply to this message.
-Enter names (optional) and the email address, such as `Name <someone@fabrikam.com>`.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Credential
 
 Specifies a user account that has permission to perform this action. The default is the current
@@ -197,6 +180,13 @@ user.
 
 Type a user name, such as **User01** or **Domain01\User01**. Or, enter a **PSCredential** object,
 such as one from the `Get-Credential` cmdlet.
+
+Credentials are stored in a [PSCredential](/dotnet/api/system.management.automation.pscredential)
+object and the password is stored as a [SecureString](/dotnet/api/system.security.securestring).
+
+> [!NOTE]
+> For more information about **SecureString** data protection, see
+> [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
 Type: PSCredential
@@ -320,6 +310,25 @@ Accepted values: Normal, High, Low
 Required: False
 Position: Named
 Default value: Normal
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplyTo
+
+Specifies additional email addresses (other than the From address) to use to reply to this message.
+Enter names (optional) and the email address, such as `Name <someone@fabrikam.com>`.
+
+This parameter was introduced in PowerShell 6.2.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

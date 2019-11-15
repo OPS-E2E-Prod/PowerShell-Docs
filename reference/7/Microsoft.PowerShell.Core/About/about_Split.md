@@ -1,9 +1,10 @@
 ---
-ms.date:  12/20/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Split
+keywords: powershell,cmdlet
+locale: en-us
+ms.date: 12/20/2017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_split?view=powershell-7&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Split
 ---
 # About Split
 
@@ -126,8 +127,9 @@ Strawberry-Blueberry
 Specifies the maximum number of times that a string is split. The default is
 all the substrings split by the delimiter. If there are more substrings, they
 are concatenated to the final substring. If there are fewer substrings, all
-the substrings are returned. A value of 0 and negative values return all the
-substrings.
+the substrings are returned. A value of 0 returns all the substrings. Negative
+values return the amount of substrings requested starting from the end of the
+input string.
 
 Max-substrings does not specify the maximum number of objects that are
 returned; its value equals the maximum number of times that a string is split.
@@ -147,6 +149,19 @@ Venus
 Earth
 Mars
 Jupiter,Saturn,Uranus,Neptune
+```
+
+```powershell
+$c = "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune"
+$c -split ",", -5
+```
+
+```output
+Mercury,Venus,Earth,Mars
+Jupiter
+Saturn
+Uranus
+Neptune
 ```
 
 ### \<ScriptBlock\>
@@ -203,7 +218,7 @@ The RegexMatch options are:
   operator is specified.
 - **CultureInvariant**: Ignores cultural differences in language
   when evaluting the delimiter. Valid only with RegexMatch.
-- IgnorePatternWhitespace: Ignores unescaped whitespace and
+- **IgnorePatternWhitespace**: Ignores unescaped whitespace and
   comments marked with the number sign (#). Valid only with
   RegexMatch.
 - **Multiline**: Multiline mode forces `^` and `$` to match the beginning
@@ -366,6 +381,19 @@ The following statement splits a string into three substrings.
 a
 b
 c,d,e,f,g,h
+```
+
+The following statement splits a string into three substrings
+starting from the end of the string.
+
+```powershell
+"a,b,c,d,e,f,g,h" -split ",", -3
+```
+
+```output
+a,b,c,d,e,f
+g
+h
 ```
 
 The following statement splits two strings into three substrings.

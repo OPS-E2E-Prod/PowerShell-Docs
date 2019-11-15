@@ -1,8 +1,8 @@
 ---
-ms.date: 03/06/2019
 external help file: System.Management.Automation.dll-Help.xml
 Module Name: Microsoft.PowerShell.Core
-online version: https://go.microsoft.com/fwlink/?linkid=2096257
+ms.date: 03/06/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/disable-experimentalfeature?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Disable-ExperimentalFeature
 ---
@@ -21,6 +21,8 @@ Disable-ExperimentalFeature [-Name] <String[]> [-Scope <ConfigScope>] [-WhatIf] 
 
 The `Disable-ExperimentalFeature` cmdlet disables experimental features by removing the named
 experimental features from the `powershell.config.json` settings file read on PowerShell startup.
+
+This cmdlet was introduced in PowerShell 6.2.
 
 > [!NOTE]
 > Any changes to experimental feature state only takes effect on restart of PowerShell
