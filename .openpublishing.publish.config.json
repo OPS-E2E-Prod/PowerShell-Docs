@@ -32,9 +32,9 @@
     ],
     "docsets_to_publish": [{
             "build_entry_point": "docs",
-            "build_output_subfolder": "developer-docs",
+            "build_output_subfolder": "e2eprod-developer-docs",
             "build_source_folder": "developer",
-            "docset_name": "developer-docs",
+            "docset_name": "e2eprod-developer-docs",
             "locale": "en-us",
             "moniker_ranges": [],
             "monikers": [],
@@ -50,7 +50,7 @@
             "build_entry_point": "docs",
             "build_output_subfolder": "dsc",
             "build_source_folder": "dsc",
-            "docset_name": "PowerShell_PowerShell-docs_dsc",
+            "docset_name": "e2eprod-PowerShell_PowerShell-docs_dsc",
             "locale": "en-us",
             "open_to_public_contributors": true,
             "template_folder": "_themes",
@@ -65,7 +65,7 @@
             "build_entry_point": "docs",
             "build_output_subfolder": "gallery",
             "build_source_folder": "gallery",
-            "docset_name": "PowerShell_PowerShell-docs_gallery",
+            "docset_name": "e2eprod-PowerShell_PowerShell-docs_gallery",
             "locale": "en-us",
             "open_to_public_contributors": true,
             "template_folder": "_themes",
@@ -80,7 +80,7 @@
             "build_entry_point": "docs",
             "build_output_subfolder": "jea",
             "build_source_folder": "jea",
-            "docset_name": "PowerShell_PowerShell-docs_jea",
+            "docset_name": "e2eprod-PowerShell_PowerShell-docs_jea",
             "locale": "en-us",
             "open_to_public_contributors": true,
             "template_folder": "_themes",
@@ -103,7 +103,7 @@
             "customized_template_paths": [
                 "_dependentPackages/azurecli.plugins/azurecli"
             ],
-            "docset_name": "PowerShell_PowerShell-docs_reference",
+            "docset_name": "e2eprod-PowerShell_PowerShell-docs_reference",
             "locale": "en-us",
             "monikerPath": [
                 "mapping/monikerMapping.json"
@@ -124,7 +124,7 @@
             "build_entry_point": "docs",
             "build_output_subfolder": "wmf",
             "build_source_folder": "wmf",
-            "docset_name": "PowerShell_PowerShell-docs_wmf",
+            "docset_name": "e2eprod-PowerShell_PowerShell-docs_wmf",
             "locale": "en-us",
             "open_to_public_contributors": true,
             "template_folder": "_themes",
