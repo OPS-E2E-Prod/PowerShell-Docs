@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: PowerShellGet
 ms.date: 07/16/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2096729
+online version: https://docs.microsoft.com/powershell/module/powershellget/update-module?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Update-Module
 ---
@@ -276,6 +276,8 @@ accessible only to the current user of the computer:
 
 `$home\Documents\PowerShell\Modules`
 
+This parameter was introduced in PowerShell 7.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -284,7 +286,7 @@ Accepted values: AllUsers, CurrentUser
 
 Required: False
 Position: Named
-Default value: None
+Default value: CurrentUser
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

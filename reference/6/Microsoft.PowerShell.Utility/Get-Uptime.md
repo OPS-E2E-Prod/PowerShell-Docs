@@ -1,9 +1,9 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Module Name: Microsoft.PowerShell.Utility
-online version: https://go.microsoft.com/fwlink/?linkid=834862
-schema: 2.0.0
 ms.date: 06/27/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-uptime?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
 title: Get-Uptime
 ---
 
@@ -29,6 +29,8 @@ Get-Uptime [-Since] [<CommonParameters>]
 ## DESCRIPTION
 
 This cmdlet returns the time elapsed since the last boot of the operating system.
+
+The `Get-Uptime` cmdlet was introduced in PowerShell 6.0.
 
 ## EXAMPLES
 
@@ -116,4 +118,3 @@ On Windows, the value returned is the same as the **LastBootUpTime** property of
 ## RELATED LINKS
 
 [Win32_OperatingSystem](/windows/win32/cimwin32prov/win32-operatingsystem#properties)
-

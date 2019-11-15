@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096829
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-html?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: ConvertTo-Html
 ---
@@ -239,6 +239,8 @@ Accept wildcard characters: False
 Specifies text to add to the opening \<charset\> tag.
 By default, there is no text in that position.
 
+This parameter was introduced in PowerShell 6.0.
+
 ```yaml
 Type: String
 Parameter Sets: Page
@@ -328,6 +330,8 @@ Accept wildcard characters: False
 Specifies text to add to the opening \<meta\> tag.
 By default, there is no text in that position.
 
+This parameter was introduced in PowerShell 6.0.
+
 ```yaml
 Type: Hashtable
 Parameter Sets: Page
@@ -416,6 +420,8 @@ Accept wildcard characters: False
 
 Changes the DOCTYPE to XHTML Transitional DTD
 Default DOCTYPE is XHTML Strict DTD
+
+This parameter was introduced in PowerShell 6.0.
 
 ```yaml
 Type: SwitchParameter

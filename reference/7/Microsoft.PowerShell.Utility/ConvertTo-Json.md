@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096925
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-json?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: ConvertTo-Json
 ---
@@ -236,6 +236,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EscapeHandling
+
+Controls how certain characters are escaped in the resulting JSON output. By default, only control
+characters (e.g. newline) are escaped.
+
+This parameter was introduced in PowerShell 6.2.
+
+```yaml
+Type: NewtonSoft.Json.StringEscapeHandling
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Default
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 
 Specifies the objects to convert to JSON format. Enter a variable that contains the objects, or type
@@ -254,23 +273,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -EscapeHandling
-
-Controls how certain characters are escaped in the resulting JSON output. By default, only control
-characters (e.g. newline) are escaped.
-
-```yaml
-Type: NewtonSoft.Json.StringEscapeHandling
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Default
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 04/23/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821856
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/send-mailmessage?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Send-MailMessage
 ---
@@ -180,6 +180,13 @@ user.
 
 Type a user name, such as **User01** or **Domain01\User01**. Or, enter a **PSCredential** object,
 such as one from the `Get-Credential` cmdlet.
+
+Credentials are stored in a [PSCredential](/dotnet/api/system.management.automation.pscredential)
+object and the password is stored as a [SecureString](/dotnet/api/system.security.securestring).
+
+> [!NOTE]
+> For more information about **SecureString** data protection, see
+> [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
 Type: PSCredential

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Core
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096172
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-pshostprocessinfo?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-PSHostProcessInfo
 ---
@@ -34,6 +34,11 @@ Get-PSHostProcessInfo [-Id] <Int32[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
+The `Get-PSHostProcessInfo` cmdlet gets information about PowerShell host processes running on the
+local computer.
+
+Beginning in PowerShell 6.2, this cmdlet is supported on non-Windows platforms.
 
 ## EXAMPLES
 
@@ -135,4 +140,3 @@ You can pipe a **Process** object from `Get-Process` to this cmdlet.
 ## RELATED LINKS
 
 [Get-Process](../Microsoft.PowerShell.Management/get-process.md)
-

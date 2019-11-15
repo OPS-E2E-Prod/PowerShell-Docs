@@ -1,11 +1,11 @@
 ---
-ms.date:  10/18/2018
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-online version: https://go.microsoft.com/fwlink/?linkid=821647
-external help file:  Microsoft.PowerShell.Commands.Management.dll-Help.xml
-title:  Test-Path
+external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
+keywords: powershell,cmdlet
+locale: en-us
+ms.date: 10/18/2018
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/test-path?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: Test-Path
 ---
 # Test-Path
 
@@ -179,8 +179,9 @@ At line:1 char:11
 
 ### Example 8: Test a path with whitespace as the value
 
-When a whitespace is or empty string in provided for the the `-Path` parameter, it returns false.
-The following example show whitespace and empty string.
+When a whitespace string is provided for the the `-Path` parameter, it returns **True**. When an
+empty string is provided, `Test-Path` returns an error. The following example shows whitespace and
+empty string.
 
 ```powershell
 Test-Path ' '
@@ -188,7 +189,7 @@ Test-Path ''
 ```
 
 ```Output
-False
+True
 Test-Path : Cannot bind argument to parameter 'Path' because it is an empty string.
 At line:1 char:11
 + Test-Path ''

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: PowerShellGet
 ms.date: 10/03/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2096634
+online version: https://docs.microsoft.com/powershell/module/powershellget/publish-module?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Publish-Module
 ---
@@ -301,8 +301,10 @@ Accept wildcard characters: False
 
 ### -SkipAutomaticTags
 
-Removes commands and resources from being included as tags.
-Skips automatically adding tags to a module.
+Removes commands and resources from being included as tags. Skips automatically adding tags to a
+module.
+
+This parameter was introduced in PowerShell 7.
 
 ```yaml
 Type: SwitchParameter

@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 08/23/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2006266
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/show-markdown?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Show-Markdown
 ---
@@ -50,6 +50,8 @@ Markdown. It renders the Markdown by turning it into HTML and opening the HTML f
 browser.
 
 You can change how `Show-Markdown` renders Markdown in a terminal by using `Set-MarkdownOption`.
+
+This cmdlet was introduced in PowerShell 6.1.
 
 ## EXAMPLES
 

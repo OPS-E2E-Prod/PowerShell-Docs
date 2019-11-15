@@ -4,7 +4,7 @@ keywords: powershell,cmdlet
 locale: en-us
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 04/25/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2096611
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/format-hex?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Format-Hex
 ---
@@ -96,7 +96,7 @@ that it is a PDF file.
 ### -Encoding
 
 Specifies the encoding of the output. This only applies to `[string]` input. The parameter has no
-effect on numeric types. The default value is **UTF8NoBOM**. 
+effect on numeric types. The default value is **UTF8NoBOM**.
 
 The acceptable values for this parameter are as follows:
 
@@ -213,6 +213,8 @@ Accept wildcard characters: False
 
 This represents the number of bytes to skip from being part of the hex output.
 
+This parameter was introduced in PowerShell 6.2.
+
 ```yaml
 Type: Int64
 Parameter Sets: (All)
@@ -228,6 +230,8 @@ Accept wildcard characters: False
 ### -Count
 
 This represents the number of bytes to include in the hex output.
+
+This parameter was introduced in PowerShell 6.2.
 
 ```yaml
 Type: Int64

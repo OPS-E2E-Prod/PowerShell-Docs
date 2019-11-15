@@ -1,8 +1,9 @@
 ---
-ms.date:  06/19/2019
-schema:  2.0.0
-keywords:  powershell,cmdlet
-title:  about_pwsh
+keywords: powershell,cmdlet
+ms.date: 06/19/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_pwsh
 ---
 # About pwsh
 
@@ -160,6 +161,8 @@ Specifies the name to use for an additional IPC server (named pipe) used for
 debugging and other cross-process communication. This offers a predictable
 mechanism for connecting to other PowerShell instances. Typically used with the
 **CustomPipeName** parameter on `Enter-PSHostProcess`.
+
+This parameter was introduced in PowerShell 6.2.
 
 For example:
 

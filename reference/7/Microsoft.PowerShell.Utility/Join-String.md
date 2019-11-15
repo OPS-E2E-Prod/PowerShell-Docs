@@ -1,9 +1,9 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Module Name: Microsoft.PowerShell.Utility
-online version: https://go.microsoft.com/fwlink/?linkid=2096713
-schema: 2.0.0
 ms.date: 02/01/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/join-string?view=powershell-7&WT.mc_id=ps-gethelp
+schema: 2.0.0
 title: Join-String
 ---
 
@@ -55,6 +55,8 @@ string.
 Instead of a property name, a script block can be used. In that case the result of the scriptblock
 will be converted to a string before joining it to form the result. It can either combine the text
 of a property of an object or the result of converting the object to a string.
+
+This cmdlet was introduced in PowerShell 6.2.
 
 ## EXAMPLES
 
