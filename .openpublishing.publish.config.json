@@ -29,21 +29,6 @@
         "mapping/monikerMapping.json"
       ],
       "version": 0
-    },
-    {
-      "docset_name": "PowerShell_PowerShell-docs_wmf",
-      "build_source_folder": "wmf",
-      "build_output_subfolder": "wmf",
-      "locale": "en-us",
-      "open_to_public_contributors": true,
-      "type_mapping": {
-        "Conceptual": "Content",
-        "ManagedReference": "Content",
-        "RestApi": "Content"
-      },
-      "build_entry_point": "docs",
-      "template_folder": "_themes",
-      "version": 0
     }
   ],
   "notification_subscribers": [],
@@ -61,7 +46,6 @@
   "git_repository_branch_open_to_public_contributors": "staging",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
-  "enable_incremental_build": true,
   "contribution_branch_mappings": {},
   "dependent_repositories": [
     {
