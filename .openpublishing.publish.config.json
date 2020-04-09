@@ -42,7 +42,7 @@
         "customized_template_paths": [
             "_dependentPackages/azurecli.plugins/azurecli"
         ],
-        "docset_name": "PowerShell_PowerShell-docs_reference",
+        "docset_name": "e2eprod-PowerShell_PowerShell-docs_reference",
         "locale": "en-us",
         "monikerPath": [
             "mapping/monikerMapping.json"
