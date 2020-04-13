@@ -1,57 +1,6 @@
 {
-  "branch_target_mapping": {},
-  "branches_to_filter": ["prtest","prtest-nometavalidation","from-prod-live","from-prod-master","repo_sync_novalidation_prtest_branch","repo_sync_novalidation_live_branch","repo_sync_novalidation_master_branch"],
-  "skip_source_output_uploading": false,
-  "need_preview_pull_request": true,
-  "contribution_branch_mappings": {},
-  "dependent_repositories": [
-    {
-      "path_to_root": "_themes",
-      "url": "https://github.com/Microsoft/templates.docs.msft",
-      "branch": "master",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "_themes.pdf",
-      "url": "https://github.com/Microsoft/templates.docs.msft.pdf",
-      "branch": "master",
-      "branch_mapping": {}
-    }
-  ],
-  "branch_target_mapping": {
-    "live": [
-      "Publish",
-      "PDF"
-    ],
-    "master": [
-      "Publish",
-      "PDF"
-    ]
-  },
-  "need_generate_pdf_url_template": false,
-  "targets": {
-    "Pdf": {
-      "template_folder": "_themes.pdf"
-    }
-  },
-  "dependent_packages": [
-    {
-      "path_to_root": "_dependentPackages/memberpage.plugins",
-      "target_framework": "net45",
-      "version": "latest",
-      "id": "memberpage.plugins",
-      "nuget_feed": "https://www.myget.org/F/docfx/api/v2"
-    },
-    {
-      "path_to_root": "_dependentPackages/CommonPlugins",
-      "target_framework": "net45",
-      "version": "latest",
-      "id": "Microsoft.OpenPublishing.CommonPlugins",
-      "nuget_feed": "https://www.myget.org/F/op/api/v2"
-    }
-  ]
-}
-
+    "branch_target_mapping": {},
+    "branches_to_filter": [],
     "build_entry_point": "docs",
     "contribution_branch_mappings": {},
     "dependent_packages": [{
