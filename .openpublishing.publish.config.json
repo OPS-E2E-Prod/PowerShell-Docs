@@ -1,6 +1,6 @@
 {
     "branch_target_mapping": {},
-    "branches_to_filter": []
+    "branches_to_filter": [],
     "build_entry_point": "docs",
     "contribution_branch_mappings": {},
     "dependent_packages": [{
