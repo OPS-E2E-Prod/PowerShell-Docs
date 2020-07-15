@@ -1,6 +1,6 @@
 {
     "branch_target_mapping": {},
-    "branches_to_filter": [],
+    "branches_to_filter": ["prtest","prtest-nometavalidation","from-prod-live","from-prod-master","repo_sync_novalidation_prtest_branch","repo_sync_novalidation_live_branch","repo_sync_novalidation_master_branch"],
     "build_entry_point": "docs",
     "contribution_branch_mappings": {},
     "dependent_packages": [
@@ -34,7 +34,7 @@
                 "_dependentPackages/MAML2Yaml/tools/Run.ps1"
             ]
         },
-        "docset_name": "PowerShell_PowerShell-docs_reference",
+        "docset_name": "e2eprod-PowerShell_PowerShell-docs_reference",
         "locale": "en-us",
         "monikerPath": [
             "mapping/monikerMapping.json"
