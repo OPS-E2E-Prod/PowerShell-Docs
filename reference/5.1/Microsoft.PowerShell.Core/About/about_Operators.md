@@ -160,7 +160,7 @@ item, the array has only one member.
 #### Call operator `&`
 
 Runs a command, script, or script block. The call operator, also known as the
-"invocation operator," lets you run commands that are stored in variables and
+"invocation operator", lets you run commands that are stored in variables and
 represented by strings or script blocks. The call operator executes in a child
 scope. For more about scopes, see [about_scopes](about_scopes.md).
 
@@ -194,7 +194,7 @@ At line:1 char:2
     + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-The [Invoke-Expression](../../Microsoft.PowerShell.Utility/Invoke-Expression.md)
+The [Invoke-Expression](xref:Microsoft.PowerShell.Utility.Invoke-Expression)
 cmdlet can execute code that causes parsing errors when using the call
 operator.
 
@@ -242,9 +242,13 @@ Converts or limits objects to the specified type. If the objects cannot be
 converted, PowerShell generates an error.
 
 ```powershell
-[datetime]$birthday = "1/20/88"
-[int64]$a = 34
+[DateTime]"2/20/88" - [DateTime]"1/20/88"
+[Int] (7/2)
+[String] 1 + 0
+[Int] '1' + 0
 ```
+
+A cast can also be performed when a variable is assigned to using [cast notation](about_Variables.md).
 
 #### Comma operator `,`
 
