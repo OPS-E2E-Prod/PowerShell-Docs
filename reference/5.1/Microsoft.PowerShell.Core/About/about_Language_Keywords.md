@@ -1,9 +1,10 @@
 ---
-ms.date:  06/09/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Language_Keywords
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 06/09/2017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_language_keywords?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Language_Keywords
 ---
 
 # About Language Keywords
@@ -56,7 +57,6 @@ Until       | [about_Do](about_Do.md)
 Using       | [about_Using](about_Using.md), [about_Classes](about_Classes.md)
 Var         | Reserved for future use
 While       | [about_While](about_While.md), [about_Do](about_Do.md)
-
 
 Language Keywords
 
@@ -484,7 +484,7 @@ See `Class` for usage examples.
 ### Switch
 
 To check multiple conditions, use a `Switch` statement. The `Switch` statement is
-equivalent to a series of If statements, but it is simpler.
+equivalent to a series of `If` statements, but it is simpler.
 
 The `Switch` statement lists each condition and an optional action. If a
 condition obtains, the action is performed.

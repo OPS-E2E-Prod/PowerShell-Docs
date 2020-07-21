@@ -1,12 +1,12 @@
 ---
-ms.date: 02/25/2019
-schema: 2.0.0
-locale: en-us
-keywords: powershell,cmdlet
+Download Help Link: https://Please-enter-FwLink-manually
 Help Version: 6.0
-Download Help Link: http://Please-enter-FwLink-manually
+keywords: powershell,cmdlet
+Locale: en-US
 Module Guid: 00000000-0000-0000-0000-000000000000
 Module Name: About
+ms.date: 02/25/2019
+schema: 2.0.0
 title: About topics
 ---
 # About topics
@@ -321,7 +321,7 @@ Describes how to use splatting to pass parameters to commands in PowerShell.
 Explains how to use the Split operator to split one or more strings into substrings.
 
 ### [about_Switch](about_Switch.md)
-Explains how to use a switch to handle multiple If statements.
+Explains how to use a switch to handle multiple `If` statements.
 
 ### [about_Throw](about_Throw.md)
 Describes the Throw keyword, which generates a terminating error.
