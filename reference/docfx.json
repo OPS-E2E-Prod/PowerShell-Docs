@@ -1,27 +1,22 @@
 {
     "build": {
+        "dest": "pscore-reference",
+        "markdownEngineName": "markdig",
+        "overwrite": [],
+        "externalReference": [],
+        "versions": {
+            "powershell-5.1": { "dest": "powershell-5.1" },
+            "powershell-6": { "dest": "powershell-6" },
+            "powershell-7": { "dest": "powershell-7" },
+            "powershell-7.1": { "dest": "powershell-7.1" }
+        },
         "content": [{
-                "files": ["index.yml", "module/index.md", "digital-art.md"],
-                "exclude": ["**/obj/**", "**/includes/**", "README.md", "**/README.md"],
+                "files": ["index.yml", "module/index.md"],
+                "exclude": ["**/obj/**", "**/includes/**", "**/_themes/**", "README.md", "**/README.md"],
                 "dest": ""
             },
 
             { "files": ["bread/toc.yml"], "dest": "scripting" },
-
-            { "files": ["toc.yml"], "src": "docs-conceptual", "version": "powershell-3.0", "dest": "scripting/powershell-3.0" },
-            { "files": ["**/*.md", "**/**.yml"], "src": "docs-conceptual", "version": "powershell-3.0", "dest": "scripting" },
-            { "files": ["toc.yml"], "src": "3.0", "version": "powershell-3.0", "dest": "module/psdocs" },
-            { "files": ["**/*.yml", "**/About/*.md"], "src": "3.0", "version": "powershell-3.0", "exclude": ["docs-conceptual/**"], "dest": "module" },
-
-            { "files": ["toc.yml"], "src": "docs-conceptual", "version": "powershell-4.0", "dest": "scripting/powershell-4.0" },
-            { "files": ["**/*.md", "**/**.yml"], "src": "docs-conceptual", "version": "powershell-4.0", "dest": "scripting" },
-            { "files": ["toc.yml"], "src": "4.0", "version": "powershell-4.0", "dest": "module/psdocs" },
-            { "files": ["**/*.yml", "**/About/*.md"], "src": "4.0", "version": "powershell-4.0", "exclude": ["docs-conceptual/**"], "dest": "module" },
-
-            { "files": ["toc.yml"], "src": "docs-conceptual", "version": "powershell-5.0", "dest": "scripting/powershell-5.0" },
-            { "files": ["**/*.md", "**/**.yml"], "src": "docs-conceptual", "version": "powershell-5.0", "dest": "scripting" },
-            { "files": ["toc.yml"], "src": "5.0", "version": "powershell-5.0", "dest": "module/psdocs" },
-            { "files": ["**/*.yml", "**/About/*.md"], "src": "5.0", "version": "powershell-5.0", "exclude": ["docs-conceptual/**"], "dest": "module" },
 
             { "files": ["toc.yml"], "src": "docs-conceptual", "version": "powershell-5.1", "dest": "scripting/powershell-5.1" },
             { "files": ["**/*.md", "**/**.yml"], "src": "docs-conceptual", "version": "powershell-5.1", "dest": "scripting" },
@@ -51,56 +46,26 @@
                 "exclude": ["**/obj/**", "**/includes/**"]
             },
             {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
-                "exclude": ["**/obj/**", "**/includes/**"]
-            },
-            {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
-                "exclude": ["**/obj/**", "**/includes/**"],
-                "version": "powershell-3.0"
-            },
-            {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
-                "exclude": ["**/obj/**", "**/includes/**"],
-                "version": "powershell-4.0"
-            },
-            {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
-                "exclude": ["**/obj/**", "**/includes/**"],
-                "version": "powershell-5.0"
-            },
-            {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
+                "files": ["**/media/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
                 "exclude": ["**/obj/**", "**/includes/**"],
                 "version": "powershell-5.1"
             },
             {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
+                "files": ["**/media/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
                 "exclude": ["**/obj/**", "**/includes/**"],
                 "version": "powershell-6"
             },
             {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
+                "files": ["**/media/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
                 "exclude": ["**/obj/**", "**/includes/**"],
                 "version": "powershell-7"
             },
             {
-                "files": ["**/images/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
+                "files": ["**/media/**", "**/*.png", "**/*.gif", "**/*.jpeg", "**/*.jpg", "**/*.svg"],
                 "exclude": ["**/obj/**", "**/includes/**"],
                 "version": "powershell-7.1"
             }
         ],
-        "versions": {
-            "powershell-3.0": { "dest": "powershell-3.0" },
-            "powershell-4.0": { "dest": "powershell-4.0" },
-            "powershell-5.0": { "dest": "powershell-5.0" },
-            "powershell-5.1": { "dest": "powershell-5.1" },
-            "powershell-6": { "dest": "powershell-6" },
-            "powershell-7": { "dest": "powershell-7" },
-            "powershell-7.1": { "dest": "powershell-7.1" }
-        },
-        "overwrite": [],
-        "externalReference": [],
         "globalMetadata": {
             "toc_preview": true,
             "archive_url": "https://docs.microsoft.com/previous-versions/powershell/scripting/overview",
@@ -114,10 +79,27 @@
             "ROBOTS": "INDEX, FOLLOW",
             "feedback_system": "GitHub",
             "feedback_github_repo": "MicrosoftDocs/PowerShell-Docs",
-            "feedback_product_url": "https://github.com/PowerShell/PowerShell/issues/new/choose"
+            "feedback_product_url": "https://github.com/PowerShell/PowerShell/issues/new/choose",
+            "_op_documentIdPathDepotMapping": {
+                "reference/docs-conceptual/wmf/": {
+                    "folder_relative_path_in_docset": "wmf/"
+                },
+                "reference/docs-conceptual/dsc/": {
+                    "folder_relative_path_in_docset": "dsc/"
+                },
+                "reference/docs-conceptual/developer/": {
+                    "folder_relative_path_in_docset": "developer/"
+                },
+                "reference/docs-conceptual/gallery/": {
+                    "folder_relative_path_in_docset": "gallery/"
+                }
+            }
         },
         "fileMetadata": {
-            "ms.prod": { "**/**.yml": "powershell" },
+            "ms.prod": {
+                "**/**.md": "powershell",
+                "**/**.yml": "powershell"
+            },
             "ms.technology": {
                 "5.1/**.yml": "powershell-cmdlets",
                 "6/**.yml": "powershell-cmdlets",
@@ -130,8 +112,8 @@
                 "7/**.yml": "reference",
                 "docs-conceptual/**.md": "conceptual"
             },
-            "manager": { "**/**.yml": "daberry" },
-            "ms.tgt_pltfr": { "**/**.yml": "windows, macos, linux" },
+            "manager": { "**/**": "daberry" },
+            "ms.tgt_pltfr": { "**/**": "windows, macos, linux" },
             "author": {
                 "**/CimCmdlets/**.yml": "SteveL-MSFT",
                 "**/ISE/**.yml": "SteveL-MSFT",
@@ -163,7 +145,7 @@
                 "**/PSWorkflow/**.md": "SteveL-MSFT",
                 "**/PSWorkflowUtility/**.yml": "SteveL-MSFT",
                 "**/ThreadJob/**.yml": "PaulHigin",
-                "docs-conceptual/learn/deep-dive/**.md": "sdwheeler",
+                "docs-conceptual/learn/**/**.md": "sdwheeler",
                 "docs-conceptual/learn/ps101/**.md": "mikefrobbins",
                 "docs-conceptual/learn/remoting/jea/**.md": "rpsqrd",
                 "docs-conceptual/gallery/**/**.md": "SydneyhSmith",
@@ -209,9 +191,6 @@
                 "docs-conceptual/developer/**/**.md": "jaiello",
                 "docs-conceptual/**.md": "jaiello"
             }
-        },
-        "template": [],
-        "dest": "pscore-reference",
-        "markdownEngineName": "markdig"
+        }
     }
 }
