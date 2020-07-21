@@ -1,5 +1,6 @@
 {
     "build_entry_point": "docs",
+    "branches_to_filter": ["prtest","prtest-nometavalidation","from-prod-live","from-prod-master","repo_sync_novalidation_prtest_branch","repo_sync_novalidation_live_branch","repo_sync_novalidation_master_branch"],
     "dependent_packages": [{
         "id": "Microsoft.DocAsCode.MAML2Yaml",
         "nuget_feed": "https://www.myget.org/F/op/api/v2",
@@ -34,7 +35,7 @@
                 "_dependentPackages/MAML2Yaml/tools/Run.ps1"
             ]
         },
-        "docset_name": "PowerShell_PowerShell-docs_reference",
+        "docset_name": "e2eprod-PowerShell_PowerShell-docs_reference",
         "locale": "en-us",
         "monikerPath": [
             "mapping/monikerMapping.json"
