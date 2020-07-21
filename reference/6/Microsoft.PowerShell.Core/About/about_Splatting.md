@@ -1,54 +1,53 @@
 ---
-ms.date:  01/03/2018
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Splatting
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 04/08/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Splatting
 ---
+
 # About Splatting
 
-## SHORT DESCRIPTION
+## Short description
+
 Describes how to use splatting to pass parameters to commands in PowerShell.
 
-## LONG DESCRIPTION
-
-[This topic was contributed by Rohn Edwards of Gulfport, Mississippi, a system
-administrator and the winner of the Advanced Division of the 2012 Scripting
-Games. Revised for Windows PowerShell 3.0.]
+## Long description
 
 Splatting is a method of passing a collection of parameter values to a command
-as unit. PowerShell associates each value in the collection with a
-command parameter. Splatted parameter values are stored in named splatting
-variables, which look like standard variables, but begin with an At symbol (@)
-instead of a dollar sign ($). The At symbol tells PowerShell that you
-are passing a collection of values, instead of a single value.
+as a unit. PowerShell associates each value in the collection with a command
+parameter. Splatted parameter values are stored in named splatting variables,
+which look like standard variables, but begin with an At symbol (`@`) instead
+of a dollar sign (`$`). The At symbol tells PowerShell that you are passing a
+collection of values, instead of a single value.
 
-Splatting makes your commands shorter and easier to read. You can re-use the
-splatting values in different command calls and use splatting to pass
-parameter values from the `$PSBoundParameters` automatic variable to other
-scripts and functions.
+Splatting makes your commands shorter and easier to read. You can reuse the
+splatting values in different command calls and use splatting to pass parameter
+values from the `$PSBoundParameters` automatic variable to other scripts and
+functions.
 
 Beginning in Windows PowerShell 3.0, you can also use splatting to represent
 all parameters of a command.
 
-## SYNTAX
+## Syntax
 
 ```
 <CommandName> <optional parameters> @<HashTable> <optional parameters>
 <CommandName> <optional parameters> @<Array> <optional parameters>
 ```
 
-To provide parameter values for positional parameters, in which parameter
-names are not required, use the array syntax. To provide parameter name and
-value pairs, use the hash table syntax. The splatted value can appear anywhere
-in the parameter list.
+To provide parameter values for positional parameters, in which parameter names
+are not required, use the array syntax. To provide parameter name and value
+pairs, use the hash table syntax. The splatted value can appear anywhere in the
+parameter list.
 
 When splatting, you do not need to use a hash table or an array to pass all
 parameters. You may pass some parameters by using splatting and pass others by
-position or by parameter name. Also, you can splat multiple objects in a
-single command just so you pass no more than one value for each parameter.
+position or by parameter name. Also, you can splat multiple objects in a single
+command so you don't pass more than one value for each parameter.
 
-## SPLATTING WITH HASH TABLES
+## Splatting with hash tables
 
 Use a hash table to splat parameter name and value pairs. You can use this
 format for all parameter types, including positional and switch parameters.
@@ -66,11 +65,11 @@ Copy-Item -Path "test.txt" -Destination "test2.txt" -WhatIf
 
 The second example uses hash table splatting. The first command creates a hash
 table of parameter-name and parameter-value pairs and stores it in the
-\$HashArguments variable. The second command uses the `$HashArguments`
-variable in a command with splatting. The At symbol (`@HashArguments`)
-replaces the dollar sign (`$HashArguments`) in the command.
+`$HashArguments` variable. The second command uses the `$HashArguments`
+variable in a command with splatting. The At symbol (`@HashArguments`) replaces
+the dollar sign (`$HashArguments`) in the command.
 
-To provide a value for the WhatIf switch parameter, use $True or $False.
+To provide a value for the **WhatIf** switch parameter, use `$True` or `$False`.
 
 ```powershell
 $HashArguments = @{
@@ -81,11 +80,13 @@ $HashArguments = @{
 Copy-Item @HashArguments
 ```
 
-Note: In the first command, the At symbol (@) indicates a hash table, not a
-splatted value. The syntax for hash tables in PowerShell is:
-`@{\<name\>=\<value\>; \<name\>=\<value\>; ...}*`
+> [!NOTE]
+> In the first command, the At symbol (`@`) indicates a hash table, not a
+> splatted value. The syntax for hash tables in PowerShell is:
+> `@{<name>=<value>; <name>=<value>; ...}` in PowerShell is:
+`@{<name>=<value>; <name>=<value>; ...}`
 
-## SPLATTING WITH ARRAYS
+## Splatting with arrays
 
 Use an array to splat values for positional parameters, which do not require
 parameter names. The values must be in position-number order in the array.
@@ -112,25 +113,62 @@ $ArrayArguments = "test.txt", "test2.txt"
 Copy-Item @ArrayArguments -WhatIf
 ```
 
-## EXAMPLES
+### Using the ArgumentList parameter
 
-This example shows how to re-use splatted values in different commands. The
-commands in this example use the Write-Host cmdlet to write messages to the
+Several cmdlets have an **ArgumentList** parameter that is used to pass
+parameter values to a script block that is executed by the cmdlet. The
+**ArgumentList** parameter takes an array of values that is passed to the
+script block. PowerShell is effectively using array splatting to bind the
+values to the parameters of the script block. When using **ArgumentList**, if
+you need to pass an array as a single object bound to a single parameter, you
+must wrap the array in an array subexpression.
+
+The following example has a script block that takes a single parameter that is
+an array of strings.
+
+```powershell
+$array = 'Hello', 'World!'
+Invoke-Command -ScriptBlock { param([string[]]$words) $words -join ' '} -ArgumentList $array
+```
+
+In this example, only the first item in `$array` is passed to the script script
+block.
+
+```Output
+Hello
+```
+
+```powershell
+$array = 'Hello', 'World!'
+Invoke-Command -ScriptBlock { param([string[]]$words) $words -join ' '} -ArgumentList (,$array)
+```
+
+In this example, `$array` is wrapped in an array subexpress so that the entire
+array is passed to the script block as a single object.
+
+```Output
+Hello World!
+```
+
+## Examples
+
+This example shows how to reuse splatted values in different commands. The
+commands in this example use the `Write-Host` cmdlet to write messages to the
 host program console. It uses splatting to specify the foreground and
 background colors.
 
 To change the colors of all commands, just change the value of the `$Colors`
 variable.
 
-The first command creates a hash table of parameter names and values and
-stores the hash table in the `$Colors` variable.
+The first command creates a hash table of parameter names and values and stores
+the hash table in the `$Colors` variable.
 
 ```powershell
 $Colors = @{ForegroundColor = "black"; BackgroundColor = "white"}
 ```
 
 The second and third commands use the `$Colors` variable for splatting in a
-Write-Host command. To use the `$Colors variable`, replace the dollar sign
+`Write-Host` command. To use the `$Colors variable`, replace the dollar sign
 (`$Colors`) with an At symbol (`@Colors`).
 
 ```powershell
@@ -145,13 +183,14 @@ Write-Host @Colors "This is another test."
 This example shows how to forward their parameters to other commands by using
 splatting and the `$PSBoundParameters` automatic variable.
 
-The \$PSBoundParameters automatic variable is a dictionary
-(System.Collections.Generic.Dictionary) that contains all of the parameter
-names and values that are used when a script or function is run.
+The `$PSBoundParameters` automatic variable is a dictionary object
+(System.Collections.Generic.Dictionary) that contains all the parameter names
+and values that are used when a script or function is run.
 
 In the following example, we use the `$PSBoundParameters` variable to forward
-the parameters values passed to a script or function from Test2 function to
-the Test1 function. Both calls to the Test1 function from Test2 use splatting.
+the parameters values passed to a script or function from `Test2` function to
+the `Test1` function. Both calls to the `Test1` function from `Test2` use
+splatting.
 
 ```powershell
 function Test1
@@ -177,7 +216,7 @@ function Test2
 }
 ```
 
-```output
+```Output
 Test2 -a 1 -b 2 -c 3
 1
 2
@@ -186,7 +225,7 @@ Test2 -a 1 -b 2 -c 3
 3
 ```
 
-## SPLATTING COMMAND PARAMETERS
+## Splatting command parameters
 
 You can use splatting to represent the parameters of a command. This technique
 is useful when you are creating a proxy function, that is, a function that
@@ -199,21 +238,21 @@ it works without revision even if the parameters of the called command change.
 The feature uses the `$Args` automatic variable, which contains all unassigned
 parameter values.
 
-For example, the following function calls the Get-Process cmdlet. In this
-function, `@Args` represents all of the parameters of the Get-Process cmdlet.
+For example, the following function calls the `Get-Process` cmdlet. In this
+function, `@Args` represents all the parameters of the `Get-Process` cmdlet.
 
 ```powershell
 function Get-MyProcess { Get-Process @Args }
 ```
 
-When you use the Get-MyProcess function, all unassigned parameters and
+When you use the `Get-MyProcess` function, all unassigned parameters and
 parameter values are passed to `@Args`, as shown in the following commands.
 
 ```powershell
 Get-MyProcess -Name PowerShell
 ```
 
-```output
+```Output
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
 -------  ------    -----      ----- -----   ------     -- -----------
     463      46   225484     237196   719    15.86   3228 powershell
@@ -223,7 +262,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
 Get-MyProcess -Name PowerShell_Ise -FileVersionInfo
 ```
 
-```output
+```Output
 ProductVersion   FileVersion      FileName
 --------------   -----------      --------
 6.2.9200.16384   6.2.9200.1638... C:\Windows\system32\WindowsPowerShell\...
@@ -244,7 +283,7 @@ function Get-MyCommand
 Get-MyCommand -P -C -Name PowerShell
 ```
 
-```output
+```Output
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
 -------  ------    -----      ----- -----   ------     -- -----------
 408      28    75568      83176   620     1.33   1692 powershell
@@ -278,7 +317,18 @@ FileVersionInfo    : File:             C:\Windows\System32\WindowsPowerShell
                      Language:         English (United States)
 ```
 
-## SEE ALSO
+## Notes
+
+If you make a function into an advanced function by using either the
+**CmdletBinding** or **Parameter** attributes, the `$args` automatic variable
+is no longer available in the function. Advanced functions require explicit
+parameter definition.
+
+PowerShell Desired State Configuration (DSC) was not designed to use splatting.
+You cannot use splatting to pass values into a DSC resource. For more
+information, see Gael Colas' article [Pseudo-Splatting DSC Resources](https://gaelcolas.com/2017/11/05/pseudo-splatting-dsc-resources/).
+
+## See also
 
 [about_Arrays](about_Arrays.md)
 

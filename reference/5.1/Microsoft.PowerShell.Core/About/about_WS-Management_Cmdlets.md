@@ -1,9 +1,10 @@
 ---
-ms.date:  01/04/2018
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_WS Management_Cmdlets
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 01/04/2018
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_ws-management_cmdlets?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_WS Management_Cmdlets
 ---
 
 # About WS-Management Cmdlets
@@ -134,46 +135,46 @@ The following WS-Management cmdlets are available.
 For more information about WS-Management, see the following topics in the
 MSDN (Microsoft Developer Network) library.
 
-[Windows Remote Management](http://go.microsoft.com/fwlink/?LinkId=142321)
+[Windows Remote Management](/windows/win32/winrm/portal)
 
-[About Windows Remote Management](http://go.microsoft.com/fwlink/?LinkId=142322)
+[About Windows Remote Management](/windows/win32/winrm/about-windows-remote-management)
 
-[Installation and Configuration for Windows Remote Management](http://go.microsoft.com/fwlink/?LinkId=142323)
+[Installation and Configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
 
-[Windows Remote Management Architecture](http://go.microsoft.com/fwlink/?LinkId=142324)
+[Windows Remote Management Architecture](/windows/win32/winrm/windows-remote-management-architecture)
 
-[WS-Management Protocol](http://go.microsoft.com/fwlink/?LinkId=142325)
+[WS-Management Protocol](/windows/win32/winrm/ws-management-protocol)
 
-[Windows Remote Management and WMI](http://go.microsoft.com/fwlink/?LinkId=142326)
+[Windows Remote Management and WMI](/windows/win32/winrm/windows-remote-management-and-wmi)
 
-[Resource URIs](http://go.microsoft.com/fwlink/?LinkId=142327)
+[Resource URIs](/windows/win32/winrm/resource-uris)
 
-[Remote Hardware Management](http://go.microsoft.com/fwlink/?LinkId=142328)
+[Remote Hardware Management](/windows/win32/winrm/remote-hardware-management)
 
-[Events](http://go.microsoft.com/fwlink/?LinkId=142329)
+[Events](/windows/win32/winrm/events)
 
 ## SEE ALSO
 
-[Connect-WSMan](../../Microsoft.WSMan.Management/Connect-WSMan.md)
+[Connect-WSMan](xref:Microsoft.WSMan.Management.Connect-WSMan)
 
-[Disable-WSManCredSSP](../../Microsoft.WSMan.Management/Disable-WSManCredSSP.md)
+[Disable-WSManCredSSP](xref:Microsoft.WSMan.Management.Disable-WSManCredSSP)
 
-[Disconnect-WSMan](../../Microsoft.WSMan.Management/Disconnect-WSMan.md)
+[Disconnect-WSMan](xref:Microsoft.WSMan.Management.Disconnect-WSMan)
 
-[Enable-WSManCredSSP](../../Microsoft.WSMan.Management/Enable-WSManCredSSP.md)
+[Enable-WSManCredSSP](xref:Microsoft.WSMan.Management.Enable-WSManCredSSP)
 
-[Get-WSManCredSSP](../../Microsoft.WSMan.Management/Get-WSManCredSSP.md)
+[Get-WSManCredSSP](xref:Microsoft.WSMan.Management.Get-WSManCredSSP)
 
-[Get-WSManInstance](../../Microsoft.WSMan.Management/Get-WSManInstance.md)
+[Get-WSManInstance](xref:Microsoft.WSMan.Management.Get-WSManInstance)
 
-[Invoke-WSManAction](../../Microsoft.WSMan.Management/Invoke-WSManAction.md)
+[Invoke-WSManAction](xref:Microsoft.WSMan.Management.Invoke-WSManAction)
 
-[New-WSManInstance](../../Microsoft.WSMan.Management/New-WSManInstance.md)
+[New-WSManInstance](xref:Microsoft.WSMan.Management.New-WSManInstance)
 
-[Remove-WSManInstance](../../Microsoft.WSMan.Management/Remove-WSManInstance.md)
+[Remove-WSManInstance](xref:Microsoft.WSMan.Management.Remove-WSManInstance)
 
-[Set-WSManInstance](../../Microsoft.WSMan.Management/Set-WSManInstance.md)
+[Set-WSManInstance](xref:Microsoft.WSMan.Management.Set-WSManInstance)
 
-[Set-WSManQuickConfig](../../Microsoft.WSMan.Management/Set-WSManQuickConfig.md)
+[Set-WSManQuickConfig](xref:Microsoft.WSMan.Management.Set-WSManQuickConfig)
 
-[Test-WSMan](../../Microsoft.WSMan.Management/Test-WSMan.md)
+[Test-WSMan](xref:Microsoft.WSMan.Management.Test-WSMan)

@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096884
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/suspend-service?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Suspend-Service
 ---
@@ -90,7 +90,7 @@ Specifies the display names of the services to be suspended.
 Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: DisplayName
 Aliases:
 
@@ -98,7 +98,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Exclude
@@ -109,7 +109,7 @@ Enter a name element or pattern, such as "s*".
 Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Include
@@ -128,7 +128,7 @@ Enter a name element or pattern, such as "s*".
 Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -InputObject
@@ -145,7 +145,7 @@ Specifies **ServiceController** objects that represent the services to suspend.
 Enter a variable that contains the objects, or type a command or expression that gets the objects.
 
 ```yaml
-Type: ServiceController[]
+Type: System.ServiceProcess.ServiceController[]
 Parameter Sets: InputObject
 Aliases:
 
@@ -165,7 +165,7 @@ The parameter name is optional.
 You can use *Name* or its alias, *ServiceName*, or you can omit the parameter name.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Default
 Aliases: ServiceName
 
@@ -173,7 +173,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PassThru
@@ -182,7 +182,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -215,7 +215,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -246,7 +246,7 @@ Otherwise, this cmdlet does not generate any output.
 ## NOTES
 
 * **Suspend-Service** can control services only when the current user has permission to do this. If a command does not work correctly, you might not have the required permissions.
-* **Suspend-Service** can suspend only services that support being suspended and resumed. To determine whether a particular service can be suspended, use the Get-Service cmdlet together with the **CanPauseAndContinue** property. For example, `Get-Service wmi | Format-List Name, CanPauseAndContinue`. To find all services on the computer that can be suspended, type `Get-Service | Where-Object {$_.CanPauseAndContinue -eq "True"}`.
+* **Suspend-Service** can suspend only services that support being suspended and resumed. To determine whether a particular service can be suspended, use the Get-Service cmdlet together with the **CanPauseAndContinue** property. For example, `Get-Service wmi | Format-List Name, CanPauseAndContinue`. To find all services on the computer that can be suspended, type `Get-Service | Where-Object {$_.CanPauseAndContinue -eq $true}`.
 * To find the service names and display names of the services on your system, type **Get-Service**. The service names appear in the **Name** column, and the display names appear in the **DisplayName** column.
 
 ## RELATED LINKS

@@ -1,9 +1,10 @@
 ---
-ms.date:  12/01/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_WMI_Cmdlets
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 12/01/2017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_wmi_cmdlets?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_WMI_Cmdlets
 ---
 
 # About WMI Cmdlets
@@ -165,7 +166,9 @@ Problem 1: The remote computer is not online.
 If a computer is offline, you will not be able to connect to it by using WMI.
 You may receive the following error message:
 
-    Remote server machine does not exist or is unavailable
+```
+Remote server machine does not exist or is unavailable
+```
 
 If you receive this error message, verify that the computer is online. Try to
 ping the remote computer.
@@ -192,31 +195,22 @@ configured to automatically block all unsolicited network traffic, including
 DCOM and WMI. In its default configuration, Windows Firewall rejects an
 incoming WMI request, and you receive the following error message:
 
-    Remote server machine does not exist or is unavailable
-
-### MORE INFORMATION ABOUT WMI
-
-For more information about WMI, see the following topics in the MSDN
-(Microsoft Developer Network) library:
-
-About WMI: http://go.microsoft.com/fwlink/?LinkId=142212
-
-WMI Troubleshooting: http://go.microsoft.com/fwlink/?LinkId=142213
-
-And, see "Secrets of Windows Management Instrumentation - Troubleshooting and
-Tips" in the Microsoft TechNet Script Center:
-
-http://go.microsoft.com/fwlink/?LinkId=142214
-
+```
+Remote server machine does not exist or is unavailable
+```
 
 ## SEE ALSO
 
-Get-WmiObject
+[About WMI](/windows/win32/wmisdk/about-wmi)
 
-Invoke-WmiMethod
+[WMI Troubleshooting](/windows/win32/wmisdk/wmi-troubleshooting)
 
-Register-WmiEvent
+[Get-WmiObject](xref:Microsoft.PowerShell.Management.Get-WmiObject)
 
-Remove-WmiObject
+[Invoke-WmiMethod](xref:Microsoft.PowerShell.Management.Invoke-WmiMethod)
 
-Set-WmiInstance
+[Register-WmiEvent](xref:Microsoft.PowerShell.Management.Register-WmiEvent)
+
+[Remove-WmiObject](xref:Microsoft.PowerShell.Management.Remove-WmiObject)
+
+[Set-WmiInstance](xref:Microsoft.PowerShell.Management.Set-WmiInstance)

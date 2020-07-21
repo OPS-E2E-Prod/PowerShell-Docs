@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=821648
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/undo-transaction?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Undo-Transaction
 ---
@@ -35,6 +35,7 @@ For more information, see about_Transactions.
 ## EXAMPLES
 
 ### Example 1: Roll back the current transaction
+
 ```
 PS C:\> Undo-Transaction
 ```
@@ -42,6 +43,7 @@ PS C:\> Undo-Transaction
 This command rolls back the current, active, transaction.
 
 ### Example 2: Start and roll back a transaction
+
 ```
 PS C:\> cd hkcu:\software
 PS HKCU:\Software> Start-Transaction
@@ -53,6 +55,7 @@ This example starts a transaction and then rolls it back.
 As a result, no changes are made to the registry.
 
 ### Example 3: Roll back a transaction for all subscribers
+
 ```
 PS C:\> cd hkcu:\software
 PS HKCU:\Software> Start-Transaction
@@ -110,7 +113,7 @@ The results show that the transaction is rolled back, and that the subscriber co
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +129,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -138,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -151,6 +154,7 @@ You cannot pipe input to this cmdlet.
 This cmdlet does not return any output.
 
 ## NOTES
+
 * You cannot roll back a transaction that has been committed.
 
   You cannot roll back any transaction other than the active transaction.

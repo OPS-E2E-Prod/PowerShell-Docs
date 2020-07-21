@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 04/04/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821874
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-debug?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Write-Debug
 ---
@@ -93,7 +93,7 @@ change only affects the scope of the function. The value is not affected outside
 > When the value of `$DebugPreference` is **Inquire**, PowerShell halts execution to ask if
 > execution should continue.
 
-For more information about the **Debug** common parameter, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+For more information about the **Debug** common parameter, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## PARAMETERS
 
@@ -102,7 +102,7 @@ For more information about the **Debug** common parameter, see [about_CommonPara
 Specifies the debug message to send to the console.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Msg
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

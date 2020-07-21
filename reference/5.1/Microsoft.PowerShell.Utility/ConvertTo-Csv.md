@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 1/7/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821757
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-csv?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: ConvertTo-Csv
 ---
@@ -12,7 +12,7 @@ title: ConvertTo-Csv
 # ConvertTo-Csv
 
 ## SYNOPSIS
-Converts objects into a series of comma-separated value (CSV) strings.
+Converts .NET objects into a series of comma-separated value (CSV) strings.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Converts objects into a series of comma-separated value (CSV) strings.
 
 ```
 ConvertTo-Csv [-InputObject] <psobject> [[-Delimiter] <char>] [-NoTypeInformation]
-[<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### UseCulture
@@ -92,6 +92,7 @@ Get-WinEvent -LogName 'Windows PowerShell' | ConvertTo-Csv -UseCulture -NoTypeIn
 ```
 
 ```Output
+,
 "Message","Id","Version","Qualifiers","Level","Task","Opcode","Keywords","RecordId", ...
 "Error Message = System error","403",,"0","4","4",,"36028797018963968","46891","PowerShell", ...
 ```
@@ -113,7 +114,7 @@ Specifies the delimiter to separate the property values in CSV strings. The defa
 quotation marks.
 
 ```yaml
-Type: Char
+Type: System.Char
 Parameter Sets: Delimiter
 Aliases:
 
@@ -131,7 +132,7 @@ or type a command or expression that gets the objects. You can also pipe objects
 `ConvertTo-CSV`.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +149,7 @@ Removes the **#TYPE** information header from the output. This parameter became 
 PowerShell 6.0 and is included for backwards compatibility.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: NTI
 
@@ -165,7 +166,7 @@ Uses the list separator for the current culture as the item delimiter. To find t
 for a culture, use the following command: `(Get-Culture).TextInfo.ListSeparator`.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UseCulture
 Aliases:
 

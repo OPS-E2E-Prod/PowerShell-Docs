@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096825
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/clear-variable?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Clear-Variable
 ---
@@ -24,7 +24,7 @@ Clear-Variable [-Name] <String[]> [-Include <String[]>] [-Exclude <String[]>] [-
 
 The **Clear-Variable** cmdlet deletes the data stored in a variable, but it does not delete the variable.
 As a result, the value of the variable is NULL (empty).
-If the variable has a specified data or object type, Clear-Variable preserves the type of the object stored in the variable.
+If the variable has a specified data or object type, this cmdlet preserves the type of the object stored in the variable.
 
 ## EXAMPLES
 
@@ -54,7 +54,7 @@ The third command, which gets the value of $A, shows that the value 3 is unaffec
 ### Example 3: Delete the value of the specified variable
 
 ```
-PS C:\> Clear-variable -Name "Processes"
+PS C:\> Clear-Variable -Name "Processes"
 ```
 
 This command deletes the value of the variable named Processes.
@@ -70,7 +70,7 @@ Enter a name element or pattern, such as "s*".
 Wildcards are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Force
@@ -87,7 +87,7 @@ Allows the cmdlet to clear a variable even if it is read-only.
 Even using the Force parameter, the cmdlet cannot clear constants.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Enter a name element or pattern, such as "s*".
 Wildcards are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Name
@@ -124,7 +124,7 @@ Wildcards are permitted.
 This parameter is required, but the parameter name ("Name") is optional.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PassThru
@@ -141,7 +141,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Local is the default.
 For more information, see about_Scopes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -200,7 +200,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

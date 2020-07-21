@@ -1,5 +1,5 @@
 ---
-ms.date: 03/18/2019
+ms.date: 09/13/2019
 title: Creating Get-WinEvent queries with FilterHashtable
 ---
 
@@ -18,9 +18,11 @@ When you work with large event logs, it's not efficient to send objects down the
 log data. For example, the following commands are inefficient to filter the
 **Microsoft-Windows-Defrag** logs:
 
-`Get-EventLog -LogName Application | Where-Object Source -Match defrag`
+```powershell
+Get-EventLog -LogName Application | Where-Object Source -Match defrag
 
-`Get-WinEvent -LogName Application | Where-Object { $_.ProviderName -Match 'defrag' }`
+Get-WinEvent -LogName Application | Where-Object { $_.ProviderName -Match 'defrag' }
+```
 
 The following command uses a hash table that improves the performance:
 
@@ -40,47 +42,68 @@ returns the enumerated values, see
 For more information, see the
 [Scripting Guy series of blog posts about enumeration](https://devblogs.microsoft.com/scripting/?s=about+enumeration).
 
-## Hash table key/value pairs
+## Hash table key-value pairs
 
 To build efficient queries, use the `Get-WinEvent` cmdlet with the **FilterHashtable** parameter.
 **FilterHashtable** accepts a hash table as a filter to get specific information from Windows event
-logs. A hash table uses **key/value** pairs. For more information about hash tables, see [about_Hash_Tables](/powershell/module/microsoft.powershell.core/about/about_hash_tables).
+logs. A hash table uses **key-value** pairs. For more information about hash tables, see
+[about_Hash_Tables](/powershell/module/microsoft.powershell.core/about/about_hash_tables).
 
-If the **key/value** pairs are on the same line, they must be separated by a semicolon. If each
-**key/value** pair is on a separate line, the semicolon isn't needed. For example, this article
-places **key/value** pairs on separate lines and doesn't use semicolons.
+If the **key-value** pairs are on the same line, they must be separated by a semicolon. If each
+**key-value** pair is on a separate line, the semicolon isn't needed. For example, this article
+places **key-value** pairs on separate lines and doesn't use semicolons.
 
-This sample uses several of the **FilterHashtable** parameter's **key/value** pairs. The completed
+This sample uses several of the **FilterHashtable** parameter's **key-value** pairs. The completed
 query includes **LogName**, **ProviderName**, **Keywords**, **ID**, and **Level**.
 
-The accepted **key/value** pairs are shown in the following table and are included in the
+The accepted **key-value** pairs are shown in the following table and are included in the
 documentation for the [Get-WinEvent](/powershell/module/microsoft.powershell.diagnostics/Get-WinEvent)
 **FilterHashtable** parameter.
 
 The following table displays the key names, data types, and whether wildcard characters are accepted
 for a data value.
 
-| Key name     | Value data type    | Accepts wildcard characters? |
-|------------- | ------------------ | ---------------------------- |
-| LogName      | `<String[]>`       | Yes |
-| ProviderName | `<String[]>`       | Yes |
-| Path         | `<String[]>`       | No  |
-| Keywords     | `<Long[]>`         | No  |
-| ID           | `<Int32[]>`        | No  |
-| Level        | `<Int32[]>`        | No  |
-| StartTime    | `<DateTime>`       | No  |
-| EndTime      | `<DateTime>`       | No  |
-| UserID       | `<SID>`            | No  |
-| Data         | `<String[]>`       | No  |
-| *            | `<String[]>`       | No  |
+|    Key name    | Value data type | Accepts wildcard characters? |
+| -------------- | --------------- | ---------------------------- |
+| LogName        | `<String[]>`    | Yes                          |
+| ProviderName   | `<String[]>`    | Yes                          |
+| Path           | `<String[]>`    | No                           |
+| Keywords       | `<Long[]>`      | No                           |
+| ID             | `<Int32[]>`     | No                           |
+| Level          | `<Int32[]>`     | No                           |
+| StartTime      | `<DateTime>`    | No                           |
+| EndTime        | `<DateTime>`    | No                           |
+| UserID         | `<SID>`         | No                           |
+| Data           | `<String[]>`    | No                           |
+| `<named-data>` | `<String[]>`    | No                           |
+
+The `<named-data>` key represents a named event data field. For example, the Perflib event 1008
+can contain the following event data:
+
+```xml
+<EventData>
+  <Data Name="Service">BITS</Data>
+  <Data Name="Library">C:\Windows\System32\bitsperf.dll</Data>
+  <Data Name="Win32Error">2</Data>
+</EventData>
+```
+
+You can query for these events using the following command:
+
+```powershell
+Get-WinEvent -FilterHashtable @{LogName='Application'; 'Service'='Bits'}
+```
+
+> [!NOTE]
+> The ability to query for `<named-data>` was added in PowerShell 6.
 
 ## Building a query with a hash table
 
-To verify results and troubleshoot problems, it helps to build the hash table one **key/value** pair
+To verify results and troubleshoot problems, it helps to build the hash table one **key-value** pair
 at a time. The query gets data from the **Application** log. The hash table is equivalent to
 `Get-WinEvent –LogName Application`.
 
-To begin, create the `Get-WinEvent` query. Use the **FilterHashtable** parameter's **key/value**
+To begin, create the `Get-WinEvent` query. Use the **FilterHashtable** parameter's **key-value**
 pair with the key, **LogName**, and the value, **Application**.
 
 ```powershell
@@ -95,7 +118,7 @@ in the following screenshot:
 
 ![Image of Windows Event Viewer sources.](./media/creating-get-winEvent-queries-with-filterhashtable/providername.png)
 
-Update the hash table and include the **key/value** pair with the key, **ProviderName, and the
+Update the hash table and include the **key-value** pair with the key, **ProviderName**, and the
 value, **.NET Runtime**.
 
 ```powershell
@@ -155,7 +178,7 @@ WdiDiagnostic    Property   static System.Diagnostics.Eventing.Reader.StandardEv
 ```
 
 The enumerated values are documented in the **.NET Framework**. For more information, see
-[StandardEventKeywords Enumeration](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader.standardeventkeywords?redirectedfrom=MSDN&view=netframework-4.7.2).
+[StandardEventKeywords Enumeration](/dotnet/api/system.diagnostics.eventing.reader.standardeventkeywords?redirectedfrom=MSDN&view=netframework-4.7.2).
 
 The **Keywords** names and enumerated values are as follows:
 
@@ -171,7 +194,7 @@ The **Keywords** names and enumerated values are as follows:
 | ResponseTime     | 281474976710656   |
 | None             | 0                 |
 
-Update the hash table and include the **key/value** pair with the key, **Keywords**, and the
+Update the hash table and include the **key-value** pair with the key, **Keywords**, and the
 **EventLogClassic** enumeration value, **36028797018963968**.
 
 ```powershell
@@ -205,7 +228,7 @@ To get more specific data, the query's results are filtered by **Event Id**. The
 referenced in the hash table as the key **ID** and the value is a specific **Event Id**. The
 **Windows Event Viewer** displays the **Event Id**. This example uses **Event Id 1023**.
 
-Update the hash table and include the **key/value** pair with the key, **ID** and the value,
+Update the hash table and include the **key-value** pair with the key, **ID** and the value,
 **1023**.
 
 ```powershell
@@ -244,7 +267,7 @@ Warning       Property   static System.Diagnostics.Eventing.Reader.StandardEvent
 ```
 
 The enumerated values are documented in the **.NET Framework**. For more information, see
-[StandardEventLevel Enumeration](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader.standardeventlevel?redirectedfrom=MSDN&view=netframework-4.7.2).
+[StandardEventLevel Enumeration](/dotnet/api/system.diagnostics.eventing.reader.standardeventlevel?redirectedfrom=MSDN&view=netframework-4.7.2).
 
 The **Level** key's names and enumerated values are as follows:
 

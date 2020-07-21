@@ -1,10 +1,10 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096184
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/remove-module?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Remove-Module
 ---
@@ -112,7 +112,7 @@ By default, **Remove-Module** removes only read-write modules.
 The **ReadOnly** and **ReadWrite** values are stored in **AccessMode** property of a module.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Specifies the fully qualified names of modules to remove.
 
 ```yaml
-Type: ModuleSpecification[]
+Type: Microsoft.PowerShell.Commands.ModuleSpecification[]
 Parameter Sets: FullyQualifiedName
 Aliases:
 
@@ -146,7 +146,7 @@ Enter a variable that contains a module object (**PSModuleInfo**) or a command t
 You can also pipe module objects to **Remove-Module**.
 
 ```yaml
-Type: PSModuleInfo[]
+Type: System.Management.Automation.PSModuleInfo[]
 Parameter Sets: ModuleInfo
 Aliases:
 
@@ -164,7 +164,7 @@ Wildcard characters are permitted.
 You can also pipe name strings to **Remove-Module**.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: name
 Aliases:
 
@@ -172,7 +172,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -197,7 +197,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

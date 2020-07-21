@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Diagnostics.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Diagnostics
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=821531
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.diagnostics/new-winevent?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: New-WinEvent
 ---
@@ -45,7 +45,7 @@ Microsoft-Windows-PowerShell provider.
 Specifies an event id that was registered through an instrumentation manifest.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ stored in the **Message** property of the event object.
 When the specified payload does not match the payload in the event definition, Windows PowerShell generates a warning, but the command still succeeds.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Specifies the event provider that writes the event to an event log, such as
 sessions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ number to the required Byte type.
 This parameter lets you specify an event when different versions of the same event are defined.
 
 ```yaml
-Type: Byte
+Type: System.Byte
 Parameter Sets: (All)
 Aliases:
 
@@ -116,8 +116,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -135,8 +134,6 @@ This cmdlet does to generate any output.
 
 * After the provider writes the even to an eventlog, you can use the Get-WinEvent cmdlet to get the
   event from the event log.
-* For information about Event Tracing for Windows, see "Improve Debugging And Performance Tuning
-  With ETW" in MSDN Magazine at http://msdn.microsoft.com/magazine/cc163437.aspx.
 
 ## RELATED LINKS
 

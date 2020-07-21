@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.WSMan.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.WSMan.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096889
+online version: https://docs.microsoft.com/powershell/module/microsoft.wsman.management/disconnect-wsman?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Disconnect-WSMan
 ---
@@ -31,6 +31,7 @@ For more information about how to connect to the WinRM service on a remote compu
 ## EXAMPLES
 
 ### Example 1: Delete a connection to a remote computer
+
 ```
 PS C:\> Disconnect-WSMan -computer server01
 PS C:\> cd WSMan:
@@ -63,7 +64,7 @@ That is, you cannot disconnect the default connection to the local computer.
 However, if you create a separate connection to the local computer, for example, by using the computer name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

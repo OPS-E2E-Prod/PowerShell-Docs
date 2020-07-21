@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.WSMan.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.WSMan.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096976
+online version: https://docs.microsoft.com/powershell/module/microsoft.wsman.management/get-wsmancredssp?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-WSManCredSSP
 ---
@@ -42,6 +42,7 @@ If the remote computer is compromised, when credentials are passed to it, the cr
 ## EXAMPLES
 
 ### Example 1: Display CredSSP configuration
+
 ```
 PS C:\> Get-WSManCredSSP
 ```
@@ -61,7 +62,7 @@ If the computer is not configured for CredSSP, this is the output:
 ## PARAMETERS
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -74,6 +75,7 @@ This cmdlet does not accept any input.
 This cmdlet does not generate any output.
 
 ## NOTES
+
 * To disable CredSSP authentication, use the Disable-WSManCredSSP cmdlet. To enable CredSSP authentication, use the Enable-WSManCredSSP cmdlet.
 
 ## RELATED LINKS

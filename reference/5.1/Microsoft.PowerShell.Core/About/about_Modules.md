@@ -1,14 +1,14 @@
 ---
-ms.date:  01/04/2018
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Modules
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 09/09/2019
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Modules
 ---
 # About Modules
 
 ## Short Description
-
 Explains how to install, import, and use PowerShell modules.
 
 ## Long Description
@@ -23,7 +23,7 @@ commands.
 
 This topic explains how to use PowerShell modules. For information about how
 to write PowerShell modules, see
-[Writing a PowerShell Module](/powershell/developer/module/writing-a-windows-powershell-module).
+[Writing a PowerShell Module](/powershell/scripting/developer/module/writing-a-windows-powershell-module).
 
 ## What Is a Module?
 
@@ -32,34 +32,35 @@ are added by a module or a snap-in.
 
 ## Module Auto-Loading
 
-Beginning in PowerShell 3.0, PowerShell imports modules automatically the
-first time that you run any command in an installed module. You can now use
-the commands in a module without any set-up or profile configuration, so
-there's no need to manage modules after you install them on your computer.
+Beginning in PowerShell 3.0, PowerShell imports modules automatically the first
+time that you run any command in an installed module. You can now use the
+commands in a module without any set-up or profile configuration, so there's no
+need to manage modules after you install them on your computer.
 
 The commands in a module are also easier to find. The `Get-Command` cmdlet now
 gets all commands in all installed modules, even if they are not yet in the
 session, so you can find a command and use it without importing.
 
-Any of the following commands will import a module into your session.
+Each of the following examples cause the module containing `Get-Mailbox` to be
+imported into your session.
 
-### Run the Command
+- Run the Command
 
-```powershell
-Get-Mailbox -Identity Chris
-```
+  ```powershell
+  Get-Mailbox -Identity Chris
+  ```
 
-### Get the Command
+- Get the Command
 
-```powershell
-Get-Command Get-Mailbox
-```
+  ```powershell
+  Get-Command Get-Mailbox
+  ```
 
-### Get Help for the Command
+- Get Help for the Command
 
-```powershell
-Get-Help Get-Mailbox
-```
+  ```powershell
+  Get-Help Get-Mailbox
+  ```
 
 `Get-Command` commands that include a wildcard character (*) are considered
 to be for discovery, not use, and do not import any modules.
@@ -74,9 +75,9 @@ as the `Get-PSSessionConfiguration` cmdlet, you might need to run the
 `Import-Module` cmdlet to import the **Microsoft.WSMan.Management** module that
 includes the `WSMan:` drive.
 
-You can still run the `Import-Module` command to import a module and
-use the `$PSModuleAutoloadingPreference` variable to enable, disable and
-configure automatic importing of modules. For more information, see
+You can still run the `Import-Module` command to import a module and use the
+`$PSModuleAutoloadingPreference` variable to enable, disable and configure
+automatic importing of modules. For more information, see
 [about_Preference_Variables](about_Preference_Variables.md).
 
 ## How to Use a Module
@@ -99,13 +100,13 @@ Most modules are installed for you. PowerShell comes with several preinstalled
 modules, sometimes called the "core" modules. On Windows-based computers, if
 features that are included with the operating system have cmdlets to manage
 them, those modules are preinstalled. When you install a Windows feature, by
-using, for example, the Add Roles and Features Wizard in Server Manager, or
-the Turn Windows features on or off dialog box in Control Panel, any
-PowerShell modules that are part of the feature are installed. Many other
-modules come in an installer or Setup program that installs the module.
+using, for example, the Add Roles and Features Wizard in Server Manager, or the
+Turn Windows features on or off dialog box in Control Panel, any PowerShell
+modules that are part of the feature are installed. Many other modules come in
+an installer or Setup program that installs the module.
 
-Create a Modules directory for the current user if one does not exist. To
-create a Modules directory, type:
+Use the following command to create a **Modules** directory for the current
+user:
 
 ```powershell
 New-Item -Type Directory -Path $HOME\Documents\WindowsPowerShell\Modules
@@ -122,28 +123,29 @@ Copy-Item -Path C:\ps-test\MyModule -Destination `
 ```
 
 You can install a module in any location, but installing your modules in a
-default module location makes them easier to manage. For more information
-about the default module locations, see the "Module and DSC Resource
-Locations, and PSModulePath" section.
+default module location makes them easier to manage. For more information about
+the default module locations, see the
+[Module and DSC Resource Locations, and PSModulePath](#module-and-dsc-resource-locations-and-psmodulepath)
+section.
 
 ## How to Find Installed Modules
 
-To find modules that are installed in a default module location,
-but not yet imported into your session, type:
+To find modules that are installed in a default module location, but not yet
+imported into your session, type:
 
 ```powershell
 Get-Module -ListAvailable
 ```
 
-To find the modules that have already been imported into your session,
-at the PowerShell prompt, type:
+To find the modules that have already been imported into your session, at the
+PowerShell prompt, type:
 
 ```powershell
 Get-Module
 ```
 
 For more information about the `Get-Module` cmdlet, see
-[Get-Module](../Get-Module.md).
+[Get-Module](xref:Microsoft.PowerShell.Core.Get-Module).
 
 ## How to Find the Commands in a Module
 
@@ -164,13 +166,13 @@ Get-Command -Module BitsTransfer
 ```
 
 For more information about the `Get-Command` cmdlet, see
-[Get-Command](../Get-Command.md).
+[Get-Command](xref:Microsoft.PowerShell.Core.Get-Command).
 
 ## How to Get Help for the Commands in a Module
 
 If the module contains Help files for the commands that it exports, the
-`Get-Help` cmdlet will display the Help topics. Use the same `Get-Help`
-command format that you would use to get help for any command in PowerShell.
+`Get-Help` cmdlet will display the Help topics. Use the same `Get-Help` command
+format that you would use to get help for any command in PowerShell.
 
 Beginning in PowerShell 3.0, you can download Help files for a module and
 download updates to the Help files so they are never obsolete.
@@ -193,8 +195,8 @@ To download and install the help files for the commands in a module, type:
 Update-Help -Module <module-name>
 ```
 
-For more information, see [Get-Help](../Get-Help.md) and
-[Update-Help](../Update-Help.md).
+For more information, see [Get-Help](xref:Microsoft.PowerShell.Core.Get-Help) and
+[Update-Help](xref:Microsoft.PowerShell.Core.Update-Help).
 
 ## How to Import a Module
 
@@ -226,37 +228,34 @@ into the current session.
 Import-Module BitsTransfer
 ```
 
-To import a module that is not in a default module location, use
-the fully qualified path to the module folder in the command.
+To import a module that is not in a default module location, use the fully
+qualified path to the module folder in the command.
 
-For example, to add the TestCmdlets module in the C:\ps-test directory
-to your session, type:
+For example, to add the TestCmdlets module in the `C:\ps-test` directory to your
+session, type:
 
 ```powershell
 Import-Module C:\ps-test\TestCmdlets
 ```
 
-To import a module file that is not contained in a module folder, use
-the fully qualified path to the module file in the command.
+To import a module file that is not contained in a module folder, use the fully
+qualified path to the module file in the command.
 
-For example, to add the TestCmdlets.dll module in the C:\ps-test directory
-to your session, type:
+For example, to add the TestCmdlets.dll module in the `C:\ps-test` directory to
+your session, type:
 
 ```powershell
 Import-Module C:\ps-test\TestCmdlets.dll
 ```
 
 For more information about adding modules to your session, see
-[Import-Module](../Import-Module.md).
+[Import-Module](xref:Microsoft.PowerShell.Core.Import-Module).
 
 ## How to Import a Module into Every Session
 
-The `Import-Module` command imports modules into your current Windows
-PowerShell session. This command affects only the current session.
-
-To import a module into every PowerShell session that you
-start, add the `Import-Module` command to your PowerShell
-profile.
+The `Import-Module` command imports modules into your current PowerShell
+session. To import a module into every PowerShell session that you start, add
+the `Import-Module` command to your PowerShell profile.
 
 For more information about profiles, see [about_Profiles](about_Profiles.md).
 
@@ -280,48 +279,49 @@ Remove-Module BitsTransfer
 ```
 
 Removing a module reverses the operation of importing a module. Removing
-a module does not uninstall the module. For more information about the
-`Remove-Module` cmdlet, see [Remove-Module](../Remove-Module.md).
+a module does not uninstall the module. For more information, see
+[Remove-Module](xref:Microsoft.PowerShell.Core.Remove-Module).
 
 ## Module and DSC Resource Locations, and PSModulePath
 
-The following are default locations for PowerShell modules. Starting in
-PowerShell 4.0, with the introduction of DSC, a new default module and DSC
-resource folder was introduced. For more information about DSC, see
-about_DesiredStateConfiguration.
+The `$env:PSModulePath` environment variable contains a list of folder
+locations that are searched to find modules and resources.
 
-- System: `$pshome\Modules` or
-  (`$env:windir\System32\WindowsPowerShell\v1.0\Modules`)
-  System modules are those that ship with Windows and PowerShell.
+By default, the effective locations assigned to `$env:PSModulePath` are:
 
-  Starting in PowerShell 4.0, when PowerShell Desired State Configuration
-  (DSC) was introduced, DSC resources that are included with PowerShell are
-  also stored in `$PSHOME\Modules`, in the
-  `$pshome\Modules\PSDesiredStateConfiguration\DSCResources` folder.
+- System-wide locations: `$PSHOME\Modules`
 
-- Current user: `$home\Documents\WindowsPowerShell\Modules`
-  (`$env:UserProfile\Documents\WindowsPowerShell\Modules`)
+  These folders contain modules that ship with Windows and PowerShell.
 
-  or
+  DSC resources that are included with PowerShell are stored in the
+  `$PSHOME\Modules\PSDesiredStateConfiguration\DSCResources` folder.
 
-  `$home\My Documents\WindowsPowerShell\Modules`
-  (`$env:UserProfile\My Documents\WindowsPowerShell\Modules`)
-  This is the location for user-added modules prior to PowerShell 4.0.
+- User-specific modules: These are modules installed by the user in the
+  user's scope. `Install-Module` has a **Scope** parameter that allows you to
+  specify whether the module is installed for the current user or for all
+  users. For more information, see
+  [Install-Module](xref:PowerShellGet.Install-Module).
 
-In PowerShell 4.0 and later releases of PowerShell, user-added modules and DSC
-resources are stored in `C:\Program Files\WindowsPowerShell\Modules`. Modules
-and DSC resources in this location are accessible by all users of the
-computer. This change was required because the DSC engine runs as local
-system, and could not access user-specific paths, such as
-`$home\Documents\WindowsPowerShell\Modules`.
+  The user-specific **CurrentUser** location on Windows is the
+  `PowerShell\Modules` folder located in the **Documents** location in your
+  user profile. The specific path of that location varies by version of
+  Windows and whether or not you are using folder redirection. Microsoft
+  OneDrive can also change the location of your **Documents** folder.
 
-Starting in PowerShell 5.0, with the addition of the PowerShellGet module, and
-the [PowerShell Gallery](https://www.powershellgallery.com) of community and
-Microsoft-created resources, the `Install-Module` command installs modules and
-DSC resources to `C:\Program Files\WindowsPowerShell\Modules` by default.
+  By default, on Windows 10, that location is
+  `$HOME\Documents\PowerShell\Modules`. On Linux or Mac, the **CurrentUser**
+  location is `$HOME/.local/share/powershell/Modules`.
 
-Note: To add or change files in the `$env:Windir\System32` directory, start
-PowerShell with the "Run as administrator" option.
+  > [!NOTE]
+  > You can verify the location of your **Documents** folder using the
+  > following command: `[Environment]::GetFolderPath('MyDocuments')`.
+
+- The **AllUsers** location is `$env:PROGRAMFILES\WindowsPowerShell\Modules` on
+  Windows.
+
+> [!NOTE]
+> To add or change files in the `$env:Windir\System32` directory, start
+> PowerShell with the **Run as administrator** option.
 
 You can change the default module locations on your system by changing the
 value of the **PSModulePath** environment variable, `$Env:PSModulePath`. The
@@ -352,16 +352,16 @@ $Env:PSModulePath + ";C:\ps-test\Modules"
 When you add a path to **PSModulePath**, `Get-Module` and `Import-Module`
 commands include modules in that path.
 
-The value that you set affects only the current session. To make the
-change persistent, add the command to your PowerShell profile
-or use System in Control Panel to change the value of the **PSModulePath**
-environment variable in the registry.
+The value that you set affects only the current session. To make the change
+persistent, add the command to your PowerShell profile or use System in Control
+Panel to change the value of the **PSModulePath** environment variable in the
+registry.
 
 Also, to make the change persistent, you can also use the
 **SetEnvironmentVariable** method of the **System.Environment** class to add a
 Path to the **PSModulePath** environment variable.
 
-For more information about the PSModulePath variable, see
+For more information about the **PSModulePath** variable, see
 [about_Environment_Variables](about_Environment_Variables.md).
 
 ## Modules and Name Conflicts
@@ -406,10 +406,10 @@ parameters of `Import-Module` to select only the commands that you want to
 import, and you can exclude commands that cause name conflicts in your
 session.
 
-Module authors can prevent name conflicts by using the DefaultCommandPrefix
+Module authors can prevent name conflicts by using the **DefaultCommandPrefix**
 property of the module manifest to add a default prefix to all command names.
-The value of the Prefix parameter takes precedence over the value of
-DefaultCommandPrefix.
+The value of the **Prefix** parameter takes precedence over the value of
+**DefaultCommandPrefix**.
 
 Even if a command is hidden, you can run it by qualifying the command name
 with the name of the module or snap-in in which it originated.
@@ -446,7 +446,7 @@ Get-Command <cmdlet-name> | Format-List -Property verb,noun,pssnapin,module
 For example, to find the source of the `Get-Date` cmdlet, type:
 
 ```powershell
-Get-Command Get-Date | Format-List -Property verb,noun,pssnapin,module
+Get-Command Get-Date | Format-List -Property verb,noun,module
 ```
 
 For more information about PowerShell snap-ins, see
@@ -459,9 +459,9 @@ rules. If the module that you import exports cmdlets or functions that have
 unapproved verbs in their names, the `Import-Module` cmdlet displays the
 following warning message.
 
-WARNING: Some imported command names include unapproved verbs which might make
-them less discoverable. Use the Verbose parameter for more detail or type
-`Get-Verb` to see the list of approved verbs.
+> WARNING: Some imported command names include unapproved verbs which might
+> make them less discoverable. Use the Verbose parameter for more detail or
+> type Get-Verb to see the list of approved verbs.
 
 This message is only a warning. The complete module is still imported,
 including the non-conforming commands. Although the message is displayed to
@@ -472,20 +472,22 @@ the `Import-Module` cmdlet.
 
 ## Built-in Modules and Snap-ins
 
-In PowerShell 2.0 and in older-style host programs in PowerShell 3.0 and
-later, the core commands that are installed with PowerShell are packaged in
-snap-ins that are added automatically to every PowerShell session.
+In PowerShell 2.0 and in older-style host programs in PowerShell 3.0 and later,
+the core commands that are installed with PowerShell are packaged in snap-ins
+that are added automatically to every PowerShell session.
 
 Beginning in PowerShell 3.0, for host programs that implement the
 `InitialSessionState.CreateDefault2` initial session state API the
-Microsoft.PowerShell.Core snap-in is added to every session by default.
-Modules are loaded automatically on first-use.
+Microsoft.PowerShell.Core snap-in is added to every session by default. Modules
+are loaded automatically on first-use.
 
-NOTE: Remote sessions, including sessions that are started by using the
-`New-PSSession` cmdlet, are older-style sessions in which the built-in
-commands are packaged in snap-ins.
+> [!NOTE]
+> Remote sessions, including sessions that are started by using the
+> `New-PSSession` cmdlet, are older-style sessions in which the built-in
+> commands are packaged in snap-ins.
 
 The following modules (or snap-ins) are installed with PowerShell.
+
 * CimCmdlets
 * Microsoft.PowerShell.Archive
 * Microsoft.PowerShell.Core
@@ -527,12 +529,12 @@ about_DesiredStateConfiguration
 
 [about_PSSnapins](about_PSSnapins.md)
 
-[Get-Command](../Get-Command.md)
+[Get-Command](xref:Microsoft.PowerShell.Core.Get-Command)
 
-[Get-Help](../Get-Help.md)
+[Get-Help](xref:Microsoft.PowerShell.Core.Get-Help)
 
-[Get-Module](../Get-Module.md)
+[Get-Module](xref:Microsoft.PowerShell.Core.Get-Module)
 
-[Import-Module](../Import-Module.md)
+[Import-Module](xref:Microsoft.PowerShell.Core.Import-Module)
 
-[Remove-Module](../Remove-Module.md)
+[Remove-Module](xref:Microsoft.PowerShell.Core.Remove-Module)

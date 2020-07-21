@@ -1,19 +1,22 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
-ms.date: 07/11/2019
-online version: https://go.microsoft.com/fwlink/?linkid=2096171
+ms.date: 04/14/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/new-modulemanifest?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: New-ModuleManifest
 ---
+
 # New-ModuleManifest
 
 ## SYNOPSIS
 Creates a new module manifest.
 
 ## SYNTAX
+
+### All
 
 ```
 New-ModuleManifest [-Path] <string> [-NestedModules <Object[]>] [-Guid <guid>] [-Author <string>]
@@ -53,6 +56,11 @@ In PowerShell 2.0, `New-ModuleManifest` prompts you for the values of commonly u
 aren't specified in the command, in addition to required parameter values. Beginning in PowerShell
 3.0, `New-ModuleManifest` prompts only when required parameter values aren't specified.
 
+If you are planning to publish your module in the PowerShell Gallery, the manifest must contain
+values for certain properties. For more information, see
+[Required metadata for items published to the PowerShell Gallery](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package#required-metadata-for-items-published-to-the-powershell-gallery)
+in the Gallery documentation.
+
 ## EXAMPLES
 
 ### Example 1 - Create a new module manifest
@@ -81,7 +89,10 @@ New-ModuleManifest -Path C:\ps-test\Test-Module\Test-Module.psd1 -PassThru
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0'
+ModuleVersion = '0.0.1'
+
+# Supported PSEditions
+# CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
 GUID = '47179120-0bcb-4f14-8d80-f4560107f85c'
@@ -93,24 +104,24 @@ Author = 'ContosoAdmin'
 CompanyName = 'Unknown'
 
 # Copyright statement for this module
-Copyright = '(c) 2019 ContosoAdmin. All rights reserved.'
+Copyright = '(c) ContosoAdmin. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
 
-# Minimum version of the Windows PowerShell engine required by this module
+# Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
 
-# Name of the Windows PowerShell host required by this module
+# Name of the PowerShell host required by this module
 # PowerShellHostName = ''
 
-# Minimum version of the Windows PowerShell host required by this module
+# Minimum version of the PowerShell host required by this module
 # PowerShellHostVersion = ''
 
-# Minimum version of the .NET Framework required by this module
+# Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # DotNetFrameworkVersion = ''
 
-# Minimum version of the common language runtime (CLR) required by this module
+# Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
@@ -134,26 +145,50 @@ Copyright = '(c) 2019 ContosoAdmin. All rights reserved.'
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()
 
-# Functions to export from this module
-FunctionsToExport = '*'
+# Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
+FunctionsToExport = @()
 
-# Cmdlets to export from this module
-CmdletsToExport = '*'
+# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
+CmdletsToExport = @()
 
 # Variables to export from this module
 VariablesToExport = '*'
 
-# Aliases to export from this module
-AliasesToExport = '*'
+# Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
+AliasesToExport = @()
 
-# List of all modules packaged with this module.
+# DSC resources to export from this module
+# DscResourcesToExport = @()
+
+# List of all modules packaged with this module
 # ModuleList = @()
 
 # List of all files packaged with this module
 # FileList = @()
 
-# Private data to pass to the module specified in RootModule/ModuleToProcess
-# PrivateData = ''
+# Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        # LicenseUri = ''
+
+        # A URL to the main website for this project.
+        # ProjectUri = ''
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        # ReleaseNotes = ''
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
@@ -180,11 +215,11 @@ table format to specify the name, a **GUID**, and a version of the **PSScheduled
 
 ```powershell
 $moduleSettings = @{
-  RequiredModules = (BitsTransfer, @{
+  RequiredModules = ("BitsTransfer", @{
     ModuleName="PSScheduledJob"
     ModuleVersion="1.0.0.0";
     GUID="50cdb55f-5ab7-489f-9e94-4ec21ff51e59"
-  }
+  })
   Path = 'C:\ps-test\ManifestTest.psd1'
 }
 New-ModuleManifest @moduleSettings
@@ -203,14 +238,14 @@ the module.
 
 ```powershell
 $moduleSettings = @{
-  HelpInfoUri = 'http://http://go.microsoft.com/fwlink/?LinkID=603'
+  HelpInfoUri = 'http://https://go.microsoft.com/fwlink/?LinkID=603'
   Path = 'C:\ps-test\ManifestTest.psd1'
 }
 New-ModuleManifest @moduleSettings
 ```
 
 For information about Updatable Help, see [about_Updatable_Help](./About/about_Updatable_Help.md).
-For information about the HelpInfo XML file, see [Supporting Updatable Help](/powershell/developer/module/supporting-updatable-help).
+For information about the HelpInfo XML file, see [Supporting Updatable Help](/powershell/scripting/developer/module/supporting-updatable-help).
 
 ### Example 5 - Getting module information
 
@@ -233,7 +268,7 @@ Path                        : C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 Definition                  :
 Description                 :
 Guid                        : ca046f10-ca64-4740-8ff9-2565dba61a4f
-HelpInfoUri                 : http://go.microsoft.com/fwlink/?LinkID=210596
+HelpInfoUri                 : https://go.microsoft.com/fwlink/?LinkID=210596
 ModuleBase                  : C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Diagnostics
 PrivateData                 :
 Version                     : 3.0.0.0
@@ -283,7 +318,7 @@ If you omit this parameter, `New-ModuleManifest` creates an **AliasesToExport** 
 `*` (all), meaning that all aliases defined in the module are exported by the manifest.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -302,7 +337,7 @@ If you omit this parameter, `New-ModuleManifest` creates an **Author** key with 
 current user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -319,7 +354,7 @@ Specifies the minimum version of the Common Language Runtime (CLR) of the Micros
 that the module requires.
 
 ```yaml
-Type: Version
+Type: System.Version
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +376,7 @@ If you omit this parameter, `New-ModuleManifest` creates a **CmdletsToExport** k
 `*` (all), meaning that all cmdlets defined in the module are exported by the manifest.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -360,7 +395,7 @@ If you omit this parameter, `New-ModuleManifest` creates a **CompanyName** key w
 "Unknown".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +411,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -390,10 +425,10 @@ Accept wildcard characters: False
 ### -CompatiblePSEditions
 
 Specifies the module's compatible PSEditions. For information about PSEdition, see
-[Modules with compatible PowerShell Editions](/powershell/gallery/concepts/module-psedition-support).
+[Modules with compatible PowerShell Editions](/powershell/scripting/gallery/concepts/module-psedition-support).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Desktop, Core
@@ -414,7 +449,7 @@ If you omit this parameter, `New-ModuleManifest` creates a **Copyright** key wit
 the value of the **Author** key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -430,7 +465,7 @@ Accept wildcard characters: False
 Describes the contents of the module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -446,7 +481,7 @@ Accept wildcard characters: False
 Specifies the minimum version of the Microsoft .NET Framework that the module requires.
 
 ```yaml
-Type: Version
+Type: System.Version
 Parameter Sets: (All)
 Aliases:
 
@@ -463,7 +498,7 @@ Specifies the Desired State Configuration (DSC) resources that the module export
 permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -482,7 +517,7 @@ This key is designed to act as a module inventory. The files listed in the key a
 module is published, but any functions aren't automatically exported.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +536,7 @@ When you import a module, PowerShell runs the `Update-FormatData` cmdlet with th
 Because formatting files aren't scoped, they affect all session states in the session.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -523,7 +558,7 @@ If you omit this parameter, `New-ModuleManifest` creates an **FunctionsToExport*
 of `*` (all), meaning that all functions defined in the module are exported by the manifest.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -545,7 +580,7 @@ generates a **GUID** for the value.
 To create a new **GUID** in PowerShell, type `[guid]::NewGuid()`.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
@@ -566,12 +601,12 @@ contains information about the location of downloadable help files for the modul
 numbers of the newest help files for each supported locale.
 
 For information about Updatable Help, see [about_Updatable_Help](./About/about_Updatable_Help.md).
-For information about the HelpInfo XML file, see [Supporting Updatable Help](/powershell/developer/module/supporting-updatable-help).
+For information about the HelpInfo XML file, see [Supporting Updatable Help](/powershell/scripting/developer/module/supporting-updatable-help).
 
 This parameter was introduced in PowerShell 3.0.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -588,7 +623,7 @@ Specifies the URL of an icon for the module. The specified icon is displayed on 
 for the module.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -604,7 +639,7 @@ Accept wildcard characters: False
 Specifies the URL of licensing terms for the module.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -627,7 +662,7 @@ This key is designed to act as a module inventory. The modules that are listed i
 key aren't automatically processed.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: (All)
 Aliases:
 
@@ -646,7 +681,7 @@ This parameter isn't required, but a **ModuleVersion** key is required in the ma
 this parameter, `New-ModuleManifest` creates a **ModuleVersion** key with a value of 1.0.
 
 ```yaml
-Type: Version
+Type: System.Version
 Parameter Sets: (All)
 Aliases:
 
@@ -680,7 +715,7 @@ not in the caller's session state. To run a script in the caller's session state
 file name in the value of the **ScriptsToProcess** key in the manifest.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: (All)
 Aliases:
 
@@ -697,7 +732,7 @@ Writes the resulting module manifest to the console and creates a `.psd1` file. 
 cmdlet doesn't generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -725,7 +760,7 @@ same as the module directory name, but with a `.psd1` file name extension.
 > parameter value. To use a variable, include the **Path** parameter in the command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -745,7 +780,7 @@ permitted.
 To find the name of a host program, in the program, type `$Host.Name`.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -762,7 +797,7 @@ Specifies the minimum version of the PowerShell host program that works with the
 version number, such as 1.1.
 
 ```yaml
-Type: Version
+Type: System.Version
 Parameter Sets: (All)
 Aliases:
 
@@ -779,7 +814,7 @@ Specifies the minimum version of PowerShell that works with this module. For exa
 1.0, 2.0, or 3.0 as the parameter's value.
 
 ```yaml
-Type: Version
+Type: System.Version
 Parameter Sets: (All)
 Aliases:
 
@@ -795,7 +830,7 @@ Accept wildcard characters: False
 Specifies data that is passed to the module when it's imported.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -812,7 +847,7 @@ Specifies the processor architecture that the module requires. Valid values are 
 MSIL, and None (unknown or unspecified).
 
 ```yaml
-Type: ProcessorArchitecture
+Type: System.Reflection.ProcessorArchitecture
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, MSIL, X86, IA64, Amd64, Arm
@@ -829,7 +864,7 @@ Accept wildcard characters: False
 Specifies the URL of a web page about this project.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -845,7 +880,7 @@ Accept wildcard characters: False
 Specifies release notes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -868,7 +903,7 @@ must be loaded to update any formatting or type files that are listed in the **F
 **NestedModules** key.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -893,7 +928,7 @@ In PowerShell 2.0, `Import-Module` doesn't import required modules automatically
 that the required modules are in the global session state.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: (All)
 Aliases:
 
@@ -912,7 +947,7 @@ You can use these scripts to prepare an environment, just as you might use a log
 To specify scripts that run in the module's session state, use the **NestedModules** key.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -928,7 +963,7 @@ Accept wildcard characters: False
 Specifies an array of tags.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -947,7 +982,7 @@ When you import the module, PowerShell runs the `Update-TypeData` cmdlet with th
 Because type files aren't scoped, they affect all session states in the session.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -969,7 +1004,7 @@ If you omit this parameter, `New-ModuleManifest` creates a **VariablesToExport**
 `*` (all), meaning that all variables defined in the module are exported by the manifest.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -992,7 +1027,7 @@ cmdlet.
 This parameter was introduced in PowerShell 3.0.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -1023,7 +1058,7 @@ manifest. Otherwise, their members aren't exported.
 > parameter name or its **ModuleToProcess** alias.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ModuleToProcess
 
@@ -1039,7 +1074,7 @@ Accept wildcard characters: False
 Shows what would happen if `New-ModuleManifest` runs. The cmdlet isn't run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

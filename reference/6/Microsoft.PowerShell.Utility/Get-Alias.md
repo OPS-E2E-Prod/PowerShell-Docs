@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096423
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-alias?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Alias
 ---
@@ -116,7 +116,7 @@ Enter the name of a cmdlet, function, script, file, or executable file.
 This parameter is called *Definition*, because it searches for the item name in the Definition property of the alias object.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Definition
 Aliases:
 
@@ -135,7 +135,7 @@ Enter a name, a definition, or a pattern, such as "s*".
 Wildcards are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +155,7 @@ The parameter name **Name** is optional.
 You can also pipe alias names to `Get-Alias`.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Default
 Aliases:
 
@@ -180,7 +180,7 @@ Local is the default.
 For more information, see about_Scopes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

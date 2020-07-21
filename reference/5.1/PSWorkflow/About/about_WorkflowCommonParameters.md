@@ -1,9 +1,10 @@
 ---
-ms.date:  06/09/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_WorkflowCommonParameters
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 06/09/2017
+online version: https://docs.microsoft.com/powershell/module/psworkflow/about/about_workflowcommonparameters?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_WorkflowCommonParameters
 ---
 # About WorkflowCommonParameters
 
@@ -49,7 +50,7 @@ Runs the workflow as a workflow job. The workflow command immediately returns
 an object that represents a parent job. The parent job contains the child jobs
 that are running on each of the target computers. To manage the job, use the
 Job cmdlets. To get the job results, use
-[Receive-Job](http://go.microsoft.com/fwlink/?LinkID=113372).
+[Receive-Job](xref:Microsoft.PowerShell.Core.Receive-Job).
 
 #### -JobName \<String\>
 
@@ -78,7 +79,7 @@ setting the `MaximumConnectionRedirectionCount` property of the
 `MaximumConnectionRedirectionCount` property of the value of the
 `PSSessionOption parameter`. The default value is 5. For more information, see
 the description of the `PSSessionOption` parameter and
-[New-PSSessionOption](http://go.microsoft.com/fwlink/?LinkID=135237).
+[New-PSSessionOption](xref:Microsoft.PowerShell.Core.New-PSSessionOption).
 
 #### -PSApplicationName \<String\>
 
@@ -154,8 +155,8 @@ Certificates are used in client certificate-based authentication. They can only
 be mapped to local user accounts; they do not work with domain accounts.
 
 To get a certificate, use the
-[Get-Item](http://go.microsoft.com/fwlink/?LinkID=113319) or Get-ChildItem
-(http://go.microsoft.com/fwlink/?LinkID=113308) cmdlets in the Windows
+[Get-Item](xref:Microsoft.PowerShell.Management.Get-Item) or [Get-ChildItem]
+(../../Microsoft.PowerShell.Management/Get-Childitem.md) cmdlets in the Windows
 PowerShell Cert: drive.
 
 #### -PSComputerName \<String[]\>
@@ -180,7 +181,7 @@ command must include the `PSCredential` parameter. Also, the computer must be
 configured for HTTPS transport or the IP address of the remote computer
 must be included in the WinRM TrustedHosts list on the local computer. For
 instructions for adding a computer name to the TrustedHosts list, see *"How
-to Add a Computer to the Trusted Host List"* in [about_Remote_Troubleshooting](http://go.microsoft.com/fwlink/?LinkID=135188).
+to Add a Computer to the Trusted Host List"* in [about_Remote_Troubleshooting](../../Microsoft.PowerShell.Core/About/about_Remote_Troubleshooting.md).
 
 #### -PSConfigurationName \<String\>
 
@@ -210,7 +211,7 @@ The format of this string is as follows:
 
 `<Transport>://<ComputerName>:<Port>/<ApplicationName>`
 
-The default value is http://localhost:5985/WSMAN.
+The default value is `http://localhost:5985/WSMAN`.
 
 If you do not specify a `PSConnectionURI`, you can use the `PSUseSSL`,
 `PSComputerName`, `PSPort`, and `PSApplicationName` parameters to specify the
@@ -331,7 +332,7 @@ uses the values specified in the session configuration.
 
 For a description of the session options, including the default values, see the
 help topic for the `New-PSSessionOption` cmdlet
-(http://go.microsoft.com/fwlink/?LinkID=144305). For information about the
+(../../Microsoft.PowerShell.Core/New-PSSessionOption.md). For information about the
 `$PSSessionOption` preference variable, see [about_Preference_Variables](../../Microsoft.PowerShell.Core/About/about_Preference_Variables.md).
 
 #### -PSUseSSL \<SwitchParameter\>
@@ -348,6 +349,6 @@ the port used for the command, the command fails.
 
 - [about_ActivityCommonParameters](about_ActivityCommonParameters.md)
 - [about_Workflows](about_Workflows.md)
-- [Invoke-AsWorkflow](../../PSWorkflowUtility/Invoke-AsWorkflow.md)
-- [New-PSWorkflowExecutionOption](../New-PSWorkflowExecutionOption.md)
-- [New-PSWorkflowSession](../New-PSWorkflowSession.md)
+- [Invoke-AsWorkflow](xref:PSWorkflowUtility.Invoke-AsWorkflow)
+- [New-PSWorkflowExecutionOption](xref:PSWorkflow.New-PSWorkflowExecutionOption)
+- [New-PSWorkflowSession](xref:PSWorkflow.New-PSWorkflowSession)

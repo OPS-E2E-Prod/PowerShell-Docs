@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=821651
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/write-eventlog?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Write-EventLog
 ---
@@ -32,6 +32,7 @@ To get events from logs that use the Windows Event Log technology in Windows Vis
 ## EXAMPLES
 
 ### Example 1: Write an event to the Application event log
+
 ```
 PS C:\> Write-EventLog -LogName "Application" -Source "MyApp" -EventID 3001 -EntryType Information -Message "MyApp added a user-requested feature to the display." -Category 1 -RawData 10,20
 ```
@@ -39,6 +40,7 @@ PS C:\> Write-EventLog -LogName "Application" -Source "MyApp" -EventID 3001 -Ent
 This command writes an event from the MyApp source to the Application event log.
 
 ### Example 2: Write an event to the Application event log of a remote computer
+
 ```
 PS C:\> Write-EventLog -ComputerName "Server01" -LogName Application -Source "MyApp" -EventID 3001 -Message "MyApp added a user-requested feature to the display."
 ```
@@ -52,7 +54,7 @@ Specifies a task category for the event.
 Enter an integer that is associated with the strings in the category message file for the event log.
 
 ```yaml
-Type: Int16
+Type: System.Int16
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +75,7 @@ This parameter does not rely on Windows PowerShell remoting.
 You can use the *ComputerName* parameter of the Get-EventLog cmdlet even if your computer is not configured to run remote commands.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CN
 
@@ -89,10 +91,10 @@ Specifies the entry type of the event.
 The acceptable values for this parameter are: Error, Warning, Information, SuccessAudit, and FailureAudit.
 The default value is Information.
 
-For a description of the values, see [EventLogEntryType Enumeration](http://go.microsoft.com/fwlink/?LinkId=143599) in the MSDN library.
+For a description of the values, see [EventLogEntryType Enumeration](https://go.microsoft.com/fwlink/?LinkId=143599) in the MSDN library.
 
 ```yaml
-Type: EventLogEntryType
+Type: System.Diagnostics.EventLogEntryType
 Parameter Sets: (All)
 Aliases: ET
 Accepted values: Error, Information, FailureAudit, SuccessAudit, Warning
@@ -110,7 +112,7 @@ This parameter is required.
 The maximum value for the *EventId* parameter is 65535.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases: ID, EID
 
@@ -129,7 +131,7 @@ Wildcard characters are not permitted.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: LN
 
@@ -145,7 +147,7 @@ Specifies the event message.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: MSG
 
@@ -160,7 +162,7 @@ Accept wildcard characters: False
 Specifies the binary data that is associated with the event, in bytes.
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: (All)
 Aliases: RD
 
@@ -175,7 +177,7 @@ Accept wildcard characters: False
 Specifies the event source, which is typically the name of the application that is writing the event to the log.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SRC
 
@@ -187,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -200,6 +202,7 @@ You cannot pipe input to this cmdlet.
 This cmdlet returns objects that represents the events in the logs.
 
 ## NOTES
+
 * To use **Write-EventLog**, start Windows PowerShell by using the Run as administrator option.
 
 *

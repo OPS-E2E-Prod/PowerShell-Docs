@@ -1,17 +1,17 @@
 ---
-external help file: Microsoft.PowerShell.Commands.Management.dll-help.xml
+external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
-ms.date: 2/19/2019
-online version: https://go.microsoft.com/fwlink/?linkid=821580
+ms.date: 03/27/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-ChildItem
 ---
-
 # Get-ChildItem
 
 ## SYNOPSIS
+
 Gets the items and child items in one or more specified locations.
 
 ## SYNTAX
@@ -20,18 +20,18 @@ Gets the items and child items in one or more specified locations.
 
 ```
 Get-ChildItem [[-Path] <string[]>] [[-Filter] <string>] [-Include <string[]>] [-Exclude <string[]>]
-[-Recurse] [-Depth <uint32>] [-Force] [-Name] [-UseTransaction]
-[-Attributes <FlagsExpression[FileAttributes]>] [-Directory] [-File] [-Hidden] [-ReadOnly] [-System]
-[<CommonParameters>]
+ [-Recurse] [-Depth <uint32>] [-Force] [-Name] [-UseTransaction]
+ [-Attributes <FlagsExpression[FileAttributes]>] [-Directory] [-File] [-Hidden] [-ReadOnly] [-System]
+ [<CommonParameters>]
 ```
 
 ### LiteralItems
 
 ```
 Get-ChildItem [[-Filter] <string>] -LiteralPath <string[]> [-Include <string[]>]
-[-Exclude <string[]>] [-Recurse] [-Depth <uint32>] [-Force] [-Name] [-UseTransaction]
-[-Attributes <FlagsExpression[FileAttributes]>] [-Directory] [-File] [-Hidden] [-ReadOnly] [-System]
-[<CommonParameters>]
+ [-Exclude <string[]>] [-Recurse] [-Depth <uint32>] [-Force] [-Name] [-UseTransaction]
+ [-Attributes <FlagsExpression[FileAttributes]>] [-Directory] [-File] [-Hidden] [-ReadOnly] [-System]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +41,8 @@ container, it gets the items inside the container, known as child items. You can
 parameter to get items in all child containers and use the **Depth** parameter to limit the number
 of levels to recurse.
 
-`Get-ChildItem` does not display empty directories. When a `Get-ChildItem` command includes the
-**Depth** or **Recurse** parameters, empty directories are not included in the output.
+`Get-ChildItem` doesn't display empty directories. When a `Get-ChildItem` command includes the
+**Depth** or **Recurse** parameters, empty directories aren't included in the output.
 
 Locations are exposed to `Get-ChildItem` by PowerShell providers. A location can be a file system
 directory, registry hive, or a certificate store. For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
@@ -51,19 +51,18 @@ directory, registry hive, or a certificate store. For more information, see [abo
 
 ### Example 1: Get child items from a file system directory
 
-This example gets the child items from a file system directory. The file names and subdirectory
-names are displayed. For empty locations the command does not return any output and returns to the
+This example gets the child items from a file system directory. The filenames and subdirectory
+names are displayed. For empty locations, the command doesn't return any output and returns to the
 PowerShell prompt.
 
-By default `Get-ChildItem` lists the mode (attributes), last write time, file size (length), and the
-name of the item. The letters in the **Mode** property can be interperted as follows: `l` (link),
-`d` (directory), `a` (archive), `r` (read-only), `h` (hidden), and `s` (system). For more
-information about the mode flags, see
-[about_Filesystem_Provider](../microsoft.powershell.core/about/about_filesystem_provider.md#attributes-flagsexpression).
+The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory `C:\Test`.
+`Get-ChildItem` displays the files and directories in the PowerShell console.
 
+```powershell
+Get-ChildItem -Path C:\Test
 ```
-PS> Get-ChildItem -Path C:\Test
 
+```Output
    Directory: C:\Test
 
 Mode                LastWriteTime         Length Name
@@ -75,16 +74,31 @@ d-----        2/15/2019     08:29                Logs
 -ar---        2/12/2019     14:31             27 ReadOnlyFile.txt
 ```
 
-The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory **C:\Test**.
-`Get-ChildItem` displays the files and directories in the PowerShell console.
+By default `Get-ChildItem` lists the mode (**Attributes**), **LastWriteTime**, file size (**Length**),
+and the **Name** of the item. The letters in the **Mode** property can be interpreted as follows:
+
+- `l` (link)
+- `d` (directory)
+- `a` (archive)
+- `r` (read-only)
+- `h` (hidden)
+- `s` (system).
+
+For more information about the mode flags, see
+[about_Filesystem_Provider](../microsoft.powershell.core/about/about_filesystem_provider.md#attributes-flagsexpression).
 
 ### Example 2: Get child item names in a directory
 
-This command lists only the names of items in a directory.
+This example lists only the names of items in a directory.
 
+The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory `C:\Test`. The
+**Name** parameter returns only the file or directory names from the specified path.
+
+```powershell
+Get-ChildItem -Path C:\Test -Name
 ```
-PS> Get-ChildItem -Path C:\Test -Name
 
+```Output
 Logs
 anotherfile.txt
 Command.txt
@@ -92,17 +106,16 @@ CreateTestFile.ps1
 ReadOnlyFile.txt
 ```
 
-The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory **C:\Test**. The
-**Name** parameter returns only the file or directory names from the specified path.
-
 ### Example 3: Get child items in the current directory and subdirectories
 
 This example displays **.txt** files that are located in the current directory and its
 subdirectories.
 
+```powershell
+Get-ChildItem -Path C:\Test\*.txt -Recurse -Force
 ```
-PS> Get-ChildItem -Path C:\Test\*.txt -Recurse -Force
 
+```Output
     Directory: C:\Test\Logs\Adirectory
 
 Mode                LastWriteTime         Length Name
@@ -137,9 +150,9 @@ Mode                LastWriteTime         Length Name
 ```
 
 The `Get-ChildItem` cmdlet uses the **Path** parameter to specify `C:\Test\*.txt`. **Path** uses the
-asterisk (`*`) wildcard to specify all files with the file name extension **.txt**. The **Recurse**
+asterisk (`*`) wildcard to specify all files with the filename extension `.txt`. The **Recurse**
 parameter searches the **Path** directory its subdirectories, as shown in the **Directory:**
-headings. The **Force** parameter displays hidden files such as **hiddenfile.txt** that have a mode
+headings. The **Force** parameter displays hidden files such as `hiddenfile.txt` that have a mode
 of **h**.
 
 ### Example 4: Get child items using the Include parameter
@@ -147,9 +160,21 @@ of **h**.
 In this example `Get-ChildItem` uses the **Include** parameter to find specific items from the
 directory specified by the **Path** parameter.
 
+```powershell
+# When using the -Include parameter, if you don't include an asterisk in the path
+# the command returns no output.
+Get-ChildItem -Path C:\Test\ -Include *.txt
 ```
-PS> Get-ChildItem -Path C:\Test\* -Include *.txt
 
+```Output
+
+```
+
+```powershell
+Get-ChildItem -Path C:\Test\* -Include *.txt
+```
+
+```Output
     Directory: C:\Test
 
 Mode                LastWriteTime         Length Name
@@ -167,21 +192,22 @@ extension **.txt**.
 When the **Include** parameter is used, the **Path** parameter needs a trailing asterisk (`*`)
 wildcard to specify the directory's contents. For example, `-Path C:\Test\*`.
 
-If a trailing asterisk (`*`) is not included in the **Path** parameter, the command does not return
-any output and returns to the PowerShell prompt. For example, `-Path C:\Test\`.
-
-If the **Recurse** parameter is added to the command, a trailing asterisk (`*`) in the **Path**
-parameter is optional. The **Recurse** parameter gets items from the **Path** directory and its
-subdirectories.
+- If the **Recurse** parameter is added to the command, the trailing asterisk (`*`) in the **Path**
+  parameter is optional. The **Recurse** parameter gets items from the **Path** directory and its
+  subdirectories. For example, `-Path C:\Test\ -Recurse -Include *.txt`
+- If a trailing asterisk (`*`) isn't included in the **Path** parameter, the command doesn't return
+  any output and returns to the PowerShell prompt. For example, `-Path C:\Test\`.
 
 ### Example 5: Get child items using the Exclude parameter
 
-In this example `Get-ChildItem` uses the **Exclude** parameter to exclude the output of specific
-items from the directory specified by the **Path** parameter.
+The example's output shows the contents of the directory **C:\Test\Logs**. The output is a reference
+for the other commands that use the **Exclude** and **Recurse** parameters.
 
+```powershell
+Get-ChildItem -Path C:\Test\Logs
 ```
-PS> Get-ChildItem -Path C:\Test\Logs
 
+```Output
     Directory: C:\Test\Logs
 
 Mode                LastWriteTime         Length Name
@@ -192,93 +218,45 @@ d-----        2/15/2019     13:21                Backup
 -a----        2/12/2019     16:16             20 Afile.txt
 -a----        2/13/2019     13:26             20 LogFile1.txt
 -a----        2/12/2019     16:24             23 systemlog1.log
+```
 
+```powershell
+Get-ChildItem -Path C:\Test\Logs\* -Exclude A*
+```
 
-PS>  Get-ChildItem -Path C:\Test\Logs -Exclude A*
-
+```Output
     Directory: C:\Test\Logs
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 d-----        2/15/2019     13:21                Backup
--a----        2/13/2019     13:26             20 LogFile1.txt
--a----        2/12/2019     16:24             23 systemlog1.log
-
-
-PS> Get-ChildItem -Path C:\Test\Logs\* -Exclude A*
-
-    Directory: C:\Test\Logs\Backup
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
--a----        2/12/2019     15:50             20 LogFile3.txt
--a----        2/12/2019     16:24             23 systemlog1.log
-
-    Directory: C:\Test\Logs
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
--a----        2/13/2019     13:26             20 LogFile1.txt
--a----        2/12/2019     16:24             23 systemlog1.log
-
-
-PS> Get-ChildItem -Path C:\Test\Logs\* -Exclude A* -Recurse
-
-    Directory: C:\Test\Logs\Adirectory
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
--a----        2/13/2019     13:26             20 LogFile4.txt
--a----        2/12/2019     16:24             23 systemlog1.log
-
-    Directory: C:\Test\Logs
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
-d-----        2/15/2019     13:21                Backup
-
-    Directory: C:\Test\Logs\Backup
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
--a----        2/12/2019     15:50             20 LogFile3.txt
--a----        2/12/2019     16:24             23 systemlog1.log
-
-    Directory: C:\Test\Logs
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
 -a----        2/13/2019     13:26             20 LogFile1.txt
 -a----        2/12/2019     16:24             23 systemlog1.log
 ```
 
-The example's output shows the contents of the directory **C:\Test\Logs**. The output is a reference
-for the other commands that use the **Exclude** and **Recurse** parameters.
-
-The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory **C:\Test\Logs**.
+The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the directory `C:\Test\Logs`.
 The **Exclude** parameter uses the asterisk (`*`) wildcard to specify any files or directories that
 begin with **A** or **a** are excluded from the output.
 
 When the **Exclude** parameter is used, a trailing asterisk (`*`) in the **Path** parameter is
 optional. For example, `-Path C:\Test\Logs` or `-Path C:\Test\Logs\*`.
 
-If a trailing asterisk (`*`) is not included in the **Path** parameter, the contents of the **Path**
-parameter are displayed. The exceptions are file names or subdirectory names that match the
-**Exclude** parameter's value.
-
-If a trailing asterisk (`*`) is included in the **Path** parameter, the command recurses into the
-**Path** parameter's subdirectories. The exceptions are file names or subdirectory names that match
-the **Exclude** parameter's value.
-
-If the **Recurse** parameter is added to the command, the recursion output is the same whether or
-not the **Path** parameter includes a trailing asterisk (`*`). The **Recurse** parameter does a
-recursion of the directory **Adirectory** even though the directory name matches the **Exclude**
-parameter's value. The files in **Adirectory** that match the **Exclude** parameter's value are
-excluded from the output.
+- If a trailing asterisk (`*`) isn't included in the **Path** parameter, the contents of the **Path**
+  parameter are displayed. The exceptions are filenames or subdirectory names that match the
+  **Exclude** parameter's value.
+- If a trailing asterisk (`*`) is included in the **Path** parameter, the command recurses into the
+  **Path** parameter's subdirectories. The exceptions are filenames or subdirectory names that match
+  the **Exclude** parameter's value.
+- If the **Recurse** parameter is added to the command, the recursion output is the same whether or
+  not the **Path** parameter includes a trailing asterisk (`*`).
 
 ### Example 6: Get the registry keys from a registry hive
 
-This command gets all of the registry keys from the **HKEY_LOCAL_MACHINE\HARDWARE** registry hive.
+This example gets all the registry keys from `HKEY_LOCAL_MACHINE\HARDWARE`.
+
+`Get-ChildItem` uses the **Path** parameter to specify the registry key `HKLM:\HARDWARE`. The
+hive's path and top level of registry keys are displayed in the PowerShell console.
+
 For more information, see [about_Registry_Provider](../Microsoft.PowerShell.Core/About/about_Registry_Provider.md).
 
 ```powershell
@@ -298,7 +276,7 @@ UEFI
 ```
 
 ```powershell
-Get-ChildItem -Path HLKM:\HARDWARE -Exclude D*
+Get-ChildItem -Path HKLM:\HARDWARE -Exclude D*
 ```
 
 ```Output
@@ -316,27 +294,31 @@ parameter only works on subkeys, not item properties.
 
 ### Example 7: Get all certificates with code-signing authority
 
-This command gets each certificate in the PowerShell **Cert:** drive that has code-signing
-authority. For more information about the Certificate provider and the Cert: drive,
-see [about_Certificate_Provider](../Microsoft.PowerShell.Security/About/about_Certificate_Provider.md).
-
-```powershell
-Get-ChildItem -Path Cert:\* -Recurse -CodeSigningCert
-```
+This example gets each certificate in the PowerShell **Cert:** drive that has code-signing
+authority.
 
 The `Get-ChildItem` cmdlet uses the **Path** parameter to specify the **Cert:** provider. The
 **Recurse** parameter searches the directory specified by **Path** and its subdirectories. The
 **CodeSigningCert** parameter gets only certificates that have code-signing authority.
 
+```powershell
+Get-ChildItem -Path Cert:\* -Recurse -CodeSigningCert
+```
+
+For more information about the Certificate provider and the Cert: drive,
+see [about_Certificate_Provider](../Microsoft.PowerShell.Security/About/about_Certificate_Provider.md).
+
 ### Example 8: Get items using the Depth parameter
 
-This command displays the items in a directory and its subdirectories. The **Depth** parameter
+This example displays the items in a directory and its subdirectories. The **Depth** parameter
 determines the number of subdirectory levels to include in the recursion. Empty directories are
 excluded from the output.
 
-```
+```powershell
 Get-ChildItem -Path C:\Parent -Depth 2
+```
 
+```Output
     Directory: C:\Parent
 
 Mode                LastWriteTime         Length Name
@@ -404,7 +386,7 @@ To combine attributes, use the following operators:
 - `+` (AND)
 - `,` (OR)
 
-Do not use spaces between an operator and its attribute. Spaces are accepted after commas.
+Don't use spaces between an operator and its attribute. Spaces are accepted after commas.
 
 For common attributes, use the following abbreviations:
 
@@ -434,14 +416,15 @@ determines the number of subdirectory levels that are included in the recursion 
 contents.
 
 For example, `Depth 2` includes the **Path** parameter's directory, first level of subdirectories,
-and second level of subdirectories. By default directory names and file names are included in the
+and second level of subdirectories. By default directory names and filenames are included in the
 output.
 
-On a Windows computer from PowerShell or **cmd.exe**, you can display a graphical view of a
-directory structure with the **tree.com** command.
+> [!NOTE]
+> On a Windows computer from PowerShell or **cmd.exe**, you can display a graphical view of a
+> directory structure with the **tree.com** command.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -458,7 +441,7 @@ To get a list of directories, use the **Directory** parameter or the **Attribute
 the **Directory** property. You can use the **Recurse** parameter with **Directory**.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: ad, d
 
@@ -481,7 +464,7 @@ or `-Path C:\Test\Logs\*`. If a trailing asterisk (`*`) is included, the command
 parameter are displayed. More details are included in Example 5 and the Notes section.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -498,7 +481,7 @@ To get a list of files, use the **File** parameter. You can use the **Recurse** 
 **File**.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: af
 
@@ -512,13 +495,13 @@ Accept wildcard characters: False
 ### -Filter
 
 Specifies a filter to qualify the **Path** parameter. The [FileSystem](../Microsoft.PowerShell.Core/About/about_FileSystem_Provider.md)
-provider is the only installed PowerShell provider that supports the use of filters. Filters are
-more efficient than other parameters, because the provider applies them when the cmdlet gets the
-objects rather than having PowerShell filter the objects after they are retrieved. The filter string
-is passed to the .NET API to enumerate files. That API only supports `*` and `?` wildcards.
+provider is the only installed PowerShell provider that supports filters. Filters are more efficient
+than other parameters. The provider applies filter when the cmdlet gets the objects rather than
+having PowerShell filter the objects after they're retrieved. The filter string is passed to the
+.NET API to enumerate files. The API only supports `*` and `?` wildcards.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -531,12 +514,12 @@ Accept wildcard characters: True
 
 ### -Force
 
-Allows the cmdlet to get items that cannot otherwise not be accessed by the user, such as hidden or
-system files. The **Force** parameter does not override security restrictions. Implementation varies
+Allows the cmdlet to get items that otherwise can't be accessed by the user, such as hidden or
+system files. The **Force** parameter doesn't override security restrictions. Implementation varies
 among providers. For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -550,11 +533,11 @@ Accept wildcard characters: False
 ### -Hidden
 
 To get only hidden items, use the **Hidden** parameter or the **Attributes** parameter with the
-**Hidden** property. By default, `Get-ChildItem` does not display hidden items. Use the **Force**
+**Hidden** property. By default, `Get-ChildItem` doesn't display hidden items. Use the **Force**
 parameter to get hidden items.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: ah, h
 
@@ -569,15 +552,12 @@ Accept wildcard characters: False
 
 Specifies, as a string array, an item or items that this cmdlet includes in the operation. The value
 of this parameter qualifies the **Path** parameter. Enter a path element or pattern, such as
-`*.txt`. Wildcard characters are accepted.
-
-**Include** needs the **Path** parameter to use a trailing asterisk (`*`) to specify the directory's
-contents, such as: `-Path C:\Test\Logs\*` If there is no trailing asterisk (`*`), add the
-**Recurse** parameter to the command. Otherwise the `Get-ChildItem` command fails. More details are
-included in Example 4 and the Notes section.
+`"*.txt"`. Wildcard characters are permitted. The **Include** parameter is effective only when the
+command includes the contents of an item, such as `C:\Windows\*`, where the wildcard character
+specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -590,13 +570,15 @@ Accept wildcard characters: True
 
 ### -LiteralPath
 
-Specifies a path to one or more locations. The value of **LiteralPath** is used exactly as it is
+Specifies a path to one or more locations. The value of **LiteralPath** is used exactly as it's
 typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose
-it in single quotation marks. Single quotation marks tell PowerShell not to interpret any characters
-as escape sequences. For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
+it in single quotation marks. Single quotation marks tell PowerShell to not interpret any characters
+as escape sequences.
+
+For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: LiteralItems
 Aliases: PSPath
 
@@ -610,10 +592,10 @@ Accept wildcard characters: False
 ### -Name
 
 Gets only the names of the items in the location. The output is a string object that can be sent
-down the pipeline to other commands.
+down the pipeline to other commands. Wildcards are permitted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -621,7 +603,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Path
@@ -630,7 +612,7 @@ Specifies a path to one or more locations. Wildcards are accepted. The default l
 current directory (`.`).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Items
 Aliases:
 
@@ -647,7 +629,7 @@ To get only read-only items, use the **ReadOnly** parameter or the **Attributes*
 **ReadOnly** property.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: ar
 
@@ -663,7 +645,7 @@ Accept wildcard characters: False
 Gets the items in the specified locations and in all child items of the locations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: s
 
@@ -680,7 +662,7 @@ Gets only system files and directories. To get only system files and folders, us
 parameter or **Attributes** parameter **System** property.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: as
 
@@ -697,7 +679,7 @@ Includes the command in the active transaction. This parameter is valid only whe
 in progress. For more information, see [about_Transactions](../Microsoft.PowerShell.Core/About/about_Transactions.md).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: usetx
 
@@ -724,7 +706,8 @@ You can pipe a string that contains a path to `Get-ChildItem`.
 
 ### System.Object
 
-The type of object that `Get-ChildItem` returns is determined by the objects in the provider drive path.
+The type of object that `Get-ChildItem` returns is determined by the objects in the provider drive
+path.
 
 ### System.String
 
@@ -732,27 +715,13 @@ If you use the **Name** parameter, `Get-ChildItem` returns the object names as s
 
 ## NOTES
 
-You can investigate the file names or directories that `Get-ChildItem` searches when you use the
-**Include** or **Exclude** parameters. Use the `ForEach-Object` and `Split-Path` cmdlets as shown in
-these examples:
-
-`PS> Get-ChildItem -Path C:\Test\Logs\* -Include *.txt -Recurse | ForEach-Object {Split-Path $_.FullName -Parent}`
-
-`PS> Get-ChildItem -Path C:\Test\Logs\* -Include *.txt -Recurse | ForEach-Object {Split-Path $_.FullName -Leaf}`
-
-`PS> Get-ChildItem -Path C:\Test\Logs -Exclude A* -Recurse | ForEach-Object {Split-Path $_.FullName -Parent}`
-
-`PS> Get-ChildItem -Path C:\Test\Logs -Exclude A* -Recurse | ForEach-Object {Split-Path $_.FullName -Leaf}`
-
-You can refer to `Get-ChildItem` by its built-in aliases, `ls`, `dir`, and `gci`. For more
-information, see [about_Aliases](../Microsoft.PowerShell.Core/About/about_Aliases.md).
-
-`Get-ChildItem` does not get hidden items by default. To get hidden items, use the **Force**
-parameter.
-
-The `Get-ChildItem` cmdlet is designed to work with the data exposed by any provider. To list the
-providers available in your session, type `Get-PSProvider`.
-For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
+- `Get-ChildItem` can be run using any of the built-in aliases, `ls`, `dir`, and `gci`. For more
+  information, see [about_Aliases](../Microsoft.PowerShell.Core/About/about_Aliases.md).
+- `Get-ChildItem` doesn't get hidden items by default. To get hidden items, use the **Force**
+  parameter.
+- The `Get-ChildItem` cmdlet is designed to work with the data exposed by any provider. To list the
+  providers available in your session, type `Get-PSProvider`.
+  For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
 
 ## RELATED LINKS
 

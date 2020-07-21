@@ -1,13 +1,13 @@
 ---
+external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
+keywords: powershell,cmdlet
+Locale: en-US
+Module Name: Microsoft.PowerShell.Management
 ms.date: 04/23/2019
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-online version: https://go.microsoft.com/fwlink/?linkid=821583
-external help file:  Microsoft.PowerShell.Commands.Management.dll-Help.xml
-title:  Get-Content
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-content?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: Get-Content
 ---
-
 # Get-Content
 
 ## SYNOPSIS
@@ -19,18 +19,18 @@ Gets the content of the item at the specified location.
 
 ```
 Get-Content [-ReadCount <Int64>] [-TotalCount <Int64>] [-Tail <Int32>] [-Path] <String[]>
-[-Filter <String>] [-Include <String[]>] [-Exclude <String[]>] [-Force] [-Credential <PSCredential>]
-[-UseTransaction] [-Delimiter <String>] [-Wait] [-Raw]
-[-Encoding <FileSystemCmdletProviderEncoding>] [-Stream <String>] [<CommonParameters>]
+ [-Filter <String>] [-Include <String[]>] [-Exclude <String[]>] [-Force] [-Credential <PSCredential>]
+ [-UseTransaction] [-Delimiter <String>] [-Wait] [-Raw]
+ [-Encoding <FileSystemCmdletProviderEncoding>] [-Stream <String>] [<CommonParameters>]
 ```
 
 ### LiteralPath
 
 ```
 Get-Content [-ReadCount <Int64>] [-TotalCount <Int64>] [-Tail <Int32>] -LiteralPath <String[]>
-[-Filter <String>] [-Include <String[]>] [-Exclude <String[]>] [-Force] [-Credential <PSCredential>]
-[-UseTransaction] [-Delimiter <String>] [-Wait] [-Raw]
-[-Encoding <FileSystemCmdletProviderEncoding>] [-Stream <String>] [<CommonParameters>]
+ [-Filter <String>] [-Include <String[]>] [-Exclude <String[]>] [-Force] [-Credential <PSCredential>]
+ [-UseTransaction] [-Delimiter <String>] [-Wait] [-Raw]
+ [-Encoding <FileSystemCmdletProviderEncoding>] [-Stream <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,13 +92,6 @@ This command gets a specific number of lines from a file and then displays only 
 that content. The **TotalCount** parameter gets the first 25 lines of content. This example uses the
 `LineNumbers.txt` file that was created in Example 1.
 
-The `Get-Content` command is wrapped in parentheses so that the command completes before going to
-the next step.
-
-The `Get-Content` cmdlet returns an array of lines, this allows you to add the index notation after
-the parenthesis to retrieve a specific line number. In this case, the `[-1]` index specifies the
-last index in the returned array of 25 retrieved lines.
-
 ```powershell
 (Get-Content -Path .\LineNumbers.txt -TotalCount 25)[-1]
 ```
@@ -107,36 +100,33 @@ last index in the returned array of 25 retrieved lines.
 This is Line 25
 ```
 
+The `Get-Content` command is wrapped in parentheses so that the command completes before going to
+the next step. `Get-Content`returns an array of lines, this allows you to add the index notation after
+the parenthesis to retrieve a specific line number. In this case, the `[-1]` index specifies the
+last index in the returned array of 25 retrieved lines.
+
 ### Example 4: Get the last line of a text file
 
 This command gets the first line and last line of content from a file. This example uses the
 `LineNumbers.txt` file that was created in Example 1.
 
-This example uses the `Get-Item` cmdlet to demonstrate that you can pipe files into the
-`Get-Content` parameter.
-
-The **Tail** parameter gets the last line of the file. This method is faster than retrieving all of
-the lines and using the `[-1]` index notation.
-
 ```powershell
-Get-Item -Path .\LineNumbers.txt Get-Content -Tail 1
+Get-Item -Path .\LineNumbers.txt | Get-Content -Tail 1
 ```
 
 ```Output
 This is Line 100
 ```
 
+This example uses the `Get-Item` cmdlet to demonstrate that you can pipe files into the
+`Get-Content` parameter. The **Tail** parameter gets the last line of the file. This method is
+faster than retrieving all of the lines and using the `[-1]` index notation.
+
 ### Example 5: Get the content of an alternate data stream
 
 This example describes how to use the **Stream** parameter to get the content of an alternate data
 stream for files stored on a Windows NTFS volume. In this example, the `Set-Content` cmdlet is used
 to create sample content in a file named `Stream.txt`.
-
-The **Stream** parameter is a dynamic parameter of the
-[FileSystem provider](../microsoft.powershell.core/about/about_filesystem_provider.md#stream-systemstring).
-By default `Get-Content` only retrieves data from the primary, or `$DATA` stream.
-
-**Streams** can be used to store hidden data such as attributes, security settings, or other data.
 
 ```powershell
 Set-Content -Path .\Stream.txt -Value 'This is the content of the Stream.txt file'
@@ -203,6 +193,11 @@ Get-Content -Path .\Stream.txt -Stream NewStream
 Added a stream named NewStream to Stream.txt
 ```
 
+The **Stream** parameter is a dynamic parameter of the
+[FileSystem provider](../microsoft.powershell.core/about/about_filesystem_provider.md#stream-systemstring).
+By default `Get-Content` only retrieves data from the primary, or `$DATA` stream. **Streams** can be
+used to store hidden data such as attributes, security settings, or other data.
+
 ### Example 6: Get raw content
 
 The commands in this example get the contents of a file as one string, instead of an array of
@@ -261,10 +256,12 @@ PowerShell as `[System.Object[]]`.
 
 ### -Path
 
-Specifies the path to an item where `Get-Content` gets the content. Wildcards are permitted.
+Specifies the path to an item where `Get-Content` gets the content. Wildcard characters are
+permitted. The paths must be paths to items, not to containers. For example, you must specify a path
+to one or more files, not a path to a directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Path
 Aliases:
 
@@ -277,13 +274,15 @@ Accept wildcard characters: True
 
 ### -LiteralPath
 
-Specifies the path to an item. Unlike the **Path** parameter, the value of **LiteralPath** is used
-exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape
-characters, enclose it in single quotation marks. Single quotation marks tell PowerShell not to
-interpret any characters as escape sequences.
+Specifies a path to one or more locations. The value of **LiteralPath** is used exactly as it is
+typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose
+it in single quotation marks. Single quotation marks tell PowerShell not to interpret any characters
+as escape sequences.
+
+For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: LiteralPath
 Aliases: PSPath
 
@@ -305,7 +304,7 @@ line increases, but the total time for the operation decreases. This can make a 
 difference in large items.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +323,7 @@ lines).
 You can use the **TotalCount** parameter name or its aliases, **First** or **Head**.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases: First, Head
 
@@ -341,7 +340,7 @@ Specifies the number of lines from the end of a file or other item. You can use 
 parameter name or its alias, **Last**. This parameter was introduced in PowerShell 3.0.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases: Last
 
@@ -354,13 +353,14 @@ Accept wildcard characters: False
 
 ### -Filter
 
-Specifies a filter in the provider's format or language. The value of this parameter qualifies the
-**Path** parameter. The syntax of the filter, including the use of wildcards, depends on the
-provider. **Filters** are more efficient than other parameters because the provider applies filters
-when objects are retrieved. Otherwise, PowerShell processes filters after the objects are retrieved.
+Specifies a filter to qualify the **Path** parameter. The [FileSystem](../Microsoft.PowerShell.Core/About/about_FileSystem_Provider.md)
+provider is the only installed PowerShell provider that supports the use of filters. You can find
+the syntax for the **FileSystem** filter language in [about_Wildcards](../Microsoft.PowerShell.Core/About/about_Wildcards.md).
+Filters are more efficient than other parameters, because the provider applies them when the cmdlet
+gets the objects rather than having PowerShell filter the objects after they are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -373,12 +373,14 @@ Accept wildcard characters: True
 
 ### -Include
 
-Specifies, as a string array, the item that this cmdlet includes in the operation. The value of this
-parameter qualifies the **Path** parameter. Enter a path element or pattern, such as `*.txt`.
-Wildcards are permitted.
+Specifies, as a string array, an item or items that this cmdlet includes in the operation. The value
+of this parameter qualifies the **Path** parameter. Enter a path element or pattern, such as
+`"*.txt"`. Wildcard characters are permitted. The **Include** parameter is effective only when the
+command includes the contents of an item, such as `C:\Windows\*`, where the wildcard character
+specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -391,12 +393,18 @@ Accept wildcard characters: True
 
 ### -Exclude
 
-Specifies, as a string array, the item that this cmdlet omits when performing the operation. The
-value of this parameter qualifies the **Path** parameter. Enter a path element or pattern, such as
-`*.txt`. Wildcards are permitted.
+Specifies, as a string array, an item or items that this cmdlet excludes in the operation.
+The value of this parameter qualifies the **Path** parameter.
+
+Enter a path element or pattern, such as `*.txt`.
+Wildcard characters are permitted.
+
+The **Exclude** parameter is effective only when the command includes the contents of an item,
+such as `C:\Windows\*`, where the wildcard character specifies the contents of the `C:\Windows`
+directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -413,7 +421,7 @@ Accept wildcard characters: True
 **Force** parameter does not attempt to change file permissions or override security restrictions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -426,15 +434,13 @@ Accept wildcard characters: False
 
 ### -Credential
 
-Specifies a user account that has permission to perform this action. The default is the current
-user.
-
-Type a user name, such as **User01** or **Domain01\User01**, or enter a **PSCredential** object,
-such as one generated by the `Get-Credential` cmdlet. If you type a user name, you will be prompted
-for a password.
+> [!NOTE]
+> This parameter is not supported by any providers installed with PowerShell.
+> To impersonate another user, or elevate your credentials when running this cmdlet,
+> use [Invoke-Command](../Microsoft.PowerShell.Core/Invoke-Command.md).
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -458,15 +464,15 @@ as the delimiter. The delimiter is preserved (not discarded) and becomes the las
 section.
 
 **Delimiter** is a dynamic parameter that the **FileSystem** provider adds to the `Get-Content`
-cmdlet This parameter works only in file system drives.
+cmdlet. This parameter works only in file system drives.
 
 > [!NOTE]
 > Currently, when the value of the **Delimiter** parameter is an empty string, `Get-Content` does
-> not return anything. This is a known issue To force `Get-Content` to return the entire file as a
-> single, undelimited string, enter a value that does not exist in the file.
+> not return anything. This is a known issue. To force `Get-Content` to return the entire file as
+> a single, undelimited string. Enter a value that does not exist in the file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -488,7 +494,7 @@ reported.
 parameter works only in file system drives. **Wait** cannot be combined with **Raw**.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -509,7 +515,7 @@ into an array of strings. This parameter was introduced in PowerShell 3.0.
 This parameter works only in file system drives.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -522,22 +528,22 @@ Accept wildcard characters: False
 
 ### -Encoding
 
-Specifies the type of encoding for the target file. The default value is **Default**.
+Specifies the type of encoding for the target file. The default value is `Default`.
 
 The acceptable values for this parameter are as follows:
 
-- **ASCII** Uses ASCII (7-bit) character set.
-- **BigEndianUnicode** Uses UTF-16 with the big-endian byte order.
-- **BigEndianUTF32** Uses UTF-32 with the big-endian byte order.
-- **Byte** Encodes a set of characters into a sequence of bytes.
-- **Default** Uses the encoding that corresponds to the system's active code page (usually ANSI).
-- **OEM** Uses the encoding that corresponds to the system's current OEM code page.
-- **String** Same as **Unicode**.
-- **Unicode** Uses UTF-16 with the little-endian byte order.
-- **Unknown** Same as **Unicode**.
-- **UTF7** Uses UTF-7.
-- **UTF8** Uses UTF-8.
-- **UTF32** Uses UTF-32 with the little-endian byte order.
+- `Ascii` Uses ASCII (7-bit) character set.
+- `BigEndianUnicode` Uses UTF-16 with the big-endian byte order.
+- `BigEndianUTF32` Uses UTF-32 with the big-endian byte order.
+- `Byte` Encodes a set of characters into a sequence of bytes.
+- `Default` Uses the encoding that corresponds to the system's active code page (usually ANSI).
+- `Oem` Uses the encoding that corresponds to the system's current OEM code page.
+- `String` Same as `Unicode`.
+- `Unicode` Uses UTF-16 with the little-endian byte order.
+- `Unknown` Same as `Unicode`.
+- `UTF7` Uses UTF-7.
+- `UTF8` Uses UTF-8.
+- `UTF32` Uses UTF-32 with the little-endian byte order.
 
 Encoding is a dynamic parameter that the **FileSystem** provider adds to the `Get-Content` cmdlet.
 This parameter works only in file system drives.
@@ -549,7 +555,7 @@ entire file in a single read operation and converts it into a single object (PSO
 object, which causes errors when you use the `Set-Content` cmdlet to write the bytes to a file.
 
 ```yaml
-Type: FileSystemCmdletProviderEncoding
+Type: Microsoft.PowerShell.Commands.FileSystemCmdletProviderEncoding
 Parameter Sets: (All)
 Aliases:
 Accepted values: ASCII, BigEndianUnicode, BigEndianUTF32, Byte, Default, OEM, String, Unicode, Unknown, UTF7, UTF8, UTF32
@@ -571,7 +577,7 @@ This parameter works only in file system drives on Windows systems. This paramet
 Windows PowerShell 3.0.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -588,7 +594,7 @@ Includes the command in the active transaction. This parameter is valid only whe
 in progress. For more information, see [about_Transactions](../Microsoft.PowerShell.Core/About/about_Transactions.md).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: usetx
 
@@ -621,7 +627,8 @@ specify as input.
 ## NOTES
 
 The `Get-Content` cmdlet is designed to work with the data exposed by any provider. To get the
-providers in your session, use the `Get-PSProvider` cmdlet. For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
+providers in your session, use the `Get-PSProvider` cmdlet. For more information, see
+[about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
 
 ## RELATED LINKS
 

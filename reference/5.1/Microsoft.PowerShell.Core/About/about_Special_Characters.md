@@ -1,168 +1,210 @@
 ---
-ms.date:  06/09/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Special_Characters
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 04/04/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_special_characters?view=powershell-5.1&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Special_Characters
 ---
 
 # About Special Characters
 
-## SHORT DESCRIPTION
+## Short description
 
-Describes the special characters that you can use to control how Windows
-PowerShell interprets the next character in a command or parameter.
+Describes the special character sequences that control how PowerShell
+interprets the next characters in the sequence.
 
-## LONG DESCRIPTION
+## Long description
 
-PowerShell supports a set of special character sequences that are used
-to represent characters that are not part of the standard character set.
+PowerShell supports a set of special character sequences that are used to
+represent characters that aren't part of the standard character set. The
+sequences are commonly known as _escape sequences_.
 
-The special characters in PowerShell begin with the backtick
-character, also known as the grave accent (ASCII 96).
+Escape sequences begin with the backtick character, known as the grave accent
+(ASCII 96), and are case-sensitive. The backtick character can also be referred
+to as the _escape character_.
 
-The following special characters are recognized by PowerShell:
+Escape sequences are only interpreted when contained in double-quoted (`"`)
+strings.
 
-```
-| Character | Description             |
-| --------- | ----------------------- |
-| `0        | Null                    |
-| `a        | Alert                   |
-| `b        | Backspace               |
-| `f        | Form feed               |
-| `n        | New line                |
-| `r        | Carriage return         |
-| `t        | Horizontal tab          |
-| `v        | Vertical tab            |
-| --%       | Stop parsing            |
-```
+PowerShell recognizes these escape sequences:
 
-These characters are case-sensitive. The escape character is only interpreted
-when used within double quoted (") strings.
+|  Sequence   |       Description       |
+| ----------- | ----------------------- |
+| `` `0 ``    | Null                    |
+| `` `a ``    | Alert                   |
+| `` `b ``    | Backspace               |
+| `` `f ``    | Form feed               |
+| `` `n ``    | New line                |
+| `` `r ``    | Carriage return         |
+| `` `t ``    | Horizontal tab          |
+| `` `v ``    | Vertical tab            |
 
-## NULL (`0)
+PowerShell also has a special token to mark where you want parsing to stop. All
+characters that follow this token are used as literal values that aren't
+interpreted.
 
-PowerShell recognizes a null special character (`0) and represents it
-with a character code of 0. It appears as an empty space in the Windows
-PowerShell output. This allows you to use PowerShell to read and
-process text files that use null characters, such as string termination or
-record termination indicators. The null special character is not equivalent to
-the $null variable, which stores a value of NULL.
+Special parsing token:
 
-## ALERT (`a)
+| Sequence |            Description             |
+| -------- | ---------------------------------- |
+| `--%`    | Stop parsing anything that follows |
 
-The alert (`a) character sends a beep signal to the computer's speaker. You
-can use this to warn a user about an impending action. The following command
-sends two beep signals to the local computer's speaker:
+## Null (`0)
 
+The null (`` `0 ``) character appears as an empty space in PowerShell output.
+This functionality allows you to use PowerShell to read and process text files
+that use null characters, such as string termination or record termination
+indicators. The null special character isn't equivalent to the `$null`
+variable, which stores a **null** value.
+
+## Alert (`a)
+
+The alert (`` `a ``) character sends a beep signal to the computer's speaker.
+You can use this character to warn a user about an impending action. The
+following example sends two beep signals to the local computer's speaker.
+
+```powershell
 for ($i = 0; $i -le 1; $i++){"`a"}
+```
 
-## BACKSPACE (`b)
+## Backspace (`b)
 
-The backspace character (`b) moves the cursor back one character, but it does
-not delete any characters. The following command writes the word "backup",
-moves the cursor back twice, and then writes the word "out" (preceded by a
-space and starting at the new position):
+The backspace (`` `b ``) character moves the cursor back one character, but it
+doesn't delete any characters.
+
+The example writes the word **backup** and then moves the cursor back twice.
+Then, at the new position, writes a space followed by the word **out**.
 
 ```powershell
 "backup`b`b out"
 ```
 
-The output from this command is as follows:
-
-```output
+```Output
 back out
 ```
 
-## FORM FEED (`f)
+## Form feed (`f)
 
-The form feed character (`f) is a print instruction that ejects the current
-page and continues printing on the next page. This character affects printed
-documents only; it does not affect screen output.
+The form feed (`` `f ``) character is a print instruction that ejects the
+current page and continues printing on the next page. The form feed character
+only affects printed documents. It doesn't affect screen output.
 
-## NEW LINE (`n)
+## New line (`n)
 
-The new line character (`n) inserts a line break immediately after the
+The new line (`` `n ``) character inserts a line break immediately after the
 character.
 
-The following example shows how to use the new line character in a Write-Host
-command:
+This example shows how to use the new line character to create line breaks in a
+`Write-Host` command.
 
 ```powershell
-"There are two line breaks`n`nhere."
+"There are two line breaks to create a blank line`n`nbetween the words."
 ```
 
-The output from this command is as follows:
+```Output
+There are two line breaks to create a blank line
 
-```output
-There are two line breaks
-
-here.
+between the words.
 ```
 
-## CARRIAGE RETURN (`r)
+## Carriage return (`r)
 
-The carriage return character ``(`r)`` eliminates the entire line prior to the
-`r character, as though the prior text were on a different line.
+The carriage return (`` `r ``) character moves the output cursor to the
+beginning of the current line and continues writing. Any characters on the
+current line are overwritten.
 
-For example:
+In this example, the text before the carriage return is overwritten.
 
 ```powershell
-Write-Host "Let's not move`rDelete everything before this point."
+Write-Host "These characters are overwritten.`rI want this text instead "
 ```
 
-The output from this command is:
+Notice that the text before the `` `r `` character is not deleted, it is
+overwritten.
 
-```output
-Delete everything before this point.
+```Output
+I want this text instead written.
 ```
 
-## HORIZONTAL TAB (`t)
+## Horizontal tab (`t)
 
-The horizontal tab character (`t) advances to the next tab stop and continues
-writing at that point. By default, the PowerShell console has a tab
+The horizontal tab (`` `t ``) character advances to the next tab stop and
+continues writing at that point. By default, the PowerShell console has a tab
 stop at every eighth space.
 
-For example, the following command inserts two tabs between each column.
+This example inserts two tabs between each column.
 
 ```powershell
 "Column1`t`tColumn2`t`tColumn3"
 ```
 
-The output from this command is:
-
-```output
+```Output
 Column1         Column2         Column3
 ```
 
-## VERTICAL TAB (`v)
+## Vertical tab (`v)
 
-The horizontal tab character (`t) advances to the next vertical tab stop and
-writes all subsequent output beginning at that point. This character affects
-printed documents only. It does not affect screen output.
+The horizontal tab (`` `v ``) character advances to the next vertical tab stop
+and writes the remaining output at that point. This has no effect in the
+default Windows console.
 
-## STOP PARSING  (--%)
+```powershell
+Write-Host "There is a vertical tab`vbetween the words."
+```
 
-The stop-parsing symbol (--%) prevents PowerShell from interpreting
-arguments in program calls as PowerShell commands and expressions.
+The following example shows the output you would get on a printer or in a
+different console host.
 
-Place the stop-parsing symbol after the program name and before program
+```Output
+There is a vertical tab
+                       between the words.
+```
+
+## Stop-parsing token (--%)
+
+The stop-parsing (`--%`) token prevents PowerShell from interpreting strings as
+PowerShell commands and expressions. This allows those strings to be passed to
+other programs for interpretation.
+
+Place the stop-parsing token after the program name and before program
 arguments that might cause errors.
 
-For example, the following Icacls command uses the stop-parsing symbol.
+In this example, the `Icacls` command uses the stop-parsing token.
 
 ```powershell
 icacls X:\VMS --% /grant Dom\HVAdmin:(CI)(OI)F
 ```
 
-PowerShell sends the following command to Icacls.
+PowerShell sends the following string to `Icacls`.
 
-```output
+```
 X:\VMS /grant Dom\HVAdmin:(CI)(OI)F
 ```
 
-For more information about the stop-parsing symbol, see [about_Parsing](about_Parsing.md).
+Here is another example. The **showArgs** function outputs the values passed to
+it. In this example, we pass the variable named `$HOME` to the function twice.
 
-## SEE ALSO
+```powershell
+function showArgs {
+  "`$args = " + ($args -join '|')
+}
 
-- [about_Quoting_Rules](about_Quoting_Rules.md)
+showArgs $HOME --% $HOME
+```
+
+You can see in the output that, for the first parameter, the variable `$HOME`
+is interpreted by PowerShell so that the value of the variable is passed to the
+function. The second use of `$HOME` comes after the stop-parsing token, so the
+string "$HOME" is passed to the function without interpretation.
+
+```Output
+$args = C:\Users\username|--%|$HOME
+```
+
+For more information about the stop-parsing token, see
+[about_Parsing](about_Parsing.md).
+
+## See also
+
+[about_Quoting_Rules](about_Quoting_Rules.md)

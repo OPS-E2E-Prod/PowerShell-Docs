@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096509
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/export-alias?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Export-Alias
 ---
@@ -83,7 +83,8 @@ The first command exports the aliases in the session to the Alias.ps1 file.
 It uses the **As** parameter with a value of Script to generate a file that contains a Set-Alias command for each alias.
 
 The second command adds the aliases in the Alias.ps1 file to the CurrentUser-CurrentHost profile.
-(The path to the profile is saved in the $Profile variable.) The command uses the `Get-Content` cmdlet to get the aliases from the Alias.ps1 file and the `Add-Content` cmdlet to add them to the profile.
+The path to the profile is saved in the `$Profile` variable.
+The command uses the `Get-Content` cmdlet to get the aliases from the Alias.ps1 file and the `Add-Content` cmdlet to add them to the profile.
 For more information, see about_Profiles.
 
 The third and fourth commands add the aliases in the Alias.ps1 file to a remote session on the Server01 computer.
@@ -97,7 +98,7 @@ The fourth command uses the **FilePath** parameter of the `Invoke-Command` cmdle
 Indicates that this cmdlet appends the output to the specified file, rather than overwriting the existing contents of that file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +122,7 @@ Creates a `Set-Alias` command for each exported alias.
 If you name the output file with a .ps1 file name extension, you can run it as a script to add the aliases to any session.
 
 ```yaml
-Type: ExportAliasFormat
+Type: Microsoft.PowerShell.Commands.ExportAliasFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: Csv, Script
@@ -139,7 +140,7 @@ Specifies the description of the exported file.
 The description appears as a comment at the top of the file, following the header information.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +163,7 @@ The **NoClobber** parameter takes precedence over the **Force** parameter when b
 The **Force** parameter cannot force `Export-Alias` to overwrite files with the hidden attribute.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -182,9 +183,9 @@ If the path includes escape characters, enclose it in single quotation marks.
 Single quotation marks tell PowerShell not to interpret any characters as escape sequences.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByLiteralPath
-Aliases: PSPath
+Aliases: PSPath, LP
 
 Required: True
 Position: Named
@@ -201,7 +202,7 @@ Wildcards are permitted.
 By default, `Export-Alias` exports all aliases in the session or scope.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +210,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -NoClobber
@@ -222,7 +223,7 @@ If the **NoClobber** parameter is omitted, `Export-Alias` will overwrite an exis
 *NoClobber* does not prevent the **Append** parameter from adding content to an existing file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: NoOverwrite
 
@@ -239,7 +240,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +257,7 @@ Specifies the path to the output file.
 Wildcards are permitted, but the resulting path value must resolve to a single file name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPath
 Aliases:
 
@@ -264,7 +265,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Scope
@@ -281,7 +282,7 @@ The default value is Local.
 For more information, see about_Scopes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +298,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -314,7 +315,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -327,7 +328,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,11 +1,12 @@
 ---
+external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
+keywords: powershell,cmdlet
+Locale: en-US
+Module Name: Microsoft.PowerShell.Management
 ms.date: 5/14/2019
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-online version: https://go.microsoft.com/fwlink/?linkid=2096503
-external help file:  Microsoft.PowerShell.Commands.Management.dll-Help.xml
-title:  Move-Item
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/move-item?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: Move-Item
 ---
 # Move-Item
 
@@ -140,7 +141,7 @@ must be enclosed in single quotation marks, because it includes brackets that ca
 > use [Invoke-Command](../Microsoft.PowerShell.Core/Invoke-Command.md).
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -160,13 +161,13 @@ Wildcards are permitted, but the result must specify a single location.
 To rename the item being moved, specify a new name in the value of the **Destination** parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: Current directory
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
@@ -180,7 +181,7 @@ command includes the contents of an item, such as `C:\Windows\*`, where the wild
 specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +201,7 @@ Filters are more efficient than other parameters, because the provider applies t
 gets the objects rather than having PowerShell filter the objects after they are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +219,7 @@ Implementation varies from provider to provider.
 For more information, see [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +239,7 @@ command includes the contents of an item, such as `C:\Windows\*`, where the wild
 specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,9 +260,9 @@ as escape sequences.
 For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: LiteralPath
-Aliases: PSPath
+Aliases: PSPath, LP
 
 Required: True
 Position: Named
@@ -276,13 +277,13 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -294,13 +295,13 @@ The default is the current directory.
 Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Path
 Aliases:
 
 Required: True
 Position: 0
-Default value: None
+Default value: Current directory
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: True
 ```
@@ -310,7 +311,7 @@ Accept wildcard characters: True
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -327,7 +328,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -385,7 +386,5 @@ Otherwise, this cmdlet does not generate any output.
 [Rename-Item](Rename-Item.md)
 
 [Set-Item](Set-Item.md)
-
-[Get-PSProvider](Get-PSProvider.md)
 
 [about_Providers](../Microsoft.PowerShell.Core/About/about_Providers.md)

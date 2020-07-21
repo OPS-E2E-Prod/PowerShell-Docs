@@ -1,9 +1,10 @@
 ---
-ms.date:  11/28/2017
-schema:  2.0.0
-locale:  en-us
-keywords:  powershell,cmdlet
-title:  about_Hash_Tables
+keywords: powershell,cmdlet
+Locale: en-US
+ms.date: 11/28/2017
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_hash_tables?view=powershell-6&WT.mc_id=ps-gethelp
+schema: 2.0.0
+title: about_Hash_Tables
 ---
 # About Hash Tables
 
@@ -294,8 +295,8 @@ The following statement creates a hash table of process name strings and
 process object values and saves it in the \$p variable.
 
 ```powershell
-$p = @{"PowerShell" = (get-process PowerShell);
-"Notepad" = (get-process notepad)}
+$p = @{"PowerShell" = (Get-Process PowerShell);
+"Notepad" = (Get-Process notepad)}
 ```
 
 You can display the hash table in \$p and use the key-name properties to
@@ -493,8 +494,8 @@ For more information about here-strings, see [about_Quoting_Rules](about_Quoting
 
 [about_Script_Internationalization](about_Script_Internationalization.md)
 
-[ConvertFrom-StringData](../../Microsoft.PowerShell.Utility/ConvertFrom-StringData.md)
+[ConvertFrom-StringData](xref:Microsoft.PowerShell.Utility.ConvertFrom-StringData)
 
-[Import-LocalizedData](../../Microsoft.PowerShell.Utility/Import-LocalizedData.md)
+[Import-LocalizedData](xref:Microsoft.PowerShell.Utility.Import-LocalizedData)
 
-[System.Collections.Hashtable](/dotnet/api/system.collections.hashtable?view=netframework-4.7.2)
+[System.Collections.Hashtable](/dotnet/api/system.collections.hashtable)

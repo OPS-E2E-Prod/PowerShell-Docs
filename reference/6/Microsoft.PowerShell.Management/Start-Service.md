@@ -1,10 +1,10 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096822
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/start-service?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Start-Service
 ---
@@ -118,7 +118,7 @@ the command succeeds. To verify that the command succeeded, run `Get-Service`.
 Specifies the display names of the services to start. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: DisplayName
 Aliases:
 
@@ -126,7 +126,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Exclude
@@ -135,7 +135,7 @@ Specifies services that this cmdlet omits. The value of this parameter qualifies
 parameter. Enter a name element or pattern, such as `s*`. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Include
@@ -152,7 +152,7 @@ Specifies services that this cmdlet starts. The value of this parameter qualifie
 parameter. Enter a name element or pattern, such as `s*`. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +160,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -InputObject
@@ -169,7 +169,7 @@ Specifies **ServiceController** objects representing the services to be started.
 that contains the objects, or type a command or expression that gets the objects.
 
 ```yaml
-Type: ServiceController[]
+Type: System.ServiceProcess.ServiceController[]
 Parameter Sets: InputObject
 Aliases:
 
@@ -188,7 +188,7 @@ The parameter name is optional. You can use **Name** or its alias, **ServiceName
 the parameter name.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Default
 Aliases: ServiceName
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Returns an object that represents the service. By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -237,7 +237,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

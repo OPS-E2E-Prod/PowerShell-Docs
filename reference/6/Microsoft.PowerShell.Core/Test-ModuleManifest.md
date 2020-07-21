@@ -1,10 +1,10 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=2096286
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/test-modulemanifest?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Test-ModuleManifest
 ---
@@ -66,7 +66,8 @@ AccessMode        : ReadWrite
 ExportedAliases   : {}
 ExportedCmdlets   : {}
 ExportedFunctions : {}
-ExportedVariables : {}NestedModules     : {}
+ExportedVariables : {}
+NestedModules     : {}
 ```
 
 This command uses a pipeline operator (|) to send a path string to **Test-ModuleManifest**.
@@ -80,7 +81,7 @@ function Test-ManifestBool ($path)
 ```
 
 ```Output
-{$a = dir $path | Test-ModuleManifest -ErrorAction SilentlyContinue $?}
+{$a = dir $path | Test-ModuleManifest -ErrorAction SilentlyContinue; $?}
 ```
 
 This function is like **Test-ModuleManifest**, but it returns a Boolean value.
@@ -111,7 +112,7 @@ This parameter is required.
 You can also pipe a path to **Test-ModuleManifest**.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,12 +120,12 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -154,3 +155,5 @@ It returns this object even if the manifest has errors.
 [New-ModuleManifest](New-ModuleManifest.md)
 
 [Remove-Module](Remove-Module.md)
+
+[about_Modules](About/about_Modules.md)

@@ -1,57 +1,63 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 06/09/2017
-online version: https://go.microsoft.com/fwlink/?linkid=821485
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-job?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Job
 ---
-
 # Get-Job
 
 ## SYNOPSIS
-Gets Windows PowerShell background jobs that are running in the current session.
+Gets PowerShell background jobs that are running in the current session.
 
 ## SYNTAX
 
 ### SessionIdParameterSet (Default)
+
 ```
 Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
  [-After <DateTime>] [-Newest <Int32>] [[-Id] <Int32[]>] [<CommonParameters>]
 ```
 
+### CommandParameterSet
+
+```
+Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
+ [-After <DateTime>] [-Newest <Int32>] [-Command <String[]>] [<CommonParameters>]
+```
+
 ### InstanceIdParameterSet
+
 ```
 Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
  [-After <DateTime>] [-Newest <Int32>] [-InstanceId] <Guid[]> [<CommonParameters>]
 ```
 
 ### NameParameterSet
+
 ```
 Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
  [-After <DateTime>] [-Newest <Int32>] [-Name] <String[]> [<CommonParameters>]
 ```
 
 ### StateParameterSet
+
 ```
 Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
  [-After <DateTime>] [-Newest <Int32>] [-State] <JobState> [<CommonParameters>]
 ```
 
-### CommandParameterSet
-```
-Get-Job [-IncludeChildJob] [-ChildJobState <JobState>] [-HasMoreData <Boolean>] [-Before <DateTime>]
- [-After <DateTime>] [-Newest <Int32>] [-Command <String[]>] [<CommonParameters>]
-```
-
 ### FilterParameterSet
+
 ```
 Get-Job [-Filter] <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The **Get-Job** cmdlet gets objects that represent the background jobs that were started in the current session.
 You can use **Get-Job** to get jobs that were started by using the Start-Job cmdlet, or by using the *AsJob* parameter of any cmdlet.
 
@@ -74,6 +80,7 @@ For information about a particular custom job type, see the documentation of the
 ## EXAMPLES
 
 ### Example 1: Get all background jobs started in the current session
+
 ```
 PS C:\> Get-Job
 ```
@@ -82,6 +89,7 @@ This command gets all background jobs started in the current session.
 It does not include jobs created in other sessions, even if the jobs run on the local computer.
 
 ### Example 2: Stop a job by using an instance ID
+
 ```
 The first command uses the **Get-Job** cmdlet to get a job. It uses the *Name* parameter to identify the job. The command stores the job object that **Get-Job** returns in the $j variable. In this example, there is only one job with the specified name.
 PS C:\> $j = Get-Job -Name Job1
@@ -104,6 +112,7 @@ These commands show how to get the instance ID of a job and then use it to stop 
 Unlike the name of a job, which is not unique, the instance ID is unique.
 
 ### Example 3: Get jobs that include a specific command
+
 ```
 PS C:\> Get-Job -Command "*get-process*"
 ```
@@ -113,6 +122,7 @@ The command uses the *Command* parameter of **Get-Job** to limit the jobs retrie
 The command uses wildcard characters (*) to get jobs that include a **Get-Process** command anywhere in the command string.
 
 ### Example 4: Get jobs that include a specific command by using the pipeline
+
 ```
 PS C:\> "*get-process*" | Get-Job
 ```
@@ -122,6 +132,7 @@ The command uses a pipeline operator (|) to send a string, in quotation marks, t
 It is the equivalent of the previous command.
 
 ### Example 5: Get jobs that have not been started
+
 ```
 PS C:\> Get-Job -State NotStarted
 ```
@@ -130,6 +141,7 @@ This command gets only those jobs that have been created but have not yet been s
 This includes jobs that are scheduled to run in the future and those not yet scheduled.
 
 ### Example 6: Get jobs that have not been assigned a name
+
 ```
 PS C:\> Get-Job -Name Job*
 ```
@@ -138,6 +150,7 @@ This command gets all jobs that have job names that begin with job.
 Because job\<number\> is the default name for a job, this command gets all jobs that do not have an explicitly assigned name.
 
 ### Example 7: Use a job object to represent the job in a command
+
 ```
 The first command uses the **Start-Job** cmdlet to start a background job that runs a **Get-Process** command on the local computer. The command uses the *Name* parameter of **Start-Job** to assign a friendly name to the job.
 PS C:\> Start-Job -ScriptBlock {Get-Process} -Name MyJob
@@ -164,6 +177,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
 This example shows how to use **Get-Job** to get a job object, and then it shows how to use the job object to represent the job in a command.
 
 ### Example 8: Get all jobs including jobs started by a different method
+
 ```
 The first command uses the **Start-Job** cmdlet to start a job on the local computer.
 PS C:\> Start-Job -ScriptBlock {Get-EventLog System}
@@ -191,6 +205,7 @@ Id    Name     PSJobTypeName  State      HasMoreData   Location   Command
 This example demonstrates that the **Get-Job** cmdlet can get all of the jobs that were started in the current session, even if they were started by using different methods.
 
 ### Example 9: Investigate a failed job
+
 ```
 The first command uses the **Start-Job** cmdlet to start a job on the local computer. The job object that **Start-Job** returns shows that the job failed. The value of the **State** property is Failed.
 PS C:\> Start-Job -ScriptBlock {Get-Process}
@@ -232,6 +247,7 @@ This command shows how to use the job object that **Get-Job** returns to investi
 It also shows how to get the child jobs of each job.
 
 ### Example 10: Get filtered results
+
 ```
 The first command uses the **Workflow** keyword to create the WFProcess workflow.
 PS C:\> Workflow WFProcess {Get-Process}
@@ -250,6 +266,7 @@ This example shows how to use the *Filter* parameter to get a workflow job.
 The *Filter* parameter, introduced in Windows PowerShell 3.0 is valid only on custom job types, such as workflow jobs and scheduled jobs.
 
 ### Example 11: Get information about child jobs
+
 ```
 The first command gets the jobs in the current session. The output includes a background job, a remote job and several instances of a scheduled job. The remote job, Job4, appears to have failed.
 PS C:\> Get-Job
@@ -300,6 +317,7 @@ This example shows the effect of using the *IncludeChildJob* and *ChildJobState*
 ## PARAMETERS
 
 ### -After
+
 Gets completed jobs that ended after the specified date and time.
 Enter a **DateTime** object, such as one returned by the Get-Date cmdlet or a string that can be converted to a **DateTime** object, such as `Dec 1, 2012 2:00 AM` or `11/06`.
 
@@ -310,8 +328,8 @@ For information about support for this parameter, see the help topic for the job
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: DateTime
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.DateTime
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 
 Required: False
@@ -322,6 +340,7 @@ Accept wildcard characters: False
 ```
 
 ### -Before
+
 Gets completed jobs that ended before the specified date and time.
 Enter a **DateTime** object.
 
@@ -332,8 +351,8 @@ For information about support for this parameter, see the help topic for the job
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: DateTime
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.DateTime
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 
 Required: False
@@ -344,12 +363,13 @@ Accept wildcard characters: False
 ```
 
 ### -ChildJobState
+
 Gets only the child jobs that have the specified state.
 The acceptable values for this parameter are:
 
 - NotStarted
--  Running
--  Completed
+- Running
+- Completed
 - Failed
 - Stopped
 - Blocked
@@ -365,8 +385,8 @@ If you use the *ChildJobState* parameter, the *IncludeChildJob* parameter has no
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: JobState
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.Management.Automation.JobState
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 Accepted values: NotStarted, Running, Completed, Failed, Stopped, Blocked, Suspended, Disconnected, Suspending, Stopping, AtBreakpoint
 
@@ -378,13 +398,14 @@ Accept wildcard characters: False
 ```
 
 ### -Command
+
 Specifies an array of commands as strings.
 This cmdlet gets the jobs that include the specified commands.
 The default is all jobs.
 You can use wildcard characters to specify a command pattern.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: CommandParameterSet
 Aliases:
 
@@ -392,10 +413,11 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Filter
+
 Specifies a hash table of conditions.
 This cmdlet gets jobs that satisfy all of the conditions.
 Enter a hash table where the keys are job properties and the values are job property values.
@@ -407,7 +429,7 @@ For information about support for this parameter, see the help topic for the job
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: FilterParameterSet
 Aliases:
 
@@ -419,6 +441,7 @@ Accept wildcard characters: False
 ```
 
 ### -HasMoreData
+
 Indicates whether this cmdlet gets only jobs that have the specified **HasMoreData** property value.
 The **HasMoreData** property indicates whether all job results have been received in the current session.
 To get jobs that have more results, specify a value of $True.
@@ -438,8 +461,8 @@ For more information, see the help topics for the custom job type.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: Boolean
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.Boolean
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 
 Required: False
@@ -450,6 +473,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
+
 Specifies an array of IDs of jobs that this cmdlet gets.
 
 The ID is an integer that uniquely identifies the job in the current session.
@@ -458,7 +482,7 @@ You can type one or more IDs separated by commas.
 To find the ID of a job, type `Get-Job` without parameters.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SessionIdParameterSet
 Aliases:
 
@@ -470,6 +494,7 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeChildJob
+
 Indicates that this cmdlet returns child jobs, in addition to parent jobs.
 
 This parameter is especially useful for investigating workflow jobs, for which **Get-Job** returns a container parent job, and job failures, because the reason for the failure is saved in a property of the child job.
@@ -477,8 +502,8 @@ This parameter is especially useful for investigating workflow jobs, for which *
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 
 Required: False
@@ -489,6 +514,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceId
+
 Specifies an array of instance IDs of jobs that this cmdlet gets.
 The default is all jobs.
 
@@ -496,7 +522,7 @@ An instance ID is a GUID that uniquely identifies the job on the computer.
 To find the instance ID of a job, use **Get-Job**.
 
 ```yaml
-Type: Guid[]
+Type: System.Guid[]
 Parameter Sets: InstanceIdParameterSet
 Aliases:
 
@@ -508,12 +534,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Specifies an array of instance friendly names of jobs that this cmdlet gets.
 Enter a job name, or use wildcard characters to enter a job name pattern.
 By default, **Get-Job** gets all jobs in the current session.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -521,10 +548,11 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Newest
+
 Specifies a number of jobs to get.
 This cmdlet gets the jobs that ended most recently.
 
@@ -534,8 +562,8 @@ To sort the output, use the Sort-Object cmdlet.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: Int32
-Parameter Sets: SessionIdParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet, CommandParameterSet
+Type: System.Int32
+Parameter Sets: SessionIdParameterSet, CommandParameterSet, InstanceIdParameterSet, NameParameterSet, StateParameterSet
 Aliases:
 
 Required: False
@@ -546,6 +574,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
+
 Specifies a job state.
 This cmdlet gets only jobs in the specified state.
 The acceptable values for this parameter are:
@@ -566,7 +595,7 @@ By default, **Get-Job** gets all the jobs in the current session.
 For more information about job states, see [JobState Enumeration](https://msdn.microsoft.com/library/system.management.automation.jobstate) in the MSDN library.
 
 ```yaml
-Type: JobState
+Type: System.Management.Automation.JobState
 Parameter Sets: StateParameterSet
 Aliases:
 Accepted values: NotStarted, Running, Completed, Failed, Stopped, Blocked, Suspended, Disconnected, Suspending, Stopping, AtBreakpoint
@@ -579,20 +608,25 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 You cannot pipe input to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Management.Automation.RemotingJob
+
 This cmdlet returns objects that represent the jobs in the session.
 
 ## NOTES
-* The **PSJobTypeName** property of jobs indicates the job type of the job. The property value is determined by the job type author. The following list shows common job types.
+
+* The **PSJobTypeName** property of jobs indicates the job type of the job. The property value is
+  determined by the job type author. The following list shows common job types.
 
   - **BackgroundJob**.
 Local job started by using **Start-Job**.
@@ -620,3 +654,11 @@ Job started by using the *AsJob* common parameter of workflows.
 [Suspend-Job](Suspend-Job.md)
 
 [Wait-Job](Wait-Job.md)
+
+[about_Jobs](About/about_Jobs.md)
+
+[about_Job_Details](About/about_Job_Details.md)
+
+[about_Remote_Jobs](About/about_Remote_Jobs.md)
+
+[about_Scheduled_Jobs](../PSScheduledJob/About/about_Scheduled_Jobs.md)

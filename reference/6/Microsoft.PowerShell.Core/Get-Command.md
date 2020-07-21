@@ -1,10 +1,10 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 12/14/2018
-online version: https://go.microsoft.com/fwlink/?linkid=2096167
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command?view=powershell-6&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Command
 ---
@@ -18,17 +18,19 @@ Gets all commands.
 ### CmdletSet (Default)
 
 ```
-Get-Command [-Verb <String[]>] [-Noun <String[]>] [-Module <String[]>] [-FullyQualifiedModule <ModuleSpecification[]>]
- [-TotalCount <Int32>] [-Syntax] [-ShowCommandInfo] [[-ArgumentList] <Object[]>] [-All] [-ListImported]
- [-ParameterName <String[]>] [-ParameterType <PSTypeName[]>]
+Get-Command [-Verb <String[]>] [-Noun <String[]>] [-Module <String[]>]
+ [-FullyQualifiedModule <ModuleSpecification[]>] [-TotalCount <Int32>] [-Syntax] [-ShowCommandInfo]
+ [[-ArgumentList] <Object[]>] [-All] [-ListImported] [-ParameterName <String[]>]
+ [-ParameterType <PSTypeName[]>] [<CommonParameters>]
 ```
 
 ### AllCommandSet
 
 ```
-Get-Command [[-Name] <String[]>] [-Module <String[]>] [-FullyQualifiedModule <ModuleSpecification[]>]
- [-CommandType <CommandTypes>] [-TotalCount <Int32>] [-Syntax] [-ShowCommandInfo] [[-ArgumentList] <Object[]>]
- [-All] [-ListImported] [-ParameterName <String[]>] [-ParameterType <PSTypeName[]>] [-UseFuzzyMatching]
+Get-Command [[-Name] <String[]>] [-Module <String[]>]
+ [-FullyQualifiedModule <ModuleSpecification[]>] [-CommandType <CommandTypes>] [-TotalCount <Int32>]
+ [-Syntax] [-ShowCommandInfo] [[-ArgumentList] <Object[]>] [-All] [-ListImported]
+ [-ParameterName <String[]>] [-ParameterType <PSTypeName[]>] [-UseFuzzyMatching]
  [<CommonParameters>]
 ```
 
@@ -157,7 +159,7 @@ Get-Command *
 It returns an **ApplicationInfo** object (System.Management.Automation.ApplicationInfo) for each
 file, not a **FileInfo** object (System.IO.FileInfo).
 
-### Example 9: Get cmdlets by using a name
+### Example 9: Get cmdlets by using a parameter name and type
 
 This command gets cmdlets that have a parameter whose name includes Auth and whose type is
 **AuthenticationMechanism**.
@@ -298,17 +300,17 @@ Indicates that this cmdlet gets all commands, including commands of the same typ
 name. By default, `Get-Command` gets only the commands that run when you type the command name.
 
 For more information about the method that PowerShell uses to select the command to run when
-multiple commands have the same name, see [about_Command_Precedence](About/about_Command_Precedence.md)
-in the TechNet library. For information about module-qualified command names and running commands
-that do not run by default because of a name conflict, see [about_Modules](About/about_Modules.md).
+multiple commands have the same name, see [about_Command_Precedence](About/about_Command_Precedence.md).
+For information about module-qualified command names and running commands that do not run by default
+because of a name conflict, see [about_Modules](About/about_Modules.md).
 
 This parameter was introduced in Windows PowerShell 3.0.
 
 In Windows PowerShell 2.0, `Get-Command` gets all commands by default.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: AllCommandSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,8 +335,8 @@ cmdlets return only the dynamic parameters for the first path the value of **Arg
 information about the provider cmdlets, see [about_Providers](About/about_Providers.md).
 
 ```yaml
-Type: Object[]
-Parameter Sets: AllCommandSet
+Type: System.Object[]
+Parameter Sets: (All)
 Aliases: Args
 
 Required: False
@@ -365,7 +367,7 @@ The acceptable values for this parameter are:
   value.
 
 ```yaml
-Type: CommandTypes
+Type: System.Management.Automation.CommandTypes
 Parameter Sets: AllCommandSet
 Aliases: Type
 Accepted values: Alias, Function, Filter, Cmdlet, ExternalScript, Application, Script, Workflow, Configuration, All
@@ -381,7 +383,7 @@ Accept wildcard characters: False
 
 Specifies modules with names that are specified in the form of **ModuleSpecification** objects,
 described in the **Remarks** section of
-[ModuleSpecification Constructor (Hashtable)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.powershell.commands.modulespecification.-ctor?redirectedfrom=MSDN&view=powershellsdk-1.1.0#Microsoft_PowerShell_Commands_ModuleSpecification__ctor_System_Collections_Hashtable_).
+[ModuleSpecification Constructor (Hashtable)](/dotnet/api/microsoft.powershell.commands.modulespecification.-ctor?view=powershellsdk-1.1.0#Microsoft_PowerShell_Commands_ModuleSpecification__ctor_System_Collections_Hashtable_).
 For example, the **FullyQualifiedModule** parameter accepts a module name that is specified in one
 of the following formats:
 
@@ -394,8 +396,8 @@ You cannot specify the **FullyQualifiedModule** parameter in the same command as
 parameter. The two parameters are mutually exclusive.
 
 ```yaml
-Type: ModuleSpecification[]
-Parameter Sets: AllCommandSet
+Type: Microsoft.PowerShell.Commands.ModuleSpecification[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -409,15 +411,15 @@ Accept wildcard characters: False
 
 Indicates that this cmdlet gets only commands in the current session.
 
-Starting in Windows PowerShell 3.0, by default, `Get-Command` gets all installed commands,
-including, but not limited to, the commands in the current session. In Windows PowerShell 2.0, it
+Starting in PowerShell 3.0, by default, `Get-Command` gets all installed commands,
+including, but not limited to, the commands in the current session. In PowerShell 2.0, it
 gets only commands in the current session.
 
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: AllCommandSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -436,15 +438,15 @@ This parameter takes string values, but the value of this parameter can also be 
 object, such as the objects that the `Get-Module` and `Import-PSSession` cmdlets return.
 
 ```yaml
-Type: String[]
-Parameter Sets: AllCommandSet
-Aliases:
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: PSSnapin
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Name
@@ -456,7 +458,7 @@ To get commands that have the same name, use the **All** parameter. When two com
 name, by default, `Get-Command` gets the command that runs when you type the command name.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: AllCommandSet
 Aliases:
 
@@ -464,7 +466,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Noun
@@ -474,7 +476,7 @@ and aliases, that have names that include the specified noun. Enter one or more 
 patterns. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: CmdletSet
 Aliases:
 
@@ -482,7 +484,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ParameterName
@@ -495,15 +497,15 @@ The **ParameterName** and **ParameterType** parameters search only commands in t
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: String[]
-Parameter Sets: AllCommandSet
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ParameterType
@@ -517,33 +519,26 @@ The **ParameterName** and **ParameterType** parameters search only commands in t
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: PSTypeName[]
-Parameter Sets: AllCommandSet
+Type: System.Management.Automation.PSTypeName[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ShowCommandInfo
 
 Indicates that this cmdlet displays command information.
 
-For more information about the method that PowerShell uses to select the command to run when
-multiple commands have the same name, see [about_Command_Precedence](About/about_Command_Precedence.md).
-For information about module-qualified command names and running commands that do not run by default
-because of a name conflict, see [about_Modules](About/about_Modules.md).
-
-This parameter was introduced in Windows PowerShell 3.0.
-
-In Windows PowerShell 2.0, `Get-Command` gets all commands by default.
+This parameter was introduced in Windows PowerShell 5.0.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: AllCommandSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -563,8 +558,8 @@ Indicates that this cmdlet gets only the following specified data about the comm
 - Scripts and applications or files. Gets the path and filename.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: AllCommandSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -580,8 +575,8 @@ Specifies the number of commands to get. You can use this parameter to limit the
 command.
 
 ```yaml
-Type: Int32
-Parameter Sets: AllCommandSet
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -598,7 +593,7 @@ closest match to least likely match. Wildcards should not be used with fuzzy mat
 attempt to match commands that may contain those wildcard characters.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AllCommandSet
 Aliases:
 
@@ -616,7 +611,7 @@ and aliases, that have names that include the specified verb. Enter one or more 
 patterns. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: CmdletSet
 Aliases:
 
@@ -624,7 +619,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
@@ -676,4 +671,14 @@ Represents functions and filters.
 
 ## RELATED LINKS
 
+[Export-PSSession](../Microsoft.PowerShell.Utility/Export-PSSession.md)
+
 [Get-Help](Get-Help.md)
+
+[Get-Member](../Microsoft.PowerShell.Utility/Get-Member.md)
+
+[Get-PSDrive](../Microsoft.PowerShell.Management/Get-PSDrive.md)
+
+[Import-PSSession](../Microsoft.PowerShell.Utility/Import-PSSession.md)
+
+[about_Command_Precedence](About/about_Command_Precedence.md)
