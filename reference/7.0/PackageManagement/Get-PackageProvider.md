@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.PowerShell.PackageManagement.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: PackageManagement
 ms.date: 06/09/2017
 online version: https://docs.microsoft.com/powershell/module/packagemanagement/get-packageprovider?view=powershell-7&WT.mc_id=ps-gethelp
@@ -59,7 +59,7 @@ Indicates that this cmdlet forces all other actions with this cmdlet that can be
 In **Get-PackageProvider**, this means the *Force* parameter acts the same as the *ForceBootstrap* parameter.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet forces Package Management to automatically install the package provider.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -91,12 +91,12 @@ Accept wildcard characters: False
 Gets all installed providers.
 **Get-PackageProvider** gets provider in paths listed in the **PSModulePath** environment variable as well as the package provider assembly folders:
 
-**$env:ProgramFiles\PackageManagement\ProviderAssemblies****$env:LOCALAPPDATA\PackageManagement\ProviderAssemblies**
+**$env:ProgramFiles\PackageManagement\ProviderAssemblies** **$env:LOCALAPPDATA\PackageManagement\ProviderAssemblies**
 
 Without this parameter, **Get-PackageProvider** gets only the providers loaded in the current session.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Separate multiple provider names with commas.
 Valid values for this parameter include names of providers that you have installed with packages; PackageManagement ships with a set of default providers, including the **PSModule** and **MSI** providers.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -137,6 +137,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
+
 ## RELATED LINKS
 
 [about_PackageManagement](../Microsoft.PowerShell.Core/About/about_PackageManagement.md)
@@ -146,5 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Register-PackageSource](Register-PackageSource.md)
 
 [Unregister-PackageSource](Unregister-PackageSource.md)
-
-

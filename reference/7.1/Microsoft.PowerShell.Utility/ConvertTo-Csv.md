@@ -1,10 +1,9 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
-keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 1/7/2019
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-csv?view=powershell-7&WT.mc_id=ps-gethelp
+ms.date: 12/08/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-csv?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: ConvertTo-Csv
 ---
@@ -12,11 +11,11 @@ title: ConvertTo-Csv
 # ConvertTo-Csv
 
 ## SYNOPSIS
-Converts objects into a series of character-separated value (CSV) strings.
+Converts .NET objects into a series of character-separated value (CSV) strings.
 
 ## SYNTAX
 
-### Delimiter
+### Delimiter (Default)
 
 ```
 ConvertTo-Csv [-InputObject] <PSObject> [[-Delimiter] <Char>] [-IncludeTypeInformation]
@@ -141,7 +140,7 @@ Specifies the delimiter to separate the property values in CSV strings. The defa
 quotation marks.
 
 ```yaml
-Type: Char
+Type: System.Char
 Parameter Sets: Delimiter
 Aliases:
 
@@ -160,7 +159,7 @@ qualified name of the object type. For example, **#TYPE System.Diagnostics.Proce
 This parameter was introduced in PowerShell 6.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: ITI
 
@@ -178,7 +177,7 @@ or type a command or expression that gets the objects. You can also pipe objects
 `ConvertTo-CSV`.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +194,7 @@ Removes the **#TYPE** information header from the output. This parameter became 
 PowerShell 6.0 and is included for backwards compatibility.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: NTI
 
@@ -212,7 +211,7 @@ Uses the list separator for the current culture as the item delimiter. To find t
 for a culture, use the following command: `(Get-Culture).TextInfo.ListSeparator`.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UseCulture
 Aliases:
 
@@ -226,10 +225,10 @@ Accept wildcard characters: False
 ### -QuoteFields
 
 Specifies the names of the columns that should be quoted. When this parameter is used only the
-specified columns are quoted.
+specified columns are quoted. This parameter was added in PowerShell 7.0.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: QF
 
@@ -248,8 +247,10 @@ Specifies when quotes are used in the CSV files. Possible values are:
 - Always - quote everything (default behavior)
 - AsNeeded - only quote fields that contain a delimiter character
 
+This parameter was added in PowerShell 7.0.
+
 ```yaml
-Type: QuoteKind
+Type: Microsoft.PowerShell.Commands.BaseCsvWritingCommand+QuoteKind
 Parameter Sets: (All)
 Aliases: UQ
 

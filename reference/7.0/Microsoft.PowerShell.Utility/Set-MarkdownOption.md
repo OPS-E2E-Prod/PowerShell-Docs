@@ -1,9 +1,11 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-online version: https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Set-MarkdownOption?view=powershell-7.0&WT.mc_id=ps-gethelp
 ms.date: 01/30/2020
+online version: https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Set-MarkdownOption?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
+title: Set-MarkdownOption
 ---
 # Set-MarkdownOption
 
@@ -234,7 +236,6 @@ Accept wildcard characters: False
 ### -ImageAltTextForegroundColor
 
 Sets the foreground color for rendering the alternate text of an image element in Markdown text.
-
 
 ```yaml
 Type: System.String

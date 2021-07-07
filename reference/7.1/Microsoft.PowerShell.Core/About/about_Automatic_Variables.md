@@ -1,8 +1,8 @@
 ---
-keywords: powershell,cmdlet
-locale: en-us
-ms.date: 08/12/2019
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7&WT.mc_id=ps-gethelp
+description:  Describes variables that store state information for PowerShell. These variables are created and maintained by PowerShell.
+Locale: en-US
+ms.date: 03/15/2021
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: about_Automatic_Variables
 ---
@@ -28,8 +28,40 @@ Contains the last token in the last line received by the session.
 
 ### $?
 
-Contains the execution status of the last operation. It contains **True** if
-the last operation succeeded and **False** if it failed.
+Contains the execution status of the last command. It contains **True** if
+the last command succeeded and **False** if it failed.
+
+For cmdlets and advanced functions that are run at multiple stages in a
+pipeline, for example in both `process` and `end` blocks, calling
+`this.WriteError()` or `$PSCmdlet.WriteError()` respectively at any point will
+set `$?` to **False**, as will `this.ThrowTerminatingError()` and
+`$PSCmdlet.ThrowTerminatingError()`.
+
+The `Write-Error` cmdlet always sets `$?` to **False** immediately after it is
+executed, but will not set `$?` to **False** for a function calling it:
+
+```powershell
+function Test-WriteError
+{
+    Write-Error "Bad"
+    $? # $false
+}
+
+Test-WriteError
+$? # $true
+```
+
+For the latter purpose, `$PSCmdlet.WriteError()` should be used instead.
+
+For native commands (executables), `$?` is set to **True** when `$LASTEXITCODE`
+is 0, and set to **False** when `$LASTEXITCODE` is any other value.
+
+> [!NOTE]
+> Until PowerShell 7, containing a statement within parentheses `(...)`,
+> subexpression syntax `$(...)` or array expression `@(...)` always reset
+> `$?` to **True**, so that `(Write-Error)` shows `$?` as **True**.
+> This has been changed in PowerShell 7, so that `$?` will always reflect
+> the actual success of the last command run in these expressions.
 
 ### $^
 
@@ -48,7 +80,7 @@ function, script, or script block. When you create a function, you can declare
 the parameters by using the `param` keyword or by adding a comma-separated list
 of parameters in parentheses after the function name.
 
-In an event action, the `$Args` variable contains objects that represent the
+In an event action, the `$args` variable contains objects that represent the
 event arguments of the event that is being processed. This variable is
 populated only within the `Action` block of an event registration command.
 The value of this variable can also be found in the **SourceArgs** property of
@@ -156,9 +188,21 @@ blocks (which are unnamed functions).
   > You cannot use the `$input` variable inside both the Process block and the
   > End block in the same function or script block.
 
+Since `$input` is an enumerator, accessing any of it's properties causes
+`$input` to no longer be available. You can store `$input` in another variable to
+reuse the `$input` properties.
+
 Enumerators contain properties and methods you can use to retrieve loop values
 and change the current loop iteration. For more information, see
 [Using Enumerators](#using-enumerators).
+
+The `$input` variable is also available to the command specified by the
+`-Command` parameter of `pwsh` when invoked from the command line. The
+following example is run from the Windows Command shell.
+
+```CMD
+echo Hello | pwsh -Command """$input World!"""
+```
 
 ### $IsCoreCLR
 
@@ -474,11 +518,13 @@ following items:
 | Property                  | Description                                   |
 | ------------------------- | --------------------------------------------- |
 | **PSVersion**             | The PowerShell version number                 |
-| **PSEdition**             | This property has the value of 'Desktop', for |
-|                           | Windows Server and Windows client versions.   |
+| **PSEdition**             | This property has the value of 'Desktop' for  |
+|                           | PowerShell 4 and below as well as PowerShell  |
+|                           | 5.1 on full-featured Windows editions.        |
 |                           | This property has the value of 'Core' for     |
-|                           | PowerShell running under Nano Server or       |
-|                           | Windows IOT.                                  |
+|                           | PowerShell 6 and above as well as PowerShell  |
+|                           | PowerShell 5.1 on reduced-footprint editions  |
+|                           | like Windows Nano Server or Windows IoT.      |
 | **GitCommitId**           | The commit Id of the source files, in GitHub, |
 | **OS**                    | Description of the operating system that      |
 |                           | PowerShell is running on.                     |
@@ -494,7 +540,13 @@ following items:
 
 ### $PWD
 
-Contains a path object that represents the full path of the current directory.
+Contains a path object that represents the full path of the current directory
+location for the current PowerShell runspace.
+
+> [!NOTE]
+> PowerShell supports multiple runspaces per process. Each runspace has its own
+> _current directory_. This is not the same as the current directory of the
+> process: `[System.Environment]::CurrentDirectory`.
 
 ### $Sender
 
@@ -526,6 +578,9 @@ and change the current loop iteration. For more information, see
 
 In a script block that defines a script property or script method, the
 `$this` variable refers to the object that is being extended.
+
+In a custom class, the `$this` variable refers to the class object itself
+allowing access to properties and methods defined in the class.
 
 ### $true
 
@@ -559,7 +614,7 @@ the enumerator has passed the end of the collection.
 > [!NOTE]
 > The **Boolean** value returned my **MoveNext** is sent to the output stream.
 > You can suppress the output by typecasting it to `[void]` or piping it to
-> [Out-Null](../Out-Null.md).
+> [Out-Null](xref:Microsoft.PowerShell.Core.Out-Null).
 >
 > ```powershell
 > $input.MoveNext() | Out-Null
@@ -894,3 +949,4 @@ Default (Current): End
 [about_Splatting](about_Splatting.md)
 
 [about_Variables](about_Variables.md)
+

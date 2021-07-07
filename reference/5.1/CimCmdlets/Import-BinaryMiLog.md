@@ -1,9 +1,9 @@
 ---
 external help file: Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml
-keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
+Module Name: CimCmdlets
 ms.date: 02/20/2019
-online version: https://docs.microsoft.com/powershell/module/cimcmdlets/import-binarymilog?WT.mc_id=ps-gethelp
+online version: https://docs.microsoft.com/powershell/module/cimcmdlets/import-binarymilog?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Import-BinaryMiLog
 ---
@@ -16,7 +16,7 @@ Used to re-create the saved objects based on the contents of an export file.
 ## SYNTAX
 
 ```
-Import-BinaryMiLog [-Path] <String>
+Import-BinaryMiLog [-Path] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,11 +38,11 @@ Import-BinaryMiLog -Path "Processes.bmil"
 ### -Path
 
 Specifies the path of the file in which to store the binary representation of the object. The
-**Path** parameter supports wildcards and relative paths. This cmdlet generates an error if the
-path resolves to more than one file.
+**Path** parameter supports wildcards and relative paths. This cmdlet generates an error if the path
+resolves to more than one file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,6 +52,12 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

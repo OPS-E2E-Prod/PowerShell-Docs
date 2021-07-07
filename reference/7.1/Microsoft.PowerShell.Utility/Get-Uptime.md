@@ -1,8 +1,9 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
 ms.date: 06/27/2019
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-uptime?view=powershell-7&WT.mc_id=ps-gethelp
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-uptime?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Uptime
 ---
@@ -72,7 +73,7 @@ Cause the cmdlet to return a **DateTime** object representing the last time that
 system was booted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Since
 Aliases:
 
@@ -118,3 +119,4 @@ On Windows, the value returned is the same as the **LastBootUpTime** property of
 ## RELATED LINKS
 
 [Win32_OperatingSystem](/windows/win32/cimwin32prov/win32-operatingsystem#properties)
+

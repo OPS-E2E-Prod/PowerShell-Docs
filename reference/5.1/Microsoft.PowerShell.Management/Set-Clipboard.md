@@ -1,9 +1,8 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
-keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Management
-ms.date: 06/09/2017
+ms.date: 12/03/2020
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/set-clipboard?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Set-Clipboard
@@ -53,10 +52,19 @@ Set-Clipboard -Value "This is a test string"
 
 ### Example 2: Copy the contents of a directory to the clipboard
 
-This command copies the content of the specified folder to the clipboard.
+This example copies the content of the specified folder to the clipboard.
 
 ```powershell
 Set-Clipboard -Path "C:\Staging\"
+```
+
+### Example 3: Copy the contents of a file to the clipboard
+
+This example pipes the contents of a file to the clipboard. In this example, we are getting a public
+ssh key so that it can be pasted into another application, like GitHub.
+
+```powershell
+Get-Content C:\Users\user1\.ssh\id_ed25519.pub | Set-Clipboard
 ```
 
 ## PARAMETERS
@@ -66,7 +74,7 @@ Set-Clipboard -Path "C:\Staging\"
 Indicates that the cmdlet does not clear the clipboard and appends content to it.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +90,7 @@ Accept wildcard characters: False
 Indicates that the cmdlet renders the content as HTML to the clipboard.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +109,7 @@ path includes escape characters, enclose it in single quotation marks. Single qu
 Windows PowerShell not to interpret any characters as escape sequences.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: LiteralPath
 Aliases: PSPath
 
@@ -117,7 +125,7 @@ Accept wildcard characters: False
 Specifies the path to the item that is copied to the clipboard. Wildcard characters are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Path
 Aliases:
 
@@ -133,7 +141,7 @@ Accept wildcard characters: True
 Specifies, as a string array, the content to copy to the clipboard.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Value
 Aliases:
 
@@ -149,7 +157,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -165,7 +173,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -190,7 +198,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+In rare cases when using `Set-Clipboard` with a high number of values in rapid succession, like in a
+loop, you might sporadically get a blank value from the clipboard. This can be fixed by using
+`Start-Sleep -Milliseconds 1` in the loop.
+
 ## RELATED LINKS
 
 [Get-Clipboard](Get-Clipboard.md)
-

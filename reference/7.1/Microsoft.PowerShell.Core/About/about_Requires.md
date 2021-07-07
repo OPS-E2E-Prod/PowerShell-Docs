@@ -1,8 +1,8 @@
 ---
-keywords: powershell,cmdlet
-locale: en-us
-ms.date: 07/01/2019
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_requires?view=powershell-7&WT.mc_id=ps-gethelp
+description: Prevents a script from running without the required elements.
+Locale: en-US
+ms.date: 12/14/2020
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_requires?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: about_Requires
 ---
@@ -22,7 +22,6 @@ the script.
 ### Syntax
 
 ```
-#Requires -Assembly { <Path to .dll> | <.NET assembly specification> }
 #Requires -Version <N>[.<n>]
 #Requires -PSSnapin <PSSnapin-Name> [-Version <N>[.<n>]]
 #Requires -Modules { <Module-Name> | <Hashtable> }
@@ -64,6 +63,11 @@ script invalidated the required state.
 ### Parameters
 
 #### -Assembly \<Assembly path> | \<.NET assembly specification>
+
+> [!IMPORTANT]
+> The `-Assembly` syntax is deprecated. It serves no function. The syntax was
+> added in PowerShell 5.1 but the supporting code was never implemented. The
+> syntax is still accepted for backward compatibility.
 
 Specifies the path to the assembly DLL file or a .NET assembly name. The
 **Assembly** parameter was introduced in PowerShell 5.0. For more information

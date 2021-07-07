@@ -1,8 +1,8 @@
 ---
 Download Help Link: https://go.microsoft.com/fwlink/?linkid=2113345
-Help Version: 7.0.0.0
+Help Version: 7.0.1.0
 Locale: en-US
-Module Guid: 29955884-f6a6-49ba-a071-a4dc8842697f
+Module Guid: 0e7b895d-2fec-43f7-8cae-11e8d16f6e40
 Module Name: ThreadJob
 ms.date: 07/09/2019
 title: ThreadJob Module
@@ -15,7 +15,7 @@ This module extends the existing PowerShell BackgroundJob to include a new threa
 **ThreadJob** job. This is a lighter weight solution for running concurrent PowerShell scripts that
 works within the existing PowerShell job infrastructure.
 
-## threadjob Cmdlets
+## ThreadJob Cmdlets
 
 ### [Start-ThreadJob](Start-ThreadJob.md)
 Creates background jobs similar to the `Start-Job` cmdlet.

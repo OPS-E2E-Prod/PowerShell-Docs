@@ -1,10 +1,10 @@
 ---
 external help file: PSModule-help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: PowerShellGet
 ms.date: 07/16/2019
-online version: https://docs.microsoft.com/powershell/module/powershellget/update-module?view=powershell-7&WT.mc_id=ps-gethelp
+online version: https://docs.microsoft.com/powershell/module/powershellget/update-module?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Update-Module
 ---
@@ -22,7 +22,7 @@ computer.
 ```
 Update-Module [[-Name] <String[]>] [-RequiredVersion <String>] [-MaximumVersion <String>]
  [-Credential <PSCredential>] [-Scope <String>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-Force] [-AllowPrerelease] [-AcceptLicense] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-AllowPrerelease] [-AcceptLicense] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Update-Module -Name SpeculationControl -Force
 Automatically accept the license agreement during installation if the package requires it.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Allows you to update a module with the newer module marked as a prerelease.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -137,12 +137,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+
+Prompts you for confirmation before running `Update-Module`.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Credential
 
 Specifies a user account that has permission to update a module.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +175,7 @@ Forces an update of each specified module without a prompt to request confirmati
 already installed, **Force** reinstalls the module.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +193,7 @@ attempting to update multiple modules. The **MaximumVersion** and the **Required
 can't be used in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +214,7 @@ Wildcards are accepted in module names. If you add wildcard characters to the sp
 matches are found, no error occurs.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,12 +225,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -PassThru
+
+Returns an object representing the item with which you are working. By default, this cmdlet does not
+generate any output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Proxy
 
 Specifies a proxy server for the request, rather than connecting directly to an internet resource.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +264,7 @@ Specifies a user account that has permission to use the proxy server specified b
 parameter.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -249,7 +282,7 @@ specified by **RequiredVersion** must exist in the online gallery or an error is
 than one module is updated in a single command, you can't use **RequiredVersion**.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -276,33 +309,21 @@ accessible only to the current user of the computer:
 
 `$home\Documents\PowerShell\Modules`
 
-This parameter was introduced in PowerShell 7.
+When no **Scope** is defined, the default is set based on the PowerShellGet version.
+
+- In PowerShellGet versions 2.0.0 and above, the default is **CurrentUser**, which does not require
+  elevation for install.
+- In PowerShellGet 1.x versions, the default is **AllUsers**, which requires elevation for install.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AllUsers, CurrentUser
+Accepted values: CurrentUser, AllUsers
 
 Required: False
 Position: Named
 Default value: CurrentUser
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-
-Prompts you for confirmation before running `Update-Module`.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -312,7 +333,7 @@ Accept wildcard characters: False
 Shows what would happen if `Update-Module` runs. The cmdlet isn't run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -331,7 +352,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String[]
+
+### System.String
+
+### System.Management.Automation.PSCredential
+
+### System.Uri
+
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 
@@ -339,6 +370,18 @@ For PowerShell version 6.0 and above, the default installation scope is always *
 Module updates for **CurrentUser**, `$home\Documents\PowerShell\Modules`, don't need elevated
 permissions. Module updates for **AllUsers**, `$env:ProgramFiles\PowerShell\Modules`, need elevated
 permissions.
+
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
 
 `Update-Module` runs on PowerShell 3.0 or later releases of PowerShell, on Windows 7 or Windows 2008
 R2 and later releases of Windows.
@@ -364,3 +407,4 @@ processes are stopped.
 [Publish-Module](Publish-Module.md)
 
 [Uninstall-Module](Uninstall-Module.md)
+

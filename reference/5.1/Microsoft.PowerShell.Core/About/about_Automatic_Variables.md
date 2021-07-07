@@ -1,7 +1,7 @@
 ---
-keywords: powershell,cmdlet
-locale: en-us
-ms.date: 08/12/2019
+description:  Describes variables that store state information for PowerShell. These variables are created and maintained by PowerShell.
+Locale: en-US
+ms.date: 03/15/2021
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: about_Automatic_Variables
@@ -188,9 +188,21 @@ blocks (which are unnamed functions).
   > You cannot use the `$input` variable inside both the Process block and the
   > End block in the same function or script block.
 
+Since `$input` is an enumerator, accessing any of it's properties causes
+`$input` to no longer be available. You can store `$input` in another variable to
+reuse the `$input` properties.
+
 Enumerators contain properties and methods you can use to retrieve loop values
 and change the current loop iteration. For more information, see
 [Using Enumerators](#using-enumerators).
+
+The `$input` variable is also available to the command specified by the
+`-Command` parameter of `pwsh` when invoked from the command line. The
+following example is run from the Windows Command shell.
+
+```CMD
+echo Hello | powershell -Command """$input World!"""
+```
 
 ### $LastExitCode
 
@@ -500,7 +512,13 @@ following items:
 
 ### $PWD
 
-Contains a path object that represents the full path of the current directory.
+Contains a path object that represents the full path of the current directory
+location for the current PowerShell runspace.
+
+> [!NOTE]
+> PowerShell supports multiple runspaces per process. Each runspace has its own
+> _current directory_. This is not the same as the current directory of the
+> process: `[System.Environment]::CurrentDirectory`.
 
 ### $Sender
 
@@ -532,6 +550,9 @@ and change the current loop iteration. For more information, see
 
 In a script block that defines a script property or script method, the
 `$this` variable refers to the object that is being extended.
+
+In a custom class, the `$this` variable refers to the class object itself
+allowing access to properties and methods defined in the class.
 
 ### $true
 
@@ -565,7 +586,7 @@ the enumerator has passed the end of the collection.
 > [!NOTE]
 > The **Boolean** value returned my **MoveNext** is sent to the output stream.
 > You can suppress the output by typecasting it to `[void]` or piping it to
-> [Out-Null](../Out-Null.md).
+> [Out-Null](xref:Microsoft.PowerShell.Core.Out-Null).
 >
 > ```powershell
 > $input.MoveNext() | Out-Null

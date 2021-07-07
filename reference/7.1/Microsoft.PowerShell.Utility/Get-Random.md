@@ -1,14 +1,12 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
-keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 08/20/2019
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7&WT.mc_id=ps-gethelp
+ms.date: 02/02/2021
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Random
 ---
-
 # Get-Random
 
 ## SYNOPSIS
@@ -19,13 +17,19 @@ Gets a random number, or selects objects randomly from a collection.
 ### RandomNumberParameterSet (Default)
 
 ```
-Get-Random [-SetSeed <Int32>] [[-Maximum] <Object>] [-Minimum <Object>] [<CommonParameters>]
+Get-Random [-SetSeed <Int32>] [[-Maximum] <Object>] [-Minimum <Object>] [-Count <Int32>] [<CommonParameters>]
 ```
 
 ### RandomListItemParameterSet
 
 ```
 Get-Random [-SetSeed <Int32>] [-InputObject] <Object[]> [-Count <Int32>] [<CommonParameters>]
+```
+
+### ShuffleParameterSet
+
+```
+Get-Random [-SetSeed <Int32>] [-InputObject] <Object[]> [-Shuffle] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,8 +40,20 @@ The `Get-Random` cmdlet gets a randomly selected number. If you submit a collect
 Without parameters or input, a `Get-Random` command returns a randomly selected 32-bit unsigned
 integer between 0 (zero) and **Int32.MaxValue** (`0x7FFFFFFF`, `2,147,483,647`).
 
-You can use the parameters of `Get-Random` to specify a seed number, minimum and maximum values, and
-the number of objects returned from a submitted collection.
+By default, `Get-Random` generates cryptographically secure randomness using the
+[RandomNumberGenerator](/dotnet/api/system.security.cryptography.randomnumbergenerator) class.
+
+You can use the parameters of `Get-Random` to specify the minimum and maximum values, the number of
+objects returned from a collection, or a seed number.
+
+> [!CAUTION]
+> Setting the seed deliberately results in non-random, repeatable behavior. It should only be used
+> when trying to reproduce behavior, such as when debugging or analyzing a script that includes
+> `Get-Random` commands.
+>
+> This seed value is used for the current command and for all subsequent `Get-Random` commands in
+> the current session until you use **SetSeed** again or close the session. You can't reset the seed
+> to its default value.
 
 ## EXAMPLES
 
@@ -113,15 +129,11 @@ This command gets three randomly selected numbers in random order from an array.
 
 ### Example 7: Randomize an entire collection
 
-This command returns the entire collection in random order.
-
-The value of the **Count** parameter is the **MaxValue** static property of integers.
-
-To return an entire collection in random order, enter any number that is greater than or equal to
-the number of objects in the collection.
+Starting in PowerShell 7.1, you can use the **Shuffle** parameter to return the entire collection in
+a random order.
 
 ```powershell
-1, 2, 3, 5, 8, 13 | Get-Random -Count ([int]::MaxValue)
+1, 2, 3, 5, 8, 13 | Get-Random -Shuffle
 ```
 
 ```Output
@@ -206,9 +218,9 @@ $Sample = $Files | Get-Random -Count 50
 
 ### Example 11: Roll fair dice
 
-This example rolls a fair die 1200 times and counts the outcomes. The first command, `For-EachObject`
-repeats the call to `Get-Random` from the piped in numbers (1-6). The results are grouped by their
-value with `Group-Object` and formatted as a table with `Select-Object`.
+This example rolls a fair die 1200 times and counts the outcomes. The first command,
+`ForEach-Object` repeats the call to `Get-Random` from the piped in numbers (1-6). The results are
+grouped by their value with `Group-Object` and formatted as a table with `Select-Object`.
 
 ```powershell
 1..1200 | ForEach-Object {
@@ -264,8 +276,8 @@ When used with `InputObject`, if the value of **Count** exceeds the number of ob
 collection, `Get-Random` returns all of the objects in random order.
 
 ```yaml
-Type: Int32
-Parameter Sets: RandomListItemParameterSet
+Type: System.Int32
+Parameter Sets: RandomNumberParameterSet, RandomListItemParameterSet
 Aliases:
 
 Required: False
@@ -286,8 +298,8 @@ Beginning in PowerShell 7, the **InputObject** parameter accepts arrays that can
 string or `$null`. The array can be sent down the pipeline or as an **InputObject** parameter value.
 
 ```yaml
-Type: Object[]
-Parameter Sets: RandomListItemParameterSet
+Type: System.Object[]
+Parameter Sets: RandomListItemParameterSet, ShuffleParameterSet
 Aliases:
 
 Required: True
@@ -314,7 +326,7 @@ If the value of **Minimum** is a double (a floating-point number), the default v
 is **Double.MaxValue**. Otherwise, the default value is **Int32.MaxValue**.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: RandomNumberParameterSet
 Aliases:
 
@@ -336,7 +348,7 @@ The value of **Minimum** must be less than (not equal to) the value of **Maximum
 floating-point number.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: RandomNumberParameterSet
 Aliases:
 
@@ -349,17 +361,20 @@ Accept wildcard characters: False
 
 ### -SetSeed
 
-Specifies a seed value for the random number generator. This seed value is used for the current
-command and for all subsequent `Get-Random` commands in the current session until you use
-**SetSeed** again or close the session. You can't reset the seed to its default value.
+Specifies a seed value for the random number generator. When you use **SetSeed**, the cmdlet uses
+the [System.Random](/dotnet/api/system.random) method to generate pseudorandom numbers, which is not
+cryptographically secure.
 
-The **SetSeed** parameter isn't required. By default, `Get-Random` uses the [RandomNumberGenerator()](/dotnet/api/system.security.cryptography.randomnumbergenerator)
-method to generate a seed value. Because **SetSeed** results in non-random behavior, it's typically
-used only when trying to reproduce behavior, such as when debugging or analyzing a script that
-includes `Get-Random` commands.
+> [!CAUTION]
+> Setting the seed results in non-random behavior. It should only be used when trying to reproduce
+> behavior, such as when debugging or analyzing a script that includes `Get-Random` commands.
+>
+> This seed value is used for the current command and for all subsequent `Get-Random` commands in
+> the current session until you use **SetSeed** again or close the session. You can't reset the seed
+> to its default value.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -370,11 +385,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Shuffle
+
+Returns the entire collection in a randomized order.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShuffleParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -391,8 +423,24 @@ submitted collection.
 
 ## NOTES
 
-`Get-Random` sets a default seed for each session based on the system time clock when the session
-starts.
+By default, `Get-Random` generates cryptographically secure randomness using the
+[RandomNumberGenerator](/dotnet/api/system.security.cryptography.randomnumbergenerator) class.
+
+`Get-Random` does not alway return the same data type as the input value. The following table shows
+the output type for each of the numeric input types.
+
+| Input Type | Output Type |
+| :--------: | :---------: |
+|   SByte    |   Double    |
+|    Byte    |   Double    |
+|   Int16    |   Double    |
+|   UInt16   |   Double    |
+|   Int32    |    Int32    |
+|   UInt32   |   Double    |
+|   Int64    |    Int64    |
+|   UInt64   |   Double    |
+|   Double   |   Double    |
+|   Single   |   Double    |
 
 Beginning in Windows PowerShell 3.0, `Get-Random` supports 64-bit integers. In Windows PowerShell
 2.0, all values are cast to **System.Int32**.
@@ -403,3 +451,7 @@ versions, only the **Maximum** parameter in the **RandomNumberParameterSet** par
 an empty string or `$null`.
 
 ## RELATED LINKS
+
+[System.Security.Cryptography.RandomNumberGenerator()](/dotnet/api/system.security.cryptography.randomnumbergenerator)
+
+[Sytem.Random](/dotnet/api/system.random)

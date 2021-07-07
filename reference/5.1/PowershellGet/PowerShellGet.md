@@ -1,8 +1,8 @@
 ---
 Download Help Link: https://go.microsoft.com/fwlink/?LinkId=393271
-Help Version: 5.1.1.0
+Help Version: 5.2.0.0
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Guid: 1d73a601-4a6c-43c5-ba3f-619b18bbb404
 Module Name: PowerShellGet
 ms.date: 06/09/2017
@@ -15,6 +15,18 @@ title: PowerShellGet
 
 PowerShellGet is a module with commands for discovering, installing, updating and publishing
 PowerShell artifacts like Modules, DSC Resources, Role Capabilities, and Scripts.
+
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
 
 ## PowerShellGet Cmdlets
 
@@ -34,7 +46,7 @@ Finds role capabilities in modules.
 Finds a script.
 
 ### [Get-InstalledModule](Get-InstalledModule.md)
-Gets installed modules on a computer.
+Gets a list of modules on the computer that were installed by PowerShellGet.
 
 ### [Get-InstalledScript](Get-InstalledScript.md)
 Gets an installed script.
@@ -61,7 +73,7 @@ Publishes a script.
 Registers a PowerShell repository.
 
 ### [Save-Module](Save-Module.md)
-Saves a module locally without installing it.
+Saves a module and its dependencies on the local computer but doesn't install the module.
 
 ### [Save-Script](Save-Script.md)
 Saves a script.
@@ -76,7 +88,7 @@ Validates a comment block for a script.
 Uninstalls a module.
 
 ### [Uninstall-Script](Uninstall-Script.md)
-Uninstalls a script file.
+Uninstalls a script.
 
 ### [Unregister-PSRepository](Unregister-PSRepository.md)
 Unregisters a repository.
@@ -93,4 +105,3 @@ Updates a script.
 
 ### [Update-ScriptFileInfo](Update-ScriptFileInfo.md)
 Updates information for a script.
-

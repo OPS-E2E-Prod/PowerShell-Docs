@@ -1,7 +1,7 @@
 ---
 external help file: PSModule-help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: PowerShellGet
 ms.date: 06/03/2019
 online version: https://docs.microsoft.com/powershell/module/powershellget/find-command?view=powershell-5.1&WT.mc_id=ps-gethelp
@@ -130,7 +130,7 @@ beneficial for troubleshooting.
 Includes modules marked as a prerelease in the results.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets all versions of a module.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Finds modules based on the **PackageManagement** provider's search syntax. For e
 words to search for within the **ModuleName** and **Description** properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Specifies the maximum version of the module to include in results. The **Maximum
 **RequiredVersion** parameters can't be used in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ Specifies the minimum version of the module to include in results. The **Minimum
 **RequiredVersion** parameters can't be used in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 Specifies the name of a module to search for commands. The default is all modules.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ Specifies the command name to search for in a repository. Use commas to separate
 names.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 Specifies a proxy server for the request, rather than a direct connection to the internet resource.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ Specifies a user account that has permission to use the proxy server that is spe
 **Proxy** parameter.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +280,7 @@ Specifies the repository to search for commands. Use commas to separate an array
 names. The default is all repositories.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 Specifies the version of the module to include in the results.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 Specifies tags that categorize modules in a repository. Use commas to separate an array of tags.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -338,6 +338,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 `Find-Command` outputs a **PSGetCommandInfo** object.
 
 ## NOTES
+
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
 
 ## RELATED LINKS
 

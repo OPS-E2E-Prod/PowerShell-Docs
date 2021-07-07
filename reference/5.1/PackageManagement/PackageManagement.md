@@ -1,8 +1,8 @@
 ---
 Download Help Link: https://go.microsoft.com/fwlink/?linkid=392040
-Help Version: 5.1.1.0
+Help Version: 5.2.0.0
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Guid: 4ae9fd46-338a-459c-8186-07f910774cb8
 Module Name: PackageManagement
 ms.date: 06/09/2017
@@ -15,6 +15,18 @@ title: PackageManagement
 
 This topic displays help topics for the Package Management Cmdlets.
 
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
+
 ## PackageManagement Cmdlets
 
 ### [Find-Package](Find-Package.md)
@@ -24,7 +36,7 @@ Finds software packages in available package sources.
 Returns a list of Package Management package providers available for installation.
 
 ### [Get-Package](Get-Package.md)
-Returns a list of all software packages that have been installed by using Package Management.
+Returns a list of all software packages that were installed with **PackageManagement**.
 
 ### [Get-PackageProvider](Get-PackageProvider.md)
 Returns a list of package providers that are connected to Package Management.
@@ -55,4 +67,3 @@ Uninstalls one or more software packages.
 
 ### [Unregister-PackageSource](Unregister-PackageSource.md)
 Removes a registered package source.
-

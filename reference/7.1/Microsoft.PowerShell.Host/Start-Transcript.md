@@ -1,19 +1,19 @@
 ---
 external help file: Microsoft.PowerShell.ConsoleHost.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Host
-ms.date: 06/09/2017
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.host/start-transcript?view=powershell-7&WT.mc_id=ps-gethelp
+ms.date: 01/26/2021
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.host/start-transcript?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Start-Transcript
 ---
 # Start-Transcript
 
-## SYNOPSIS
+## Synopsis
 Creates a record of all or part of a PowerShell session to a text file.
 
-## SYNTAX
+## Syntax
 
 ### ByPath (Default)
 
@@ -36,7 +36,7 @@ Start-Transcript [[-OutputDirectory] <String>] [-Append] [-Force] [-NoClobber]
  [-IncludeInvocationHeader] [-UseMinimalHeader] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
 
 The `Start-Transcript` cmdlet creates a record of all or part of a PowerShell session to a text
 file. The transcript includes all command that the user types and all output that appears on the
@@ -49,7 +49,11 @@ prevent potential overwrites or duplication when two or more transcripts are sta
 This also prevents unauthorized discovery of transcripts that are stored in a centralized file
 share.
 
-## EXAMPLES
+When using the **Append** parameter, if the target file doesn't have a Byte Order Mark (BOM)
+`Start-Transcript` defaults to `ASCII` encoding in the target file. This behavior can result in
+improper encoding of mulitbyte characters in the transcript.
+
+## Examples
 
 ### Example 1: Start a transcript file with default settings
 
@@ -65,11 +69,11 @@ This command starts a transcript in the default file location.
 Start-Transcript -Path "C:\transcripts\transcript0.txt" -NoClobber
 ```
 
-This command starts a transcript in the Transcript0.txt file in C:\transcripts. Since the
+This command starts a transcript in the `Transcript0.txt` file in `C:\transcripts`. Since the
 **NoClobber** parameter is used, the command prevents any existing files from being overwritten. If
 the `Transcript0.txt` file already exists, the command fails.
 
-## PARAMETERS
+## Parameters
 
 ### -Append
 
@@ -77,7 +81,7 @@ Indicates that this cmdlet adds the new transcript to the end of an existing fil
 parameter to specify the file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +99,7 @@ file, the cmdlet changes the file permission to read-write. The cmdlet cannot ov
 restrictions when this parameter is used.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +115,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet logs the time stamp when commands are run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +132,7 @@ Prepend a short header to the transcript, instead of the detailed header include
 parameter was added in PowerShell 6.2.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -147,9 +151,9 @@ wildcards. If the path includes escape characters, enclose it in single quotatio
 quotation marks inform PowerShell not to interpret any characters as escape sequences.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByLiteralPath
-Aliases: PSPath
+Aliases: PSPath, LP
 
 Required: False
 Position: 0
@@ -164,7 +168,7 @@ Indicates that this cmdlet will not overwrite of an existing file. By default, i
 exists in the specified path, `Start-Transcript` overwrites the file without warning.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: NoOverwrite
 
@@ -181,7 +185,7 @@ Specifies a specific path and folder in which to save a transcript. PowerShell a
 the transcript name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByOutputDirectory
 Aliases:
 
@@ -194,17 +198,17 @@ Accept wildcard characters: False
 
 ### -Path
 
-Specifies a location to the transcript file. Enter a path to a .txt file. Wildcards are not
+Specifies a location to the transcript file. Enter a path to a `.txt` file. Wildcards are not
 permitted.
 
-If you do not specify a path, `Start-Transcript` uses the path in the value of the $Transcript
+If you do not specify a path, `Start-Transcript` uses the path in the value of the `$Transcript`
 global variable. If you have not created this variable, `Start-Transcript` stores the transcripts in
 the `$Home\My Documents directory as \PowerShell_transcript.<time-stamp>.txt` files.
 
 If any of the directories in the path do not exist, the command fails.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPath
 Aliases:
 
@@ -220,7 +224,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -237,7 +241,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -254,26 +258,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
 -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Inputs
 
 ### None
 
 You cannot pipe objects to this cmdlet.
 
-## OUTPUTS
+## Outputs
 
 ### System.String
 
 This cmdlet returns a string that contains a confirmation message and the path to the output file.
 
-## NOTES
+## Notes
 
 To stop a transcript, use the `Stop-Transcript` cmdlet.
 
 To record an entire session, add the `Start-Transcript` command to your profile. For more
 information, see [about_Profiles](../Microsoft.PowerShell.Core/About/about_Profiles.md).
 
-## RELATED LINKS
+## Related Links
 
 [Stop-Transcript](Stop-Transcript.md)
-

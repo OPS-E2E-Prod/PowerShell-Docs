@@ -1,7 +1,8 @@
 ---
+description:  Describes chaining pipelines with the `&&` and `||` operators in PowerShell. 
 ms.date:  09/30/2019
 schema:  2.0.0
-locale:  en-us
+Locale: en-US
 keywords:  powershell,cmdlet
 title:  about_Pipeline_Chain_Operators
 ---
@@ -120,8 +121,8 @@ $result
 2
 ```
 
-If a script-terminating error is thrown during assignment from a pipeline
-chain, the assignment does not succeed:
+If a script-terminating error occurs during assignment from a pipeline chain, the assignment does
+not succeed:
 
 ```powershell
 try
@@ -300,10 +301,11 @@ Test-NotTwo : Input is 2
 ```
 
 Note that `Write-Output 'All done!'` is not executed, since `Test-NotTwo` is
-deemed to have failed after throwing the non-terminating error.
+deemed to have failed after generating the non-terminating error.
 
 ## See also
 
 - [about_Operators](about_Operators.md)
 - [about_Automatic_Variables](about_Automatic_Variables.md)
 - [about_pipelines](about_pipelines.md)
+

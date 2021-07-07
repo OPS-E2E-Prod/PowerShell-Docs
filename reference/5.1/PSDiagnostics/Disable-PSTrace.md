@@ -1,5 +1,6 @@
 ---
 external help file: PSDiagnostics-help.xml
+Locale: en-US
 Module Name: PSDiagnostics
 ms.date: 11/27/2018
 online version: https://docs.microsoft.com/powershell/module/psdiagnostics/disable-pstrace?view=powershell-5.1&WT.mc_id=ps-gethelp
@@ -14,7 +15,7 @@ Disables the Microsoft-Windows-PowerShell event provider logs.
 ## SYNTAX
 
 ```
-Disable-PSTrace [-AnalyticOnly]
+Disable-PSTrace [-AnalyticOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 

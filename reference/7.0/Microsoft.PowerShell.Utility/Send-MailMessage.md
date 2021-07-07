@@ -1,13 +1,13 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
-ms.date: 2/11/2019
+Locale: en-US
+Module Name: Microsoft.PowerShell.Utility
+ms.date: 05/11/2020
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/send-mailmessage?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Send-MailMessage
 ---
-
 # Send-MailMessage
 
 ## SYNOPSIS
@@ -18,11 +18,11 @@ Sends an email message.
 ### All
 
 ```
-Send-MailMessage [-To] <string[]> [[-Subject] <string>] [[-Body] <string>] [[-SmtpServer] <string>]
- -From <string> [-Attachments <string[]>] [-Bcc <string[]>] [-BodyAsHtml] [-Encoding <Encoding>]
- [-Cc <string[]>] [-DeliveryNotificationOption <DeliveryNotificationOptions>]
- [-Priority <MailPriority>] [-ReplyTo <string[]>] [-Credential <pscredential>] [-UseSsl]
- [-Port <int>] [<CommonParameters>]
+Send-MailMessage [-Attachments <String[]>] [-Bcc <String[]>] [[-Body] <String>] [-BodyAsHtml]
+ [-Encoding <Encoding>] [-Cc <String[]>] [-DeliveryNotificationOption <DeliveryNotificationOptions>]
+ -From <String> [[-SmtpServer] <String>] [-Priority <MailPriority>] [-ReplyTo <String[]>]
+ [[-Subject] <String>] [-To] <String[]> [-Credential <PSCredential>] [-UseSsl] [-Port <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,14 +34,21 @@ fails. Use the **SmtpServer** parameter or set the `$PSEmailServer` variable to 
 The value assigned to `$PSEmailServer` is the default SMTP setting for PowerShell. For more
 information, see [about_Preference_Variables](../Microsoft.PowerShell.Core/About/about_Preference_Variables.md).
 
+> [!WARNING]
+> The `Send-MailMessage` cmdlet is obsolete. This cmdlet does not guarantee secure connections to
+> SMTP servers. While there is no immediate replacement available in PowerShell, we recommend you do
+> not use `Send-MailMessage`. For more information, see
+> [Platform Compatibility note DE0005](https://aka.ms/SendMailMessage).
+
 ## EXAMPLES
 
 ### Example 1: Send an email from one person to another person
 
 This example sends an email message from one person to another person.
 
-The **From** and **To** parameters are required by `Send-MailMessage`. This example uses the default
-`$PSEmailServer` variable for the SMTP server, so the **SmtpServer** parameter is not needed.
+The **From**, **To**, and **Subject** parameters are required by `Send-MailMessage`. This example
+uses the default `$PSEmailServer` variable for the SMTP server, so the **SmtpServer** parameter is
+not needed.
 
 ```powershell
 Send-MailMessage -From 'User01 <user01@fabrikam.com>' -To 'User02 <user02@fabrikam.com>' -Subject 'Test mail'
@@ -95,14 +102,14 @@ Specifies the path and file names of files to be attached to the email message. 
 parameter or pipe the paths and file names to `Send-MailMessage`.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: PsPath
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -112,14 +119,14 @@ Specifies the email addresses that receive a copy of the mail but are not listed
 the message. Enter names (optional) and the email address, such as `Name <someone@fabrikam.com>`.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -128,14 +135,14 @@ Accept wildcard characters: False
 Specifies the content of the email message.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -144,14 +151,14 @@ Accept wildcard characters: False
 Specifies that the value of the **Body** parameter contains HTML.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: BAH
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -161,14 +168,14 @@ Specifies the email addresses to which a carbon copy (CC) of the email message i
 (optional) and the email address, such as `Name <someone@fabrikam.com>`.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -188,14 +195,14 @@ object and the password is stored as a [SecureString](/dotnet/api/system.securit
 > [How secure is SecureString?](/dotnet/api/system.security.securestring#how-secure-is-securestring).
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: Current user
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -208,14 +215,14 @@ The delivery notifications are sent to the address in the **From** parameter.
 
 The acceptable values for this parameter are as follows:
 
-- **None**: No notification.
-- **OnSuccess**: Notify if the delivery is successful.
-- **OnFailure**: Notify if the delivery is unsuccessful.
-- **Delay**: Notify if the delivery is delayed.
-- **Never**: Never notify.
+- `None`: No notification.
+- `OnSuccess`: Notify if the delivery is successful.
+- `OnFailure`: Notify if the delivery is unsuccessful.
+- `Delay`: Notify if the delivery is delayed.
+- `Never`: Never notify.
 
 ```yaml
-Type: DeliveryNotificationOptions
+Type: System.Net.Mail.DeliveryNotificationOptions
 Parameter Sets: (All)
 Aliases: DNO
 Accepted values: None, OnSuccess, OnFailure, Delay, Never
@@ -223,25 +230,25 @@ Accepted values: None, OnSuccess, OnFailure, Delay, Never
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Encoding
 
-Specifies the type of encoding for the target file. The default value is **UTF8NoBOM**.
+Specifies the type of encoding for the target file. The default value is `utf8NoBOM`.
 
 The acceptable values for this parameter are as follows:
 
-- **ASCII**: Uses the encoding for the ASCII (7-bit) character set.
-- **BigEndianUnicode**: Encodes in UTF-16 format using the big-endian byte order.
-- **OEM**: Uses the default encoding for MS-DOS and console programs.
-- **Unicode**: Encodes in UTF-16 format using the little-endian byte order.
-- **UTF7**: Encodes in UTF-7 format.
-- **UTF8**: Encodes in UTF-8 format.
-- **UTF8BOM**: Encodes in UTF-8 format with Byte Order Mark (BOM)
-- **UTF8NoBOM**: Encodes in UTF-8 format without Byte Order Mark (BOM)
-- **UTF32**: Encodes in UTF-32 format.
+- `ascii`: Uses the encoding for the ASCII (7-bit) character set.
+- `bigendianunicode`: Encodes in UTF-16 format using the big-endian byte order.
+- `oem`: Uses the default encoding for MS-DOS and console programs.
+- `unicode`: Encodes in UTF-16 format using the little-endian byte order.
+- `utf7`: Encodes in UTF-7 format.
+- `utf8`: Encodes in UTF-8 format.
+- `utf8BOM`: Encodes in UTF-8 format with Byte Order Mark (BOM)
+- `utf8NoBOM`: Encodes in UTF-8 format without Byte Order Mark (BOM)
+- `utf32`: Encodes in UTF-32 format.
 
 Beginning with PowerShell 6.2, the **Encoding** parameter also allows numeric IDs of registered code
 pages (like `-Encoding 1251`) or string names of registered code pages (like
@@ -249,7 +256,7 @@ pages (like `-Encoding 1251`) or string names of registered code pages (like
 [Encoding.CodePage](/dotnet/api/system.text.encoding.codepage?view=netcore-2.2).
 
 ```yaml
-Type: Encoding
+Type: System.Text.Encoding
 Parameter Sets: (All)
 Aliases: BE
 Accepted values: ASCII, BigEndianUnicode, OEM, Unicode, UTF7, UTF8, UTF8BOM, UTF8NoBOM, UTF32
@@ -257,7 +264,7 @@ Accepted values: ASCII, BigEndianUnicode, OEM, Unicode, UTF7, UTF8, UTF8BOM, UTF
 Required: False
 Position: Named
 Default value: UTF8NoBOM
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -267,14 +274,14 @@ The **From** parameter is required. This parameter specifies the sender's email 
 name (optional) and email address, such as `Name <someone@fabrikam.com>`.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -284,14 +291,14 @@ Specifies an alternate port on the SMTP server. The default value is 25, which i
 port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: 25
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -301,7 +308,7 @@ Specifies the priority of the email message. Normal is the default. The acceptab
 parameter are Normal, High, and Low.
 
 ```yaml
-Type: MailPriority
+Type: System.Net.Mail.MailPriority
 Parameter Sets: (All)
 Aliases:
 Accepted values: Normal, High, Low
@@ -309,7 +316,7 @@ Accepted values: Normal, High, Low
 Required: False
 Position: Named
 Default value: Normal
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -321,14 +328,14 @@ Enter names (optional) and the email address, such as `Name <someone@fabrikam.co
 This parameter was introduced in PowerShell 6.2.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -340,14 +347,14 @@ The default value is the value of the `$PSEmailServer` preference variable. If t
 variable is not set and this parameter is not used, the `Send-MailMessage` command fails.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ComputerName
 
 Required: False
 Position: 3
 Default value: $PSEmailServer
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -356,14 +363,14 @@ Accept wildcard characters: False
 The **Subject** parameter isn't required. This parameter specifies the subject of the email message.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: sub
 
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -374,14 +381,14 @@ are multiple recipients, separate their addresses with a comma (`,`). Enter name
 email address, such as `Name <someone@fabrikam.com>`.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -391,14 +398,14 @@ The Secure Sockets Layer (SSL) protocol is used to establish a secure connection
 computer to send mail. By default, SSL is not used.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

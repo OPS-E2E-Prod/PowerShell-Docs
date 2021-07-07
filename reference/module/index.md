@@ -3,21 +3,21 @@ title: PowerShell Module Browser
 description: Search all PowerShell modules and cmdlets from Microsoft
 author: sdwheeler
 ms.author: sewhee
-manager: carmonm
+manager: sewhee
 ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: landing-page
-ms.manager: carmonm
-ms.date: 10/17/2019
+ms.manager: sewhee
+ms.date: 11/18/2020
 archive_url: ''
 layout: ApiBrowserPage
 apiPlatform: powershell
-quickFilterColumn1: powershell-6,win10-ps
-quickFilterColumn2: azps-2.8.0,win-mdop2-ps
-quickFilterColumn3: sqlserver-ps,systemcenter-ps-2016
+quickFilterColumn1: powershell-7.1,win10-ps
+quickFilterColumn2: azps-5.6.0,win-mdop2-ps
+quickFilterColumn3: sqlserver-ps,systemcenter-ps-2019
 ---
 
 # PowerShell Module Browser
 
-Search all PowerShell modules and cmdlets from Microsoft – just start typing in the box below.
+Search all PowerShell modules and cmdlets from Microsoft - just start typing in the box below.

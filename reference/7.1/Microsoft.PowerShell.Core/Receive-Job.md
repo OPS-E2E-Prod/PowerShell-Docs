@@ -1,10 +1,10 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 06/09/2017
-online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/receive-job?view=powershell-7&WT.mc_id=ps-gethelp
+online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/receive-job?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Receive-Job
 ---
@@ -126,7 +126,7 @@ Running  dhcp               DHCP Client
 $job | Receive-Job -Keep
 ```
 
-```output
+```Output
 Cannot find any service with service name 'fakeservice'.
     + CategoryInfo          : ObjectNotFound: (fakeservice:String) [Get-Service], ServiceCommandException
     + FullyQualifiedErrorId : NoServiceFoundForGivenName,Microsoft.PowerShell.Commands.GetServiceCommand
@@ -255,7 +255,7 @@ Start-Job -Name TestJob -ScriptBlock {dir C:\, Z:\}
 Receive-Job -Name TestJob
 ```
 
-```output
+```Output
     Directory: C:\
 
 Mode                LastWriteTime         Length Name
@@ -275,7 +275,7 @@ Cannot find drive. A drive with the name 'Z' does not exist.
 Receive-Job -Name TestJob
 ```
 
-```output
+```Output
 
 ```
 
@@ -285,7 +285,7 @@ $job = Get-Job -Name TestJob
 $job.ChildJobs[0].Error
 ```
 
-```output
+```Output
 Cannot find drive. A drive with the name 'Z' does not exist.
     + CategoryInfo          : ObjectNotFound: (Z:String) [Get-ChildItem], DriveNotFoundException
     + FullyQualifiedErrorId : DriveNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
@@ -308,13 +308,13 @@ This parameter cannot be used without the **Wait** parameter.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -329,15 +329,15 @@ To get job results that are stored on remote computers, use the `Invoke-Command`
 `Receive-Job` command remotely.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ComputerName
 Aliases: Cn
 
 Required: False
 Position: 1
-Default value: None
+Default value: All computers available
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Force
@@ -357,13 +357,13 @@ The **Force** parameter is valid only when the **Wait** parameter is also used i
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -379,7 +379,7 @@ session. You can type one or more IDs separated by commas.
 To find the ID of a job, use `Get-Job`.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SessionIdParameterSet
 Aliases:
 
@@ -399,13 +399,13 @@ An instance ID is a GUID that uniquely identifies the job on the computer.
 To find the instance ID of a job, use the `Get-Job` cmdlet.
 
 ```yaml
-Type: Guid[]
+Type: System.Guid[]
 Parameter Sets: InstanceIdParameterSet
 Aliases:
 
 Required: True
 Position: 0
-Default value: None
+Default value: All instances
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -418,8 +418,8 @@ Enter a variable that contains the job or a command that gets the job.
 You can also pipe a job object to `Receive-Job`.
 
 ```yaml
-Type: Job[]
-Parameter Sets: Location, ComputerName, Session
+Type: System.Management.Automation.Job[]
+Parameter Sets: Location, Session, ComputerName
 Aliases:
 
 Required: True
@@ -438,13 +438,13 @@ Closing the session, or removing the job with the `Remove-Job` cmdlet also delet
 stream data.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -455,13 +455,13 @@ Specifies an array of locations.
 This cmdlet gets only the results of jobs in the specified locations.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Location
 Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: All locations
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -472,9 +472,8 @@ Specifies an array of friendly names.
 This cmdlet gets the results of jobs that have the specified names.
 Wildcard characters are supported.
 
-
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -491,13 +490,13 @@ Indicates that this cmdlet gets results only from the specified job.
 By default, `Receive-Job` also gets the results of all child jobs of the specified job.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -511,13 +510,13 @@ Enter a variable that contains the **PSSession** or a command that gets the **PS
 `Get-PSSession` command.
 
 ```yaml
-Type: PSSession[]
+Type: System.Management.Automation.Runspaces.PSSession[]
 Parameter Sets: Session
 Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: All sessions
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -541,7 +540,7 @@ use the **Force** parameter together with the **Wait** parameter.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -562,13 +561,13 @@ parameter is omitted.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -583,13 +582,13 @@ parameter is omitted.
 This parameter was introduced in Windows PowerShell 3.0.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -627,3 +626,4 @@ This cmdlet returns the results of the commands in the job.
 [Stop-Job](Stop-Job.md)
 
 [Wait-Job](Wait-Job.md)
+

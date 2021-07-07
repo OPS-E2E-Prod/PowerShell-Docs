@@ -1,5 +1,6 @@
 ---
 external help file: System.Management.Automation.dll-Help.xml
+Locale: en-US
 Module Name: Microsoft.PowerShell.Core
 ms.date: 03/01/2019
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-experimentalfeature?view=powershell-7&WT.mc_id=ps-gethelp
@@ -47,7 +48,7 @@ PSImplicitRemotingBatching   False PSEngine      Batch implicit remoting proxy c
 Name or names of specific experimental features to return.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -77,9 +78,10 @@ Name or names of experimental features to return.
 Returns instances that match the requested names or all experimental features if no name is
 specified.
 
+## NOTES
+
 ## RELATED LINKS
 
 [Disable-ExperimentalFeature](Disable-ExperimentalFeature.md)
 
 [Enable-ExperimentalFeature](Enable-ExperimentalFeature.md)
-

@@ -1,5 +1,6 @@
 ---
 external help file: PSDiagnostics-help.xml
+Locale: en-US
 Module Name: PSDiagnostics
 ms.date: 11/27/2018
 online version: https://docs.microsoft.com/powershell/module/psdiagnostics/set-logproperties?view=powershell-7&WT.mc_id=ps-gethelp
@@ -108,4 +109,3 @@ You must run this cmdlet from an elevated PowerShell session.
 [Enable-PSTrace](Enable-PSTrace.md)
 
 [Disable-PSTrace](Disable-PSTrace.md)
-

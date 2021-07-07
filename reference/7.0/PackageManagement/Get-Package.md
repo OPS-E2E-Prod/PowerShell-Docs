@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.PowerShell.PackageManagement.dll-Help.xml
 keywords: powershell,cmdlet
-locale: en-us
+Locale: en-US
 Module Name: PackageManagement
 ms.date: 05/22/2019
 online version: https://docs.microsoft.com/powershell/module/packagemanagement/get-package?view=powershell-7&WT.mc_id=ps-gethelp
@@ -21,7 +21,8 @@ Returns a list of all software packages that were installed with **PackageManage
 ```
 Get-Package [[-Name] <String[]>] [-RequiredVersion <String>] [-MinimumVersion <String>]
  [-MaximumVersion <String>] [-AllVersions] [-Force] [-ForceBootstrap] [-ProviderName <String[]>]
- [-Destination <String>] [-ExcludeVersion] [-Scope <String>] [-SkipDependencies] [<CommonParameters>]
+ [-Destination <String>] [-ExcludeVersion] [-Scope <String>] [-SkipDependencies]
+ [<CommonParameters>]
 ```
 
 ### PowerShellGet
@@ -128,7 +129,7 @@ Overrides warning messages about conflicts with existing commands. Overwrites ex
 have the same name as commands being installed by a module.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 Includes packages marked as a prerelease in the results.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -161,7 +162,7 @@ Indicates that `Get-Package` returns all available versions of the package. By d
 `Get-Package` only returns the newest available version.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +178,7 @@ Accept wildcard characters: False
 Specifies the path to a directory that contains extracted package files.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NuGet
 Aliases:
 
@@ -193,7 +194,7 @@ Accept wildcard characters: False
 Switch to exclude the version number in the folder path.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NuGet
 Aliases:
 
@@ -209,7 +210,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +227,7 @@ Indicates that `Get-Package` forces **PackageManagement** to automatically insta
 provider.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +243,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet installs updates.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -258,7 +259,7 @@ Accept wildcard characters: False
 Specifies the maximum package version that you want to find.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -275,7 +276,7 @@ Specifies the minimum package version that you want to find. If a higher version
 version is returned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +293,7 @@ Specifies one or more package names, or package names with wildcard characters. 
 package names with commas.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +310,7 @@ Accept wildcard characters: True
 parameter added by the provider and isn't supported by `Get-Package`.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -325,7 +326,7 @@ Accept wildcard characters: False
 Specifies the name of a package management provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -342,7 +343,7 @@ Specifies one or more package provider names. Separate multiple package provider
 Use `Get-PackageProvider` to get a list of available package providers.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: Provider
 Accepted values: Bootstrap, NuGet, PowerShellGet
@@ -359,7 +360,7 @@ Accept wildcard characters: False
 Specifies the exact version of the package to find.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -375,7 +376,7 @@ Accept wildcard characters: False
 Specifies the search scope for the package.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, AllUsers
@@ -392,7 +393,7 @@ Accept wildcard characters: False
 Switch that specifies to skip finding any package dependencies.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NuGet
 Aliases:
 
@@ -410,7 +411,7 @@ installed package that is digitally signed by a trusted publisher but a new vers
 signed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PowerShellGet
 Aliases:
 
@@ -426,7 +427,7 @@ Accept wildcard characters: False
 Specifies whether to search for packages with a module, a script, or either.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PowerShellGet
 Aliases:
 Accepted values: Module, Script, All
@@ -456,6 +457,18 @@ Including a package provider in a command can make dynamic parameters available 
 parameters are specific to a package provider. The `Get-Help` cmdlet lists a cmdlet's parameter sets
 and includes the provider's parameter set. For example, `Get-Package` has the **PowerShellGet**
 parameter set that includes `-NoPathUpdate`, `AllowClobber`, and `SkipPublisherCheck`.
+
+> [!IMPORTANT]
+> As of April 2020, the PowerShell Gallery no longer supports Transport Layer Security (TLS)
+> versions 1.0 and 1.1. If you are not using TLS 1.2 or higher, you will receive an error when
+> trying to access the PowerShell Gallery. Use the following command to ensure you are using TLS
+> 1.2:
+>
+> `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+>
+> For more information, see the
+> [announcement](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support/) in the
+> PowerShell blog.
 
 ## RELATED LINKS
 

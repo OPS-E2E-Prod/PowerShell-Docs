@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
-keywords: powershell,cmdlet
-locale: en-us
-ms.date: 5/14/2019
+Locale: en-US
+Module Name: Microsoft.PowerShell.Management
+ms.date: 12/18/2020
 online version: https://docs.microsoft.com/powershell/module/microsoft.powershell.management/add-content?view=powershell-7&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Add-Content
@@ -50,7 +50,7 @@ their file name.
 Add-Content -Path .\*.txt -Exclude help* -Value 'End of file'
 ```
 
-The **Path** parameter to specifies all `.txt` files in the current directory, but the **Exclude**
+The **Path** parameter specifies all `.txt` files in the current directory, but the **Exclude**
 parameter ignores file names that match the specified pattern. The **Value** parameter specifies the
 text string that is written to the files.
 
@@ -70,9 +70,9 @@ Tuesday, May 14, 2019 8:24:27 AM
 5/14/2019 8:24:27 AM
 ```
 
-The `Add-Content` creates two new files in the current directory. The **Value** parameter contains
-the output of the `Get-Date` The **PassThru** parameter outputs the added contents to the pipeline.
-Because there is no other cmdlets to receive the output, it is displayed in the PowerShell console.
+The `Add-Content` cmdlet creates two new files in the current directory. The **Value** parameter contains
+the output of the `Get-Date` cmdlet. The **PassThru** parameter outputs the added contents to the pipeline.
+Because there is no other cmdlet to receive the output, it is displayed in the PowerShell console.
 The `Get-Content` cmdlet displays the updated file, `DateTimeFile1.log`.
 
 ### Example 3: Add the contents of a specified file to another file
@@ -177,7 +177,7 @@ A warning occurs when you use the **AsByteStream** parameter with the **Encoding
 **AsByteStream** parameter ignores any encoding and the output is returned as a stream of bytes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 > use [Invoke-Command](../Microsoft.PowerShell.Core/Invoke-Command.md).
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -209,22 +209,22 @@ Accept wildcard characters: False
 
 ### -Encoding
 
-Specifies the type of encoding for the target file. The default value is **UTF8NoBOM**.
+Specifies the type of encoding for the target file. The default value is `utf8BOM`.
 
 Encoding is a dynamic parameter that the FileSystem provider adds to the `Add-Content` cmdlet. This
 parameter works only in file system drives.
 
 The acceptable values for this parameter are as follows:
 
-- **ASCII**: Uses the encoding for the ASCII (7-bit) character set.
-- **BigEndianUnicode**: Encodes in UTF-16 format using the big-endian byte order.
-- **OEM**: Uses the default encoding for MS-DOS and console programs.
-- **Unicode**: Encodes in UTF-16 format using the little-endian byte order.
-- **UTF7**: Encodes in UTF-7 format.
-- **UTF8**: Encodes in UTF-8 format.
-- **UTF8BOM**: Encodes in UTF-8 format with Byte Order Mark (BOM)
-- **UTF8NoBOM**: Encodes in UTF-8 format without Byte Order Mark (BOM)
-- **UTF32**: Encodes in UTF-32 format.
+- `ascii`: Uses the encoding for the ASCII (7-bit) character set.
+- `bigendianunicode`: Encodes in UTF-16 format using the big-endian byte order.
+- `oem`: Uses the default encoding for MS-DOS and console programs.
+- `unicode`: Encodes in UTF-16 format using the little-endian byte order.
+- `utf7`: Encodes in UTF-7 format.
+- `utf8`: Encodes in UTF-8 format.
+- `utf8BOM`: Encodes in UTF-8 format with Byte Order Mark (BOM)
+- `utf8NoBOM`: Encodes in UTF-8 format without Byte Order Mark (BOM)
+- `utf32`: Encodes in UTF-32 format.
 
 Beginning with PowerShell 6.2, the **Encoding** parameter also allows numeric IDs of registered code
 pages (like `-Encoding 1251`) or string names of registered code pages (like
@@ -232,7 +232,7 @@ pages (like `-Encoding 1251`) or string names of registered code pages (like
 [Encoding.CodePage](/dotnet/api/system.text.encoding.codepage?view=netcore-2.2).
 
 ```yaml
-Type: Encoding
+Type: System.Text.Encoding
 Parameter Sets: (All)
 Aliases:
 Accepted values: ASCII, BigEndianUnicode, OEM, Unicode, UTF7, UTF8, UTF8BOM, UTF8NoBOM, UTF32
@@ -253,7 +253,7 @@ command includes the contents of an item, such as `C:\Windows\*`, where the wild
 specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -273,7 +273,7 @@ Filters are more efficient than other parameters, because the provider applies t
 gets the objects rather than having PowerShell filter the objects after they are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -291,7 +291,7 @@ Overrides the read-only attribute, allowing you to add content to a read-only fi
 it will not attempt to change file permissions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -311,7 +311,7 @@ command includes the contents of an item, such as `C:\Windows\*`, where the wild
 specifies the contents of the `C:\Windows` directory.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -332,9 +332,9 @@ as escape sequences.
 For more information, see [about_Quoting_Rules](../Microsoft.Powershell.Core/About/about_Quoting_Rules.md).
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: LiteralPath
-Aliases: PSPath
+Aliases: PSPath, LP
 
 Required: True
 Position: Named
@@ -351,7 +351,7 @@ The string representations of the input objects are concatenated to form the out
 newlines are inserted between the output strings. No newline is added after the last output string.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -368,7 +368,7 @@ Returns an object representing the added content. By default, this cmdlet does n
 output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +388,7 @@ For example, you must specify a path to one or more files, not a path to a direc
 If you specify multiple paths, use commas to separate the paths.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Path
 Aliases:
 
@@ -401,21 +401,25 @@ Accept wildcard characters: True
 
 ### -Stream
 
+> [!NOTE]
+> This Parameter is only available on Windows.
+
 Specifies an alternative data stream for content. If the stream does not exist, this cmdlet creates
 it. Wildcard characters are not supported.
 
 **Stream** is a dynamic parameter that the FileSystem provider adds to `Add-Content`. This
 parameter works only in file system drives.
 
-You can use the `Add-Content` cmdlet to change the content of the **Zone.Identifier** alternate
-data stream. However, we do not recommend this as a way to eliminate security checks that block
-files that are downloaded from the Internet. If you verify that a downloaded file is safe, use the
+You can use the `Add-Content` cmdlet to change the content of any alternate
+data stream, such as `Zone.Identifier`. However, we do not recommend this as
+a way to eliminate security checks that block files that are downloaded from
+the Internet. If you verify that a downloaded file is safe, use the
 `Unblock-File` cmdlet.
 
 This parameter was introduced in PowerShell 3.0.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -436,7 +440,7 @@ You cannot specify the contents of a file by typing its path, because the path i
 You can use a `Get-Content` command to get the content and pass it to the **Value** parameter.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: (All)
 Aliases:
 
@@ -452,7 +456,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -468,7 +472,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -481,10 +485,10 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: `-Debug`, `-ErrorAction`, `-ErrorVariable`,
-`-InformationAction`, `-InformationVariable`, `-OutVariable`, `-OutBuffer`, `-PipelineVariable`,
-`-Verbose`, `-WarningAction`, and `-WarningVariable`. For more information, see
-[about_CommonParameters](../Microsoft.PowerShell.Core/About/about_CommonParameters.md).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

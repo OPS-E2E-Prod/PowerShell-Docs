@@ -1,8 +1,9 @@
 ---
-keywords: powershell,cmdlet
-locale: en-us
-ms.date: 02/10/2020
-online version: https://docs.microsoft.com/powershell/module/psreadline/about/about_psreadline?view=powershell-7&WT.mc_id=ps-gethelp
+description: PSReadLine provides an improved command-line editing experience in the PowerShell console.
+keywords: powershell
+Locale: en-US
+ms.date: 11/16/2020
+online version: https://docs.microsoft.com/powershell/module/psreadline/about/about_psreadline?view=powershell-7.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: About PSReadLine
 ---
@@ -10,14 +11,14 @@ title: About PSReadLine
 
 ## about_PSReadLine
 
-## SHORT DESCRIPTION
+## Short Description
 
-PSReadLine provides an improved command line-editing experience in the
+PSReadLine provides an improved command-line editing experience in the
 PowerShell console.
 
-## LONG DESCRIPTION
+## Long Description
 
-PSReadLine 2.0 provides a powerful command line-editing experience for the
+PSReadLine 2.1 provides a powerful command-line editing experience for the
 PowerShell console. It provides:
 
 - Syntax coloring of the command line
@@ -27,11 +28,21 @@ PowerShell console. It provides:
 - Cmd and Emacs modes
 - Many configuration options
 - Bash style completion (optional in Cmd mode, default in Emacs mode)
-- Emacs yank/kill ring
+- Emacs yank/kill-ring
 - PowerShell token based "word" movement and kill
+- Predictive IntelliSense
 
-The following functions are available in the class
-**[Microsoft.PowerShell.PSConsoleReadLine]**.
+PSReadLine requires PowerShell 3.0, or newer, and the console host. It does
+not work in PowerShell ISE. It does work in the console of Visual Studio Code.
+
+PSReadLine 2.1.0 ships with PowerShell 7.1 and is supported in all supported
+versions of PowerShell. It is available to install from the PowerShell Gallery.
+To install PSReadLine 2.1.0 in a supported version of PowerShell run the
+following command.
+
+```powershell
+Install-Module -Name PSReadLine -RequiredVersion 2.1.0
+```
 
 > [!NOTE]
 > Beginning with PowerShell 7.0, PowerShell skips auto-loading PSReadLine on
@@ -39,6 +50,34 @@ The following functions are available in the class
 > work well with the screen readers. The default rendering and formatting of
 > PowerShell 7.0 on Windows works properly. You can manually load the module if
 > necessary.
+
+## Predictive IntelliSense
+
+Predictive IntelliSense is an addition to the concept of tab completion that
+assists the user in successfully completing commands. It enables users to
+discover, edit, and execute full commands based on matching predictions from the
+user's history and additional domain specific plugins.
+
+### Enable Predictive IntelliSense
+
+Predictive IntelliSense is disabled by default. To enable predictions, just run
+the following command:
+
+```powershell
+Set-PSReadLineOption -PredictionSource History
+```
+
+The **PredictionSource** parameter can also accept plugins for domain specific
+and custom requirements.
+
+To disable Predictive IntelliSense, just run:
+
+```powershell
+Set-PSReadLineOption -PredictionSource None
+```
+
+The following functions are available in the class
+**[Microsoft.PowerShell.PSConsoleReadLine]**.
 
 ## Basic editing functions
 
@@ -89,7 +128,7 @@ Delete the character before the cursor.
 ### BackwardDeleteLine
 
 Like BackwardKillLine - deletes text from the point to the start of the line,
-but does not put the deleted text in the kill ring.
+but does not put the deleted text in the kill-ring.
 
 - Cmd: `<Ctrl+Home>`
 - Vi insert mode: `<Ctrl+u>`, `<Ctrl+Home>`
@@ -104,7 +143,7 @@ Deletes the previous word.
 ### BackwardKillLine
 
 Clear the input from the start of the input to the cursor. The cleared text is
-placed in the kill ring.
+placed in the kill-ring.
 
 - Emacs: `<Ctrl+u>`, `<Ctrl+x,Backspace>`
 
@@ -112,9 +151,9 @@ placed in the kill ring.
 
 Clear the input from the start of the current word to the cursor. If the
 cursor is between words, the input is cleared from the start of the previous
-word to the cursor. The cleared text is placed in the kill ring.
+word to the cursor. The cleared text is placed in the kill-ring.
 
-- Cmd: `<Ctrl+Backspace>`
+- Cmd: `<Ctrl+Backspace>`, `<Ctrl+w>`
 - Emacs: `<Alt+Backspace>`, `<Escape,Backspace>`
 - Vi insert mode: `<Ctrl+Backspace>`
 - Vi command mode: `<Ctrl+Backspace>`
@@ -154,7 +193,7 @@ Delete the character under the cursor.
 - Cmd: `<Delete>`
 - Emacs: `<Delete>`
 - Vi insert mode: `<Delete>`
-- Vi command mode: `<Delete>`, `<x>`, `<d,l>`, `<d,Space>`
+- Vi command mode: `<Delete>`, `<x>`, `<d,l>`, `<d,Spacebar>`
 
 ### DeleteCharOrExit
 
@@ -162,6 +201,12 @@ Delete the character under the cursor, or if the line is empty, exit the
 process.
 
 - Emacs: `<Ctrl+d>`
+
+### DeleteEndOfBuffer
+
+Deletes to the end of the multiline buffer.
+
+- Vi command mode: `<d,G>`
 
 ### DeleteEndOfWord
 
@@ -171,9 +216,34 @@ Delete to the end of the word.
 
 ### DeleteLine
 
-Deletes the current line, enabling undo.
+Deletes the current logical line of a multiline buffer, enabling undo.
 
-- Vi command mode: `<d,d>`
+- Vi command mode: `<d,d>`, `<d,_>`
+
+### DeletePreviousLines
+
+Deletes the previous requested logical lines and the current logical line in a multiline buffer.
+
+- Vi command mode: `<d,k>`
+
+### DeleteRelativeLines
+
+Deletes from the beginning of the buffer to the current logical line in a multiline buffer.
+
+As most Vi commands, the `<d,g,g>` command can be prepended with a numeric argument that specifies an absolute line number,
+which, together with the current line number, make up a range of lines to be deleted.
+If not specified, the numeric argument defaults to 1, which refers to the first logical line in a multiline buffer.
+
+The actual number of lines to be deleted from the multiline is computed as the difference between the current logical line number
+and the specified numeric argument, which can thus be negative. Hence the _relative_ part of method name.
+
+- Vi command mode: `<d,g,g>`
+
+### DeleteNextLines
+
+Deletes the current logical line and the next requested logical lines in a multiline buffer.
+
+- Vi command mode: `<d,j>`
 
 ### DeleteLineToFirstChar
 
@@ -196,7 +266,7 @@ Delete the next word.
 ### ForwardDeleteLine
 
 Like ForwardKillLine - deletes text from the point to the end of the line, but
-does not put the deleted text in the kill ring.
+does not put the deleted text in the kill-ring.
 
 - Cmd: `<Ctrl+End>`
 - Vi insert mode: `<Ctrl+End>`
@@ -227,7 +297,7 @@ Invert the case of the current character and move to the next one.
 ### KillLine
 
 Clear the input from the cursor to the end of the input. The cleared text is
-placed in the kill ring.
+placed in the kill-ring.
 
 - Emacs: `<Ctrl+k>`
 
@@ -241,9 +311,9 @@ Kill the text between the cursor and the mark.
 
 Clear the input from the cursor to the end of the current word. If the cursor
 is between words, the input is cleared from the cursor to the end of the next
-word. The cleared text is placed in the kill ring.
+word. The cleared text is placed in the kill-ring.
 
-- Cmd: `<Ctrl+Delete>`
+- Cmd: `<Alt+d>`, `<Ctrl+Delete>`
 - Emacs: `<Alt+d>`, `<Escape,d>`
 - Vi insert mode: `<Ctrl+Delete>`
 - Vi command mode: `<Ctrl+Delete>`
@@ -310,7 +380,7 @@ Reverts all of the input to the current input.
 
 Clear the input from the start of the current word to the cursor. If the
 cursor is between words, the input is cleared from the start of the previous
-word to the cursor. The cleared text is placed in the kill ring.
+word to the cursor. The cleared text is placed in the kill-ring.
 
 Function is unbound.
 
@@ -318,7 +388,7 @@ Function is unbound.
 
 Clear the input from the cursor to the end of the current word. If the cursor
 is between words, the input is cleared from the cursor to the end of the next
-word. The cleared text is placed in the kill ring.
+word. The cleared text is placed in the kill-ring.
 
 Function is unbound.
 
@@ -349,7 +419,7 @@ Undo all previous edits for line.
 
 Clear the input from the start of the current word to the cursor. If the
 cursor is between words, the input is cleared from the start of the previous
-word to the cursor. The cleared text is placed in the kill ring.
+word to the cursor. The cleared text is placed in the kill-ring.
 
 - Emacs: `<Ctrl+w>`
 
@@ -568,7 +638,7 @@ Yank the word(s) before the cursor.
 
 Yank character(s) under and to the right of the cursor.
 
-- Vi command mode: `<y,l>`, `<y,Space>`
+- Vi command mode: `<y,l>`, `<y,Spacebar>`
 
 ### ViYankToEndOfLine
 
@@ -609,7 +679,7 @@ negative, start from the last argument.
 ### YankPop
 
 If the previous operation was Yank or YankPop, replace the previously yanked
-text with the next killed text from the kill ring.
+text with the next killed text from the kill-ring.
 
 - Emacs: `<Alt+y>`, `<Escape,y>`
 
@@ -622,8 +692,6 @@ previous line of multi-line input.
 
 - Cmd: `<LeftArrow>`
 - Emacs: `<LeftArrow>`, `<Ctrl+b>`
-- Vi insert mode: `<LeftArrow>`
-- Vi command mode: `<LeftArrow>`, `<Backspace>`, `<h>`
 
 ### BackwardWord
 
@@ -664,8 +732,6 @@ next line of multi-line input.
 
 - Cmd: `<RightArrow>`
 - Emacs: `<RightArrow>`, `<Ctrl+f>`
-- Vi insert mode: `<RightArrow>`
-- Vi command mode: `<RightArrow>`, `<Space>`, `<l>`
 
 ### ForwardWord
 
@@ -693,7 +759,7 @@ Move to the column indicated by arg.
 
 Move the cursor to the first non-blank character in the line.
 
-- Vi command mode: `<^>`
+- Vi command mode: `<^>`, `<_>`
 
 ### MoveToEndOfLine
 
@@ -752,6 +818,14 @@ to the end of the next word. Word boundaries are defined by PowerShell tokens.
 
 - Function is unbound.
 
+### ViBackwardChar
+
+Move the cursor one character to the left in the Vi edit mode. This may move
+the cursor to the previous line of multi-line input.
+
+- Vi insert mode: `<LeftArrow>`
+- Vi command mode: `<LeftArrow>`, `<Backspace>`, `<h>`
+
 ### ViBackwardWord
 
 Move the cursor back to the start of the current word, or if between words,
@@ -759,6 +833,14 @@ the start of the previous word. Word boundaries are defined by a configurable
 set of characters.
 
 - Vi command mode: `<b>`
+
+### ViForwardChar
+
+Move the cursor one character to the right in the Vi edit mode. This may move
+the cursor to the next line of multi-line input.
+
+- Vi insert mode: `<RightArrow>`
+- Vi command mode: `<RightArrow>`, `<Spacebar>`, `<l>`
 
 ### ViEndOfGlob
 
@@ -798,7 +880,7 @@ defined by a configurable set of characters.
 
 Move to the first item in the history.
 
-- Emacs: `<Alt+`<>`
+- Emacs: `<Alt+<>`
 
 ### ClearHistory
 
@@ -883,16 +965,16 @@ multiple possible completions, the longest unambiguous prefix is used for
 completion. If trying to complete the longest unambiguous completion, a list
 of possible completions is displayed.
 
-- Cmd: `<Ctrl+Space>`
-- Emacs: `<Ctrl+Space>`
+- Cmd: `<Ctrl+@>`, `<Ctrl+Spacebar>`
+- Emacs: `<Ctrl+Spacebar>`
 
 ### PossibleCompletions
 
 Display the list of possible completions.
 
 - Emacs: `<Alt+=>`
-- Vi insert mode: `<Ctrl+Space>`
-- Vi command mode: `<Ctrl+Space>`
+- Vi insert mode: `<Ctrl+Spacebar>`
+- Vi command mode: `<Ctrl+Spacebar>`
 
 ### TabCompleteNext
 
@@ -923,6 +1005,18 @@ Ends the current edit group, if needed, and invokes TabCompletePrevious.
 - Vi insert mode: `<Shift+Tab>`
 
 ## Miscellaneous functions
+
+### AcceptNextSuggestionWord
+
+Accept the next word of the inline or selected suggestion.
+
+- Function is unbound.
+
+### AcceptSuggestion
+
+Accept the current inline or selected suggestion.
+
+- Function is unbound.
 
 ### CaptureScreen
 
@@ -1140,7 +1234,27 @@ Adjust the current selection to include the next word using ShellNextWord.
 Mark the current location of the cursor for use in a subsequent editing
 command.
 
-- Emacs: `<Ctrl+`>`
+- Emacs: `<Ctrl+@>`
+
+## Predictive IntelliSense functions
+
+> [!NOTE]
+> Predictive IntelliSense needs to be enabled to use these functions.
+
+### AcceptNextWordSuggestion
+
+Accepts the next word of the inline suggestion from Predictive IntelliSense.
+This function can be bound with <kbd>Ctrl</kbd>+<kbd>F</kbd> by running the
+following command.
+
+```powershell
+Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+```
+
+### AcceptSuggestion
+
+Accepts the current inline suggestion from Predictive IntelliSense by pressing
+<kbd>RightArrow</kbd> when the cursor is at the end of the current line.
 
 ## Search functions
 
@@ -1302,7 +1416,7 @@ Add a command line to history without executing it.
 void ClearKillRing()
 ```
 
-Clear the kill ring.  This is mostly used for testing.
+Clear the kill-ring.  This is mostly used for testing.
 
 ```csharp
 void Delete(int start, int length)
@@ -1330,10 +1444,12 @@ second is used if your binding is doing something more advanced with the Ast.
 IEnumerable[Microsoft.PowerShell.KeyHandler]
   GetKeyHandlers(bool includeBound, bool includeUnbound)
 
+IEnumerable[Microsoft.PowerShell.KeyHandler]
+  GetKeyHandlers(string[] Chord)
 ```
 
-This function is used by Get-PSReadLineKeyHandler and probably isn't useful in
-a custom key binding.
+These two functions are used by `Get-PSReadLineKeyHandler`. The first is used to get all key
+bindings. The second is used to get specific key bindings.
 
 ```csharp
 Microsoft.PowerShell.PSConsoleReadLineOptions GetOptions()
@@ -1408,14 +1524,9 @@ typical call looks like
   [ref]$numericArg, 1)
 ```
 
-## NOTE
+## Note
 
-### POWERSHELL COMPATIBILITY
-
-PSReadLine requires PowerShell 3.0, or newer, and the console host. It does
-not work in PowerShell ISE. It does work in the console of Visual Studio Code.
-
-### COMMAND HISTORY
+### Command History
 
 PSReadLine maintains a history file containing all the commands and data you have entered from the
 command line. This may contain sensitive data including passwords. For example, if you use the
@@ -1425,13 +1536,13 @@ stored at `$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine`. On non-Windows
 history files is stored at `$env:XDG_DATA_HOME/powershell/PSReadLine` or
 `$env:HOME/.local/share/powershell/PSReadLine`.
 
-### FEEDBACK & CONTRIBUTING TO PSReadLine
+### Feedback & Contributing To PSReadLine
 
-[PSReadLine on GitHub](https://github.com/lzybkr/PSReadLine)
+[PSReadLine on GitHub](https://github.com/PowerShell/PSReadLine)
 
-Feel free to submit a pull request or submit feedback on the github page.
+Feel free to submit a pull request or submit feedback on the GitHub page.
 
-## SEE ALSO
+## See Also
 
 PSReadLine is heavily influenced by the GNU
 [readline](https://tiswww.case.edu/php/chet/readline/rltop.html) library.
